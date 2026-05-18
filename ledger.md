@@ -1,0 +1,24 @@
+---
+date: May 2026
+this_issue: A new cohort of **Beyond the Prompt** opens May 12. Four seats remain. New notes on the second book. A photograph from the road.
+---
+
+## Beyond the Prompt
+url: https://www.puhala.com/beyond-the-prompt
+status: Only 4 spots left
+notes: An extension of the newsletter. From basic prompting to automated agentic workflows. First cohort starts May 12, 2026.
+
+## Ten:Ten
+url: https://www.puhala.com/tenten
+status: Members only
+notes: Small volume. High standards. A practice for the patient.
+
+## Memoir of a Machine
+url: https://www.puhala.com/human
+status: In progress
+notes: A prequel of sorts to Human Traits. First draft in the first half of the year; publishing later in 2026.
+
+## A Return to Analog
+url: https://areturntoanalog.com
+status: Live
+notes: A vinyl collection and management service. Notes from the listening room.

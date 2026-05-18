@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Squarespace bundle — paste this into a Code Block</title>
+</head>
+<body style="margin:0;background:#1a1a1a;color:#ddd;font-family:system-ui;padding:24px">
+
+<!--
+  HOW TO INSTALL ON SQUARESPACE 7.1 (Business plan):
+
+  STEP 1 — Hide the Squarespace nav/header AND footer for this page only.
+    Pages → Home (or whichever page) → Page Settings → Advanced →
+    Page Header Code Injection. Paste the <style> block below labelled
+    "STEP 1: Page Header Code Injection".
+
+  STEP 2 — Add the page content.
+    Edit your page → remove the existing content sections → add a
+    Code Block (full width). Paste EVERYTHING below labelled
+    "STEP 2: Page Code Block" into that Code Block.
+
+  STEP 3 — Save & view. The page will render the new design with
+    Squarespace's chrome hidden. Visitors see only the new design.
+
+  Photos: every placeholder is a <figure> with a data-photo-id="p01"…"p08".
+  When you have real images, replace the .pmvp-plate__inner div with
+  <img src="https://your-image-url.jpg" alt="..." style="width:100%;height:100%;object-fit:cover;display:block">
+  inside that figure.
+-->
+
+<h2 style="color:#ddd">STEP 1 — Page Header Code Injection</h2>
+<p style="color:#aaa">Paste this in: Page Settings → Advanced → Page Header Code Injection</p>
+<pre style="background:#0d0d0d;padding:18px;border-radius:6px;overflow:auto;font-size:12px;color:#ddd"><code>&lt;style&gt;
+  /* Hide Squarespace nav + footer on this page only */
+  body .header, body #header, body .Header,
+  body .header-announcement-bar-wrapper,
+  body .footer, body #footer, body .Footer,
+  body .sqs-announcement-bar-dropzone {
+    display: none !important;
+  }
+  body .Main, body #page, body .page-section, body main,
+  body article {
+    margin: 0 !important; padding: 0 !important; max-width: none !important;
+  }
+  body { background: #eeeae2 !important; }
+&lt;/style&gt;</code></pre>
+
+<h2 style="color:#ddd;margin-top:32px">STEP 2 — Page Code Block</h2>
+<p style="color:#aaa">Paste the entire contents of <code>squarespace-bundle.html</code> into a full-width Code Block on the page.</p>
+
+<p style="color:#aaa">The bundled file is in your project as <code>squarespace-bundle.html</code> — open it from the file tree, copy everything, and paste into the Code Block.</p>
+
+</body>
+</html>
