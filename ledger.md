@@ -1,17 +1,22 @@
 ---
 date: May 2026
-this_issue: A new cohort of **Beyond the Prompt** opens May 12. Four seats remain. New notes on the second book. A photograph from the road.
+this_issue: A new cohort of **Beyond the Prompt** opens June 9th. Limited number of seats. 
 ---
 
 ## Beyond the Prompt
 url: https://www.puhala.com/beyond-the-prompt
-status: Only 4 spots left
-notes: An extension of the newsletter. From basic prompting to automated agentic workflows. First cohort starts May 12, 2026.
+status: Limited Spots Available
+notes: An extension of the newsletter. Move from basic prompting to automated agentic workflows. Next cohort starts June 9th, 2026.
+
+## The Drop In Newsletter
+url: https://www.puhala.com/newsletter
+status: Drops every Thursday afternoon
+notes: Each issue covers one idea at the intersection of flow state science, attention design, and how to work with AI without losing your cognitive edge.
 
 ## Ten:Ten
 url: https://www.puhala.com/tenten
-status: Members only
-notes: Small volume. High standards. A practice for the patient.
+status: Actively Trading | Buying | Selling
+notes: Small volume. High standards. 
 
 ## Memoir of a Machine
 url: https://www.puhala.com/human

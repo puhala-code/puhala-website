@@ -1,31 +1,38 @@
 {
   "date": "May 2026",
-  "this_issue": "A new cohort of **Beyond the Prompt** opens May 12. Four seats remain. New notes on the second book. A photograph from the road.",
-  "entries": 4,
+  "this_issue": "A new cohort of **Beyond the Prompt** opens June 9th. Limited number of seats.",
+  "entries": 5,
   "rows": [
     {
       "no": "01",
       "title": "Beyond the Prompt",
       "url": "https://www.puhala.com/beyond-the-prompt",
-      "status": "Only 4 spots left",
-      "notes": "An extension of the newsletter. From basic prompting to automated agentic workflows. First cohort starts May 12, 2026."
+      "status": "Limited Spots Available",
+      "notes": "An extension of the newsletter. Move from basic prompting to automated agentic workflows. Next cohort starts June 9th, 2026."
     },
     {
       "no": "02",
-      "title": "Ten:Ten",
-      "url": "https://www.puhala.com/tenten",
-      "status": "Members only",
-      "notes": "Small volume. High standards. A practice for the patient."
+      "title": "The Drop In Newsletter",
+      "url": "https://www.puhala.com/newsletter",
+      "status": "Drops every Thursday afternoon",
+      "notes": "Each issue covers one idea at the intersection of flow state science, attention design, and how to work with AI without losing your cognitive edge."
     },
     {
       "no": "03",
+      "title": "Ten:Ten",
+      "url": "https://www.puhala.com/tenten",
+      "status": "Actively Trading | Buying | Selling",
+      "notes": "Small volume. High standards."
+    },
+    {
+      "no": "04",
       "title": "Memoir of a Machine",
       "url": "https://www.puhala.com/human",
       "status": "In progress",
       "notes": "A prequel of sorts to Human Traits. First draft in the first half of the year; publishing later in 2026."
     },
     {
-      "no": "04",
+      "no": "05",
       "title": "A Return to Analog",
       "url": "https://areturntoanalog.com",
       "status": "Live",
