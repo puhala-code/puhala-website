@@ -16,7 +16,7 @@ notes: Each issue covers one idea at the intersection of flow state science, att
 ## Ten:Ten
 url: https://www.puhala.com/tenten
 status: Actively Trading | Buying | Selling
-notes: Small volume. High standards. 
+notes: Luxury Watch Trading. Tudor, Rolex, Panerai, Breitling, Cartier and others. Small volume. High standards. 
 
 ## Memoir of a Machine
 url: https://www.puhala.com/human
