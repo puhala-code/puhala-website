@@ -105,10 +105,12 @@ def git_push(ledger: dict, photos: dict):
          'publish.py'],
         check=True, cwd=ROOT,
     )
-    subprocess.run(
+    result = subprocess.run(
         ['git', 'commit', '-m', f'publish: {ledger["date"]}'],
-        check=True, cwd=ROOT,
+        cwd=ROOT,
     )
+    if result.returncode not in (0, 1):
+        raise subprocess.CalledProcessError(result.returncode, result.args)
     subprocess.run(['git', 'push'], check=True, cwd=ROOT)
 
     print(f'Published ledger ({ledger["entries"]} entries) + photos ({len(photos["photos"])} slots) for {ledger["date"]}')
