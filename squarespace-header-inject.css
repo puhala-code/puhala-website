@@ -6,9 +6,44 @@
   body .sqs-announcement-bar-dropzone {
     display: none !important;
   }
+
+  /* Zero out Squarespace classic editor wrappers */
   body .Main, body #page, body .page-section, body main,
-  body article {
-    margin: 0 !important; padding: 0 !important; max-width: none !important;
+  body article,
+  body .content-wrapper,
+  body [class*="content-width"],
+  body .sqs-layout,
+  body .sqs-row,
+  body [class*="sqs-col-"],
+  body .sqs-block,
+  body .sqs-block-code,
+  body .sqs-block-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
   }
-  body { background: #eeeae2 !important; }
+
+  /* Zero out Squarespace 7.1 Fluid Engine wrappers */
+  body [class*="fe-block"],
+  body [class*="fe-col"],
+  body [data-type="code"] {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+  }
+
+  /* Remove section-level padding Squarespace injects (classic + fluid) */
+  body .page-section[data-section-id],
+  body section.page-section,
+  body [data-section-id] {
+    padding: 0 !important;
+  }
+
+  body { background: #eeeae2 !important; overflow-x: hidden; }
 </style>

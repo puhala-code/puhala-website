@@ -33,6 +33,7 @@
   color: var(--ink);
   font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 100vh;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -46,6 +47,7 @@
   --plate: #22262b;
 }
 .pmvp * { box-sizing: border-box; }
+.pmvp *::before, .pmvp *::after { content: none !important; display: none !important; }
 .pmvp a { color: inherit; text-decoration: none; }
 .pmvp h1, .pmvp h2, .pmvp h3, .pmvp p, .pmvp blockquote, .pmvp figure { margin: 0; }
 .pmvp ul, .pmvp ol { margin: 0; padding: 0; list-style: none; }
@@ -816,51 +818,52 @@
 })();
 
 (function(){
-  function shuffle(arr) {
-    for (var i = arr.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
-    }
-    return arr;
-  }
+  // SET THIS after pushing the repo to GitHub:
+  // https://raw.githubusercontent.com/puhala-code/puhala-website/main/photos.json
+  var PHOTOS_URL = 'REPLACE_WITH_RAW_GITHUB_URL';
 
-  function applyToPlate(frame, url) {
+  function applyToPlate(frame, url, alt) {
     var inner = frame.querySelector('.pmvp-plate__inner');
     if (!inner) return;
     var img = document.createElement('img');
     img.src = url + '?format=1500w';
-    img.alt = '';
+    img.alt = alt || '';
     img.className = 'pmvp-plate__img';
     inner.replaceWith(img);
     frame.style.background = 'none';
   }
 
-  fetch('/pics?format=json')
+  function applyPhotos(photoMap) {
+    // Each slot element carries data-photo-id="pNN"
+    document.querySelectorAll('[data-photo-id]').forEach(function(el) {
+      var id = el.getAttribute('data-photo-id');
+      var p  = photoMap[id];
+      if (!p || !p.url) return;
+
+      if (el.classList.contains('pmvp-strip-thumb')) {
+        el.style.cssText += ';background:url(' + p.url + '?format=300w) center/cover no-repeat;border:none;';
+      } else if (el.classList.contains('pmvp-fullbleed-frame')) {
+        applyToPlate(el, p.url, p.alt);
+      } else {
+        // figure.pmvp-plate — find the frame inside
+        var frame = el.querySelector('.pmvp-plate__frame');
+        if (frame) applyToPlate(frame, p.url, p.alt);
+        // update captions if present
+        var caps = el.querySelectorAll('.pmvp-plate__cap span');
+        if (caps.length >= 2) {
+          if (p.caption_left)  caps[0].textContent = p.caption_left;
+          if (p.caption_right) caps[1].textContent = p.caption_right;
+        }
+      }
+    });
+  }
+
+  if (PHOTOS_URL.indexOf('REPLACE') !== -1) return;
+
+  fetch(PHOTOS_URL)
     .then(function(r) { return r.json(); })
-    .then(function(data) {
-      var urls = shuffle(
-        (data.items || []).map(function(item) { return item.assetUrl; }).filter(Boolean)
-      );
-      if (!urls.length) return;
-
-      var idx = 0;
-      function next() { return urls[idx++ % urls.length]; }
-
-      // contact strip thumbnails
-      document.querySelectorAll('.pmvp-strip-thumb').forEach(function(el) {
-        el.style.cssText += ';background:url(' + next() + '?format=300w) center/cover no-repeat;';
-      });
-
-      // portrait + archive plates (any .pmvp-plate__frame on the page)
-      document.querySelectorAll('.pmvp-plate__frame').forEach(function(frame) {
-        applyToPlate(frame, next());
-      });
-
-      // full-bleed divider
-      var fullbleed = document.querySelector('.pmvp-fullbleed-frame');
-      if (fullbleed) applyToPlate(fullbleed, next());
-    })
-    .catch(function() {}); // silently keep striped placeholders on error
+    .then(function(data) { applyPhotos(data.photos || {}); })
+    .catch(function() {});
 })();
 
 (function(){
@@ -885,5 +888,27 @@
       }).join('');
     })
     .catch(function() {});
+})();
+
+// Force every Squarespace ancestor of .pmvp to full width
+(function() {
+  function expand() {
+    var el = document.querySelector('.pmvp');
+    if (!el) return;
+    el = el.parentElement;
+    while (el && el !== document.documentElement) {
+      el.style.setProperty('max-width', 'none', 'important');
+      el.style.setProperty('width', '100%', 'important');
+      el.style.setProperty('padding', '0', 'important');
+      el.style.setProperty('margin', '0', 'important');
+      el.style.setProperty('overflow', 'visible', 'important');
+      el = el.parentElement;
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', expand);
+  } else {
+    expand();
+  }
 })();
 </script>
