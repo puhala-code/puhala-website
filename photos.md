@@ -4,7 +4,7 @@ location: Phoenix, AZ
 ---
 
 ## p01
-url:
+url:https://images.squarespace-cdn.com/content/v1/5b8ec617b98a78f74d735728/1774208913351-WP853MAML6DW2CSIHWNG/IMG_20260318_073504%7E2.jpg
 alt: Portrait
 caption_left: Portrait
 caption_right: Phoenix · 35mm · 2025
