@@ -1,0 +1,1084 @@
+<!--
+  PASTE THIS ENTIRE BLOCK into a full-width Code Block on /thedropin.
+  Paste squarespace-dropin-header-inject.css into:
+    Page Settings → Advanced → Page Header Code Injection
+  (hides the Squarespace nav/footer and sets the bone-white background)
+-->
+
+<!-- Squarespace wrapper resets (belt + suspenders alongside the header inject) -->
+<style>
+body .page-section[data-section-id],
+body section.page-section,
+body [data-section-id] {
+  background: transparent !important;
+  padding: 0 !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  overflow: visible !important;
+}
+body .content-wrapper, body [class*="content-width"], body .sqs-layout,
+body .sqs-row, body [class*="sqs-col-"], body .sqs-block,
+body .sqs-block-code, body .sqs-block-content, body [data-type="code"],
+body [class*="fe-block"], body [class*="fe-col"] {
+  max-width: none !important; width: 100% !important;
+  padding: 0 !important; margin: 0 !important;
+  border: none !important; background: transparent !important;
+  box-sizing: border-box !important; overflow: visible !important;
+}
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400;1,8..60,600&family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   puhala.com — /thedropin
+   B1 Bone Archive · scoped to .pmvp
+   ============================================================ */
+.pmvp {
+  --bg: #eeeae2;
+  --card: #f5f1e9;
+  --ink: #1c1e21;
+  --muted: #6c6a64;
+  --rule: #cbc6bb;
+  --accent: #3a5b7a;
+  --plate: #dcd6c8;
+
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.pmvp[data-mode="dark"] {
+  --bg: #15171a;
+  --card: #1c1f23;
+  --ink: #e6e8eb;
+  --muted: #7a8089;
+  --rule: #2c3137;
+  --accent: #7fa3c4;
+  --plate: #22262b;
+}
+.pmvp * { box-sizing: border-box; }
+/* Suppress Squarespace pseudo-element injection */
+.pmvp *::before, .pmvp *::after { content: none !important; display: none !important; }
+.pmvp a { color: inherit; text-decoration: none; }
+.pmvp h1, .pmvp h2, .pmvp h3, .pmvp p, .pmvp blockquote, .pmvp figure { margin: 0; }
+.pmvp ul, .pmvp ol { margin: 0; padding: 0; list-style: none; }
+
+/* Type helpers */
+.pmvp-serif  { font-family: 'Source Serif 4', Georgia, serif; }
+.pmvp-mono   { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+.pmvp-italic { font-style: italic; }
+.pmvp-mono-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* ---------- contact strip ---------- */
+.pmvp-contact-strip {
+  border-bottom: 1px solid var(--rule);
+  padding: 14px 56px;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto auto;
+  gap: 10px; align-items: center;
+}
+.pmvp-strip-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted);
+  padding-right: 14px;
+  border-right: 1px solid var(--rule);
+  margin-right: 6px;
+}
+.pmvp-strip-meta {
+  display: flex; gap: 18px; align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+}
+.pmvp-strip-cap {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--muted);
+}
+.pmvp-strip-link { color: var(--accent); }
+
+/* ---------- top bar ---------- */
+.pmvp-topbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 20px 56px;
+  border-bottom: 1px solid var(--rule);
+  gap: 40px;
+}
+.pmvp-brand { display: flex; align-items: baseline; gap: 12px; }
+.pmvp-brand-mark {
+  font-family: 'Source Serif 4', serif;
+  font-style: italic; font-size: 26px; font-weight: 600;
+  color: var(--ink); letter-spacing: -0.02em;
+  line-height: 1; padding-right: 12px; margin-right: 2px;
+  border-right: 1px solid var(--rule);
+}
+.pmvp-brand-name {
+  font-family: 'Source Serif 4', serif;
+  font-size: 22px; font-style: italic; letter-spacing: -0.01em;
+}
+.pmvp-nav {
+  display: flex; gap: 24px; justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; letter-spacing: 0.02em;
+}
+.pmvp-nav-item { position: relative; padding-bottom: 4px; text-transform: lowercase; cursor: pointer; }
+.pmvp-nav-item > a { display: inline-block; }
+.pmvp-nav-item.is-current > a { border-bottom: 1px solid var(--ink); }
+.pmvp-nav-drop {
+  position: absolute; top: 100%; left: -16px;
+  background: var(--card); border: 1px solid var(--rule);
+  padding: 10px 16px; min-width: 220px; z-index: 50;
+  margin-top: 6px;
+  opacity: 0; visibility: hidden; transition: opacity 0.15s, visibility 0.15s;
+}
+.pmvp-nav-item:hover .pmvp-nav-drop { opacity: 1; visibility: visible; }
+.pmvp-nav-drop a {
+  display: block; padding: 6px 0;
+  font-size: 12px; color: var(--ink);
+}
+.pmvp-nav-drop a.is-current { color: var(--accent); }
+.pmvp-top-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.1em;
+  color: var(--muted); text-align: right;
+}
+
+/* ---------- masthead / hero ---------- */
+.pmvp-hero {
+  padding: 80px 56px;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr 0.7fr;
+  gap: 48px; align-items: stretch;
+}
+.pmvp-hero-left { display: flex; flex-direction: column; justify-content: space-between; }
+.pmvp-index-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 32px;
+  display: flex; justify-content: space-between;
+}
+.pmvp-hero-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: 88px; line-height: 0.92; letter-spacing: -0.03em;
+  font-weight: 400;
+}
+.pmvp-hero-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent);
+  margin-top: 24px;
+}
+.pmvp-hero-body {
+  font-family: 'Source Serif 4', serif;
+  font-size: 20px; line-height: 1.5;
+  margin-top: 36px; max-width: 460px;
+}
+.pmvp-hero-body p { margin: 0; }
+.pmvp-hero-btns { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+.pmvp-btn {
+  padding: 12px 22px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  background: var(--ink); color: var(--bg);
+  display: inline-block; cursor: pointer;
+}
+.pmvp-btn-ghost {
+  padding: 12px 22px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  background: transparent; color: var(--ink);
+  display: inline-block; cursor: pointer;
+}
+.pmvp-hero-aside {
+  border-left: 1px solid var(--rule);
+  padding-left: 24px;
+  font-size: 13px; line-height: 1.6;
+  color: var(--muted);
+}
+.pmvp-aside-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px;
+}
+.pmvp-aside-blurb {
+  font-family: 'Source Serif 4', serif;
+  font-size: 15px; line-height: 1.55; font-style: italic;
+}
+.pmvp-aside-rule { height: 1px; background: var(--rule); margin: 24px 0; }
+.pmvp-aside-list {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: grid; gap: 8px;
+}
+.pmvp-aside-list-row { display: flex; justify-content: space-between; }
+.pmvp-aside-list-row strong { color: var(--ink); font-weight: 400; }
+
+/* Hero masthead block */
+.pmvp-masthead {
+  border: 1px solid var(--rule);
+  background: var(--card);
+  padding: 28px 28px 24px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  min-height: 100%;
+}
+.pmvp-masthead-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted);
+}
+.pmvp-masthead-rule {
+  height: 1px; background: var(--ink); margin: 14px 0 18px;
+}
+.pmvp-masthead-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: 44px; line-height: 0.96; letter-spacing: -0.02em;
+  font-style: italic; font-weight: 400;
+}
+.pmvp-masthead-strap {
+  font-family: 'Source Serif 4', serif;
+  font-size: 15px; line-height: 1.4; font-style: italic;
+  color: var(--muted); margin-top: 14px;
+}
+.pmvp-masthead-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 18px 24px; margin-top: 28px;
+  border-top: 1px solid var(--rule); padding-top: 18px;
+}
+.pmvp-masthead-cell {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.pmvp-masthead-cell strong {
+  color: var(--ink); font-weight: 400;
+  font-family: 'Source Serif 4', serif;
+  font-style: italic; font-size: 16px;
+  text-transform: none; letter-spacing: 0;
+}
+
+/* ---------- section heads ---------- */
+.pmvp-section { padding: 100px 56px; border-bottom: 1px solid var(--rule); }
+.pmvp-section-head {
+  display: grid;
+  grid-template-columns: 220px 1fr 220px;
+  align-items: baseline;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 16px;
+  gap: 20px;
+}
+.pmvp-section-head .pmvp-mono-label:last-child { text-align: right; }
+.pmvp-section-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: 44px; font-style: italic; font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- editions ledger ---------- */
+.pmvp-ledger-head {
+  display: grid;
+  grid-template-columns: 80px 100px 1fr 140px 60px;
+  gap: 24px; padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+}
+.pmvp-edition {
+  display: grid;
+  grid-template-columns: 80px 100px 1fr 140px 60px;
+  gap: 24px; padding: 32px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+  transition: background 0.2s;
+}
+.pmvp-edition:hover { background: var(--card); }
+.pmvp-edition__no {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px; color: var(--muted); padding-top: 8px;
+}
+.pmvp-edition__date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.06em;
+  color: var(--muted); padding-top: 10px;
+  text-transform: uppercase;
+}
+.pmvp-edition__body { display: flex; flex-direction: column; gap: 8px; }
+.pmvp-edition__title {
+  font-family: 'Source Serif 4', serif;
+  font-size: 28px; font-style: italic;
+  letter-spacing: -0.015em; line-height: 1.1;
+}
+.pmvp-edition__desc {
+  font-family: 'Source Serif 4', serif;
+  font-size: 15px; line-height: 1.5; color: var(--muted);
+  max-width: 60ch;
+}
+.pmvp-edition__meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.06em;
+  color: var(--accent); padding-top: 10px;
+  text-transform: uppercase;
+}
+.pmvp-edition__arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px; text-align: right; padding-top: 6px;
+}
+.pmvp-loader {
+  padding: 56px 0; text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted);
+}
+.pmvp-loader .dot {
+  display: inline-block; width: 6px; height: 6px;
+  background: var(--accent); margin: 0 3px; border-radius: 50%;
+  animation: pmvp-pulse 1.2s ease-in-out infinite;
+}
+.pmvp-loader .dot:nth-child(2) { animation-delay: 0.15s; }
+.pmvp-loader .dot:nth-child(3) { animation-delay: 0.3s; }
+@keyframes pmvp-pulse {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.9); }
+  40%           { opacity: 1;   transform: scale(1); }
+}
+.pmvp-archive-foot {
+  margin-top: 36px;
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--muted);
+}
+.pmvp-archive-foot a { color: var(--accent); }
+
+/* ---------- what you'll find (split) ---------- */
+.pmvp-split {
+  padding: 100px 56px; border-bottom: 1px solid var(--rule);
+  display: grid; grid-template-columns: 1fr 1.4fr;
+  gap: 80px;
+}
+.pmvp-split-body {
+  font-family: 'Source Serif 4', serif;
+  font-size: 22px; line-height: 1.55;
+}
+.pmvp-split-body p { margin: 0; }
+.pmvp-quote {
+  margin-top: 40px; padding-left: 28px;
+  border-left: 2px solid var(--accent);
+  font-family: 'Source Serif 4', serif;
+  font-size: 22px; font-style: italic; line-height: 1.45;
+}
+.pmvp-quote-attr {
+  display: block; margin-top: 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted);
+  font-style: normal;
+}
+.pmvp-trio {
+  display: grid; grid-template-columns: 1fr;
+  gap: 0; margin-top: 36px;
+  border-top: 1px solid var(--rule);
+}
+.pmvp-trio-row {
+  display: grid; grid-template-columns: 80px 1fr;
+  gap: 24px; padding: 22px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: baseline;
+}
+.pmvp-trio-row .pmvp-mono-label { color: var(--accent); }
+.pmvp-trio-row p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 17px; line-height: 1.5;
+  margin: 0;
+}
+
+/* ---------- subscribe ---------- */
+.pmvp-subscribe {
+  padding: 100px 56px;
+  border-bottom: 1px solid var(--rule);
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: end;
+}
+.pmvp-subscribe-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: 18px;
+}
+.pmvp-subscribe-title {
+  font-family: 'Source Serif 4', serif;
+  font-size: 64px; line-height: 0.96; letter-spacing: -0.025em;
+  font-weight: 400;
+}
+.pmvp-subscribe-title em { font-style: italic; }
+.pmvp-subscribe-side {
+  border-left: 1px solid var(--rule);
+  padding-left: 32px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.pmvp-subscribe-side p { margin: 0; }
+.pmvp-subscribe-side > div p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 17px; line-height: 1.55;
+}
+.pmvp-subscribe-form {
+  display: flex; gap: 0; margin-top: 8px;
+  border: 1px solid var(--ink);
+}
+.pmvp-subscribe-form input {
+  flex: 1; padding: 14px 16px;
+  border: 0; outline: none;
+  background: transparent; color: var(--ink);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.04em;
+}
+.pmvp-subscribe-form input::placeholder { color: var(--muted); }
+.pmvp-subscribe-form button {
+  padding: 14px 22px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px; letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--ink); color: var(--bg);
+  border: 0; cursor: pointer;
+}
+.pmvp-subscribe-fine {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* ---------- socials ---------- */
+.pmvp-social-list { border-top: 1px solid var(--rule); }
+.pmvp-social-row {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  gap: 24px; padding: 24px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: baseline;
+  transition: background 0.2s;
+}
+.pmvp-social-row:hover { background: var(--card); padding-left: 12px; padding-right: 12px; }
+.pmvp-social-platform {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+}
+.pmvp-social-handle {
+  font-family: 'Source Serif 4', serif;
+  font-size: 24px; font-style: italic;
+}
+.pmvp-social-arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px; color: var(--muted);
+}
+
+/* ---------- footer ---------- */
+.pmvp-footer {
+  padding: 40px 56px 60px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--muted);
+}
+.pmvp-footer > :nth-child(2) { text-align: center; }
+.pmvp-footer > :last-child   { text-align: right; }
+
+/* ---------- darkroom toggle ---------- */
+.pmvp-toggle {
+  position: fixed; bottom: 22px; right: 22px; z-index: 200;
+  display: flex; gap: 4px; padding: 4px;
+  border: 1px solid var(--rule);
+  background: var(--bg);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.pmvp-toggle button {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 6px 12px; border: none; cursor: pointer;
+  background: transparent; color: var(--muted);
+  transition: background 0.18s, color 0.18s;
+}
+.pmvp-toggle button.on {
+  background: var(--ink); color: var(--bg);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1100px) {
+  .pmvp-hero { grid-template-columns: 1fr; gap: 32px; }
+  .pmvp-hero-title { font-size: 60px; }
+  .pmvp-section-head { grid-template-columns: 1fr; gap: 8px; }
+  .pmvp-section-head .pmvp-mono-label:last-child { text-align: left; }
+  .pmvp-ledger-head, .pmvp-edition { grid-template-columns: 60px 1fr auto; }
+  .pmvp-ledger-head > :nth-child(2),
+  .pmvp-ledger-head > :nth-child(4),
+  .pmvp-edition__date,
+  .pmvp-edition__meta { display: none; }
+  .pmvp-split, .pmvp-subscribe { grid-template-columns: 1fr; gap: 32px; }
+  .pmvp-subscribe-side { border-left: 0; padding-left: 0; }
+  .pmvp-subscribe-title { font-size: 44px; }
+  .pmvp-social-row { grid-template-columns: 1fr auto; }
+  .pmvp-social-row > :first-child { grid-column: 1 / -1; }
+  .pmvp-footer { grid-template-columns: 1fr; gap: 14px; }
+  .pmvp-footer > * { text-align: left !important; }
+  .pmvp-contact-strip { grid-template-columns: 1fr; gap: 14px; padding: 14px 24px; }
+  .pmvp-strip-label { border-right: none; padding-right: 0; }
+  .pmvp-topbar { grid-template-columns: 1fr; gap: 18px; padding: 20px 24px; }
+  .pmvp-nav { flex-wrap: wrap; justify-content: flex-start; }
+  .pmvp-section, .pmvp-split, .pmvp-subscribe, .pmvp-footer, .pmvp-hero {
+    padding-left: 24px; padding-right: 24px;
+  }
+}
+</style>
+
+<div class="pmvp" data-mode="light">
+
+  <!-- Contact strip -->
+  <div class="pmvp-contact-strip">
+    <span class="pmvp-strip-label">The Drop-In · Weekly dispatch</span>
+    <span class="pmvp-strip-meta">
+      <span>Drops weekly</span>
+      <span>·</span>
+      <span>No spam</span>
+      <span>·</span>
+      <span>Algorithm free</span>
+    </span>
+    <span class="pmvp-strip-cap">Phoenix, AZ</span>
+    <span class="pmvp-strip-cap">·</span>
+    <span class="pmvp-strip-cap" id="pmvp-strip-edition">Edition —</span>
+    <a class="pmvp-strip-cap pmvp-strip-link" data-di-href="subscribe_url" href="https://thedropin.beehiiv.com/subscribe">Subscribe →</a>
+  </div>
+
+  <!-- Top bar -->
+  <header class="pmvp-topbar">
+    <div class="pmvp-brand">
+      <a href="https://www.puhala.com/" style="display:flex;align-items:baseline;gap:12px;">
+        <div class="pmvp-brand-mark">mvp</div>
+        <div class="pmvp-brand-name">puhala.com</div>
+      </a>
+    </div>
+    <nav class="pmvp-nav">
+      <div class="pmvp-nav-item"><a href="https://www.puhala.com/#about">about</a></div>
+      <div class="pmvp-nav-item is-current">
+        <a href="https://www.puhala.com/thedropin">writing</a>
+        <div class="pmvp-nav-drop">
+          <a href="https://www.puhala.com/human">— Human Traits (Book)</a>
+          <a href="https://www.puhala.com/musings">— Musings</a>
+          <a href="https://www.puhala.com/thedropin" class="is-current">— The Drop-In Newsletter</a>
+        </div>
+      </div>
+      <div class="pmvp-nav-item"><a href="https://www.puhala.com/beyond-the-prompt">beyond the prompt</a></div>
+      <div class="pmvp-nav-item">
+        <a href="https://www.puhala.com/connect">professional</a>
+        <div class="pmvp-nav-drop">
+          <a href="https://www.puhala.com/press">— Press & Pods</a>
+          <a href="https://www.puhala.com/connect">— Work With Me</a>
+          <a href="https://www.puhala.com/cv1">— CV</a>
+        </div>
+      </div>
+      <div class="pmvp-nav-item">
+        <a href="https://www.puhala.com/tenten">ten:ten</a>
+        <div class="pmvp-nav-drop">
+          <a href="https://www.puhala.com/tenten">— About Ten:Ten</a>
+          <a href="https://www.puhala.com/early-access">— Early Access</a>
+          <a href="https://www.puhala.com/movementos">— MovementOS</a>
+          <a href="https://www.puhala.com/second-hand">— Second Hand</a>
+        </div>
+      </div>
+      <div class="pmvp-nav-item"><a href="https://www.puhala.com/pics">pics</a></div>
+      <div class="pmvp-nav-item"><a href="https://www.puhala.com/store">store</a></div>
+    </nav>
+    <div class="pmvp-top-meta">The Drop-In · Weekly</div>
+  </header>
+
+  <!-- § 01 — Hero -->
+  <section class="pmvp-hero">
+    <div class="pmvp-hero-left">
+      <div>
+        <div class="pmvp-index-label">
+          <span>Section §</span>
+          <span>Weekly · since 2024</span>
+        </div>
+        <h1 class="pmvp-hero-title">The <span class="pmvp-italic">Drop-In</span></h1>
+        <div class="pmvp-hero-sub" data-di="hero_sub">Your weekly flow-state OS for peak performance</div>
+      </div>
+      <div class="pmvp-hero-body" data-di="hero_body">
+        <p>A weekly letter for executives, founders, and high-performers who want to think more clearly, focus more deeply, and build a life that reliably produces their best work. One idea, one Praxis, every week.</p>
+      </div>
+      <div class="pmvp-hero-btns">
+        <a class="pmvp-btn" data-di-href="subscribe_url" href="https://thedropin.beehiiv.com/subscribe">Subscribe — it's free</a>
+        <a class="pmvp-btn-ghost" href="#editions">Read recent editions →</a>
+      </div>
+    </div>
+
+    <!-- Masthead block -->
+    <div class="pmvp-masthead">
+      <div>
+        <div class="pmvp-masthead-tag">The Drop-In · Masthead</div>
+        <div class="pmvp-masthead-rule"></div>
+        <div class="pmvp-masthead-title" data-di="masthead_title">A weekly practice of getting <em>below</em> the noise.</div>
+        <p class="pmvp-masthead-strap" data-di="masthead_strap">No hacks. No listicles. One idea at the intersection of flow-state science, attention design, and how to work with AI without losing your cognitive edge.</p>
+      </div>
+      <div class="pmvp-masthead-grid">
+        <div class="pmvp-masthead-cell"><span>Cadence</span><strong>Weekly</strong></div>
+        <div class="pmvp-masthead-cell"><span>Reading time</span><strong>~5 minutes</strong></div>
+        <div class="pmvp-masthead-cell"><span>Editions</span><strong id="pmvp-masthead-count">15+ shipped</strong></div>
+        <div class="pmvp-masthead-cell"><span>Ends with</span><strong>A Praxis</strong></div>
+      </div>
+    </div>
+
+    <aside class="pmvp-hero-aside">
+      <div class="pmvp-aside-kicker" data-di="aside_kicker">For the patient</div>
+      <p class="pmvp-aside-blurb" data-di="aside_blurb">Most people are working harder than ever and feeling further behind than ever — not because they lack discipline, but because they never designed the system underneath the work.</p>
+      <div class="pmvp-aside-rule"></div>
+      <div class="pmvp-aside-list">
+        <div class="pmvp-aside-list-row"><span>Format</span><strong>Plain text</strong></div>
+        <div class="pmvp-aside-list-row"><span>Length</span><strong>Short, dense</strong></div>
+        <div class="pmvp-aside-list-row"><span>Hosted by</span><strong>Beehiiv</strong></div>
+        <div class="pmvp-aside-list-row"><span>Author</span><strong>M. Puhala</strong></div>
+      </div>
+    </aside>
+  </section>
+
+  <!-- § 02 — Editions ledger (live from Beehiiv) -->
+  <section class="pmvp-section" id="editions">
+    <div class="pmvp-section-head">
+      <span class="pmvp-mono-label">§ 02 — Recent editions</span>
+      <h2 class="pmvp-section-title">The Ledger</h2>
+      <span class="pmvp-mono-label" id="pmvp-ledger-meta">Loading…</span>
+    </div>
+    <div>
+      <div class="pmvp-ledger-head">
+        <span>No.</span><span>Date</span><span>Edition</span><span>Status</span><span></span>
+      </div>
+      <div id="pmvp-editions">
+        <div class="pmvp-loader" id="pmvp-loading">
+          <span>Pulling latest from Beehiiv</span>
+          <span style="margin-left:14px">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </span>
+        </div>
+      </div>
+      <div class="pmvp-archive-foot">
+        <span>Pulled from <span style="color:var(--ink)">thedropin.beehiiv.com</span></span>
+        <a href="https://thedropin.beehiiv.com" target="_blank" rel="noopener">View the full archive on Beehiiv →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 03 — What you'll find -->
+  <section class="pmvp-split">
+    <div>
+      <span class="pmvp-mono-label" style="display:block;margin-bottom:24px">§ 03 — What you'll find</span>
+      <div class="pmvp-split-body" data-di="what_body">
+        <p>Each issue covers one idea at the intersection of flow-state science, attention design, and how to work with AI without losing your cognitive edge. Every edition ends with a <em>Praxis</em> — one specific experiment to try this week.</p>
+      </div>
+      <blockquote class="pmvp-quote">
+        <span data-di="what_quote">"Short enough to finish before your first meeting. Dense enough to stay with you all week."</span>
+        <span class="pmvp-quote-attr" data-di="what_quote_attr">— The Drop-In, every Sunday</span>
+      </blockquote>
+    </div>
+    <div>
+      <span class="pmvp-mono-label" style="display:block">The shape of a typical edition</span>
+      <div class="pmvp-trio">
+        <div class="pmvp-trio-row" data-di-trio="0">
+          <span class="pmvp-mono-label">A · Idea</span>
+          <p>One specific concept — drawn from flow science, attention design, or the working-with-AI frontier. No hacks. No listicles.</p>
+        </div>
+        <div class="pmvp-trio-row" data-di-trio="1">
+          <span class="pmvp-mono-label">B · Frame</span>
+          <p>Why it matters, and how it shows up in real working life. Short enough to read between meetings.</p>
+        </div>
+        <div class="pmvp-trio-row" data-di-trio="2">
+          <span class="pmvp-mono-label">C · Praxis</span>
+          <p>One specific experiment to run this week. The part you'll remember on Wednesday.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- § 04 — Subscribe -->
+  <section class="pmvp-subscribe">
+    <div>
+      <div class="pmvp-subscribe-kicker">§ 04 — Sign up</div>
+      <h2 class="pmvp-subscribe-title" data-di="subscribe_title">Get the next one in your <em>inbox</em>.</h2>
+    </div>
+    <div class="pmvp-subscribe-side">
+      <div data-di="subscribe_body">
+        <p>Free. Drops weekly. Unsubscribe anytime. The signup is hosted on Beehiiv — enter your email below and we'll pass you over.</p>
+      </div>
+      <form class="pmvp-subscribe-form" method="get" data-di-action="subscribe_url" action="https://thedropin.beehiiv.com/subscribe">
+        <input type="email" name="email" placeholder="you@domain.com" required>
+        <button type="submit">Subscribe →</button>
+      </form>
+      <span class="pmvp-subscribe-fine">Want to go deeper? <a style="color:var(--accent)" data-di-href="subscribe_fine_url" href="https://www.puhala.com/beyond-the-prompt">Beyond the Prompt →</a></span>
+    </div>
+  </section>
+
+  <!-- § 05 — Off-site (socials) -->
+  <section class="pmvp-section">
+    <div class="pmvp-section-head">
+      <span class="pmvp-mono-label">§ 05 — Off-site</span>
+      <h2 class="pmvp-section-title">Where else to find me</h2>
+      <span class="pmvp-mono-label" id="pmvp-socials-count">05 channels</span>
+    </div>
+    <div class="pmvp-social-list" data-di-socials>
+      <a class="pmvp-social-row" href="https://www.linkedin.com/in/puhala" target="_blank" rel="noopener">
+        <span class="pmvp-social-platform">LinkedIn</span>
+        <span class="pmvp-social-handle">in/puhala</span>
+        <span class="pmvp-social-arrow">↗</span>
+      </a>
+      <a class="pmvp-social-row" href="https://x.com/puhala" target="_blank" rel="noopener">
+        <span class="pmvp-social-platform">X</span>
+        <span class="pmvp-social-handle">@puhala</span>
+        <span class="pmvp-social-arrow">↗</span>
+      </a>
+      <a class="pmvp-social-row" href="https://instagram.com/michaelpuhala" target="_blank" rel="noopener">
+        <span class="pmvp-social-platform">Instagram</span>
+        <span class="pmvp-social-handle">@michaelpuhala</span>
+        <span class="pmvp-social-arrow">↗</span>
+      </a>
+      <a class="pmvp-social-row" href="https://medium.com/@puhala" target="_blank" rel="noopener">
+        <span class="pmvp-social-platform">Medium</span>
+        <span class="pmvp-social-handle">@puhala</span>
+        <span class="pmvp-social-arrow">↗</span>
+      </a>
+      <a class="pmvp-social-row" href="https://youtube.com/@puhala" target="_blank" rel="noopener">
+        <span class="pmvp-social-platform">YouTube</span>
+        <span class="pmvp-social-handle">@puhala</span>
+        <span class="pmvp-social-arrow">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="pmvp-footer">
+    <span>© Michael V. Puhala — MMXXVI</span>
+    <span>Set in Source Serif 4 / Inter Tight / JetBrains Mono</span>
+    <span>Phoenix, AZ · Algorithm free</span>
+  </footer>
+
+  <!-- Darkroom toggle -->
+  <div class="pmvp-toggle" role="group" aria-label="Display mode">
+    <button data-mode="light" class="on" aria-pressed="true">Light</button>
+    <button data-mode="dark" aria-pressed="false">Darkroom</button>
+  </div>
+
+</div>
+
+<script>
+(function(){
+
+  /* ===== Squarespace DOM walker — break code block free of wrapper constraints ===== */
+  function diReset() {
+    var root = document.querySelector('.pmvp');
+    if (!root) return;
+    var el = root.parentElement;
+    while (el && el !== document.body) {
+      el.style.setProperty('max-width', 'none', 'important');
+      el.style.setProperty('width', '100%', 'important');
+      el.style.setProperty('padding', '0', 'important');
+      el.style.setProperty('margin', '0', 'important');
+      el.style.setProperty('overflow', 'visible', 'important');
+      el.style.setProperty('background', 'transparent', 'important');
+      el = el.parentElement;
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', diReset);
+  } else { diReset(); }
+
+  /* ===== Darkroom toggle ===== */
+  var root = document.querySelector('.pmvp');
+  if (!root) return;
+  var KEY = 'pmvp.darkroom';
+  var btnLight = root.querySelector('.pmvp-toggle button[data-mode="light"]');
+  var btnDark  = root.querySelector('.pmvp-toggle button[data-mode="dark"]');
+
+  function applyMode(mode) {
+    root.setAttribute('data-mode', mode);
+    var isDark = mode === 'dark';
+    btnDark.classList.toggle('on', isDark);
+    btnLight.classList.toggle('on', !isDark);
+    btnDark.setAttribute('aria-pressed', isDark);
+    btnLight.setAttribute('aria-pressed', !isDark);
+    try { localStorage.setItem(KEY, isDark ? '1' : '0'); } catch(e){}
+  }
+  var saved = '0';
+  try { saved = localStorage.getItem(KEY) || '0'; } catch(e){}
+  applyMode(saved === '1' ? 'dark' : 'light');
+  btnLight.addEventListener('click', function(){ applyMode('light'); });
+  btnDark .addEventListener('click', function(){ applyMode('dark'); });
+
+  /* ===== dropin.json content fetch ===== */
+  var DI_JSON = 'https://raw.githubusercontent.com/puhala-code/puhala-website/main/dropin.json';
+
+  function escHTML(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
+  fetch(DI_JSON).then(function(r){ return r.json(); }).then(function(d) {
+    // Plain text fields
+    ['hero_sub', 'masthead_strap', 'aside_kicker', 'aside_blurb',
+     'what_quote', 'what_quote_attr'].forEach(function(key) {
+      var el = root.querySelector('[data-di="' + key + '"]');
+      if (el && d[key] !== undefined) el.textContent = d[key];
+    });
+    // HTML fields (pre-rendered by publish.py)
+    ['hero_body', 'what_body', 'subscribe_body'].forEach(function(key) {
+      var el = root.querySelector('[data-di="' + key + '"]');
+      if (el && d[key] !== undefined) el.innerHTML = d[key];
+    });
+    // Inline-HTML fields (masthead_title, subscribe_title have <em> from inline_md)
+    ['masthead_title', 'subscribe_title'].forEach(function(key) {
+      var el = root.querySelector('[data-di="' + key + '"]');
+      if (el && d[key] !== undefined) el.innerHTML = d[key];
+    });
+    // href attributes
+    if (d.subscribe_url) {
+      root.querySelectorAll('[data-di-href="subscribe_url"]').forEach(function(el) {
+        el.href = d.subscribe_url;
+      });
+      var form = root.querySelector('[data-di-action="subscribe_url"]');
+      if (form) form.action = d.subscribe_url;
+    }
+    if (d.subscribe_fine_url) {
+      var fineLink = root.querySelector('[data-di-href="subscribe_fine_url"]');
+      if (fineLink) fineLink.href = d.subscribe_fine_url;
+    }
+    // Trio rows
+    if (d.trio && d.trio.length) {
+      d.trio.forEach(function(row, i) {
+        var trioEl = root.querySelector('[data-di-trio="' + i + '"]');
+        if (!trioEl) return;
+        var lbl = trioEl.querySelector('.pmvp-mono-label');
+        if (lbl) lbl.textContent = row.label;
+        var p = trioEl.querySelector('p');
+        if (p) p.textContent = row.body;
+      });
+    }
+    // Socials
+    if (d.socials && d.socials.length) {
+      var socialList = root.querySelector('[data-di-socials]');
+      if (socialList) {
+        socialList.innerHTML = d.socials.map(function(s) {
+          return '<a class="pmvp-social-row" href="' + escHTML(s.url) + '" target="_blank" rel="noopener">' +
+            '<span class="pmvp-social-platform">' + escHTML(s.platform) + '</span>' +
+            '<span class="pmvp-social-handle">' + escHTML(s.handle) + '</span>' +
+            '<span class="pmvp-social-arrow">↗</span>' +
+          '</a>';
+        }).join('');
+        var countEl = root.querySelector('#pmvp-socials-count');
+        if (countEl) {
+          var n = String(d.socials.length).padStart(2, '0');
+          countEl.textContent = n + ' channels';
+        }
+      }
+    }
+  }).catch(function(){});
+
+  /* ===== Pull recent editions from Beehiiv RSS ===== */
+  var FEED = 'https://thedropin.beehiiv.com/feed';
+  var MAX = 5;
+
+  var FALLBACK = [
+    { title: 'Revisiting Protopia', link: 'https://thedropin.beehiiv.com/p/the-drop-in-revisiting-protopia', edition: 15, date: '' },
+    { title: 'The Drop-In is Back', link: 'https://thedropin.beehiiv.com/p/the-drop-in-is-back',            edition: 14, date: '' },
+    { title: 'Phones & Flow',       link: 'https://thedropin.beehiiv.com/p/the-drop-in-phones-flow',        edition: 13, date: '' }
+  ];
+
+  function fmtDate(d) {
+    if (!d) return '';
+    try {
+      var dt = new Date(d);
+      if (isNaN(dt)) return '';
+      var mo = dt.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+      return mo + ' ' + String(dt.getDate()).padStart(2, '0') + ' · ' + dt.getFullYear();
+    } catch(e){ return ''; }
+  }
+
+  function stripTags(html) {
+    if (!html) return '';
+    var div = document.createElement('div');
+    div.innerHTML = html;
+    var text = (div.textContent || div.innerText || '').replace(/\s+/g, ' ').trim();
+    if (text.length > 200) text = text.slice(0, 197).replace(/\s+\S*$/, '') + '…';
+    return text;
+  }
+
+  function parseEditionNumber(title) {
+    if (!title) return null;
+    var m = title.match(/(?:edition|no\.?|#|—|–|-)\s*0*(\d+)/i);
+    return m ? parseInt(m[1], 10) : null;
+  }
+
+  function cleanTitle(title) {
+    if (!title) return '';
+    return title
+      .replace(/^the\s*drop[\s-]*in[\s:—–-]*/i, '')
+      .replace(/^edition\s*\d+[\s:—–-]*/i, '')
+      .replace(/\s*[—–-]\s*edition\s*\d+\s*$/i, '')
+      .trim() || title;
+  }
+
+  function render(items, source) {
+    var container = document.getElementById('pmvp-editions');
+    if (!container) return;
+    if (!items || !items.length) {
+      container.innerHTML = '<div class="pmvp-loader">No editions to show.</div>';
+      return;
+    }
+    items = items.slice(0, MAX);
+    var maxEd = 0;
+    items.forEach(function(it){ if (it.edition && it.edition > maxEd) maxEd = it.edition; });
+    if (maxEd) {
+      var meta = document.getElementById('pmvp-ledger-meta');
+      if (meta) meta.textContent = maxEd + ' editions · live from Beehiiv';
+      var strip = document.getElementById('pmvp-strip-edition');
+      if (strip) strip.textContent = 'Edition ' + String(maxEd).padStart(3, '0');
+      var count = document.getElementById('pmvp-masthead-count');
+      if (count) count.textContent = maxEd + ' editions shipped';
+    } else {
+      var meta2 = document.getElementById('pmvp-ledger-meta');
+      if (meta2) meta2.textContent = items.length + ' editions · ' + (source || 'live');
+    }
+    container.innerHTML = items.map(function(it, idx) {
+      var no = it.edition
+        ? String(it.edition).padStart(3, '0')
+        : String(items.length - idx).padStart(3, '0');
+      var date = fmtDate(it.date) || '—';
+      var title = escHTML(cleanTitle(it.title));
+      var desc = it.desc ? '<span class="pmvp-edition__desc">' + escHTML(it.desc) + '</span>' : '';
+      var status = idx === 0 ? 'Latest' : 'Read →';
+      return '<a class="pmvp-edition" href="' + escHTML(it.link) + '" target="_blank" rel="noopener">' +
+        '<span class="pmvp-edition__no">' + no + '</span>' +
+        '<span class="pmvp-edition__date">' + escHTML(date) + '</span>' +
+        '<span class="pmvp-edition__body">' +
+          '<span class="pmvp-edition__title">' + title + '</span>' +
+          desc +
+        '</span>' +
+        '<span class="pmvp-edition__meta">' + status + '</span>' +
+        '<span class="pmvp-edition__arrow">↗</span>' +
+      '</a>';
+    }).join('');
+  }
+
+  function renderFallback() {
+    render(FALLBACK.map(function(f) {
+      return { title: f.title, link: f.link, edition: f.edition, date: f.date, desc: '' };
+    }), 'cached');
+  }
+
+  function parseRSS2JSON(data) {
+    if (!data || !data.items) return null;
+    return data.items.map(function(it) {
+      return {
+        title:   it.title,
+        link:    it.link,
+        date:    it.pubDate || it.published || '',
+        desc:    stripTags(it.description || it.content || ''),
+        edition: parseEditionNumber(it.title)
+      };
+    });
+  }
+
+  function parseRawXML(xmlText) {
+    try {
+      var doc = new DOMParser().parseFromString(xmlText, 'text/xml');
+      var items = doc.querySelectorAll('item, entry');
+      var out = [];
+      items.forEach(function(node) {
+        var titleEl = node.querySelector('title');
+        var linkEl  = node.querySelector('link');
+        var link = linkEl ? (linkEl.getAttribute('href') || linkEl.textContent) : '';
+        var pubEl  = node.querySelector('pubDate, published, updated');
+        var descEl = node.querySelector('description, summary, content');
+        var title = titleEl ? titleEl.textContent : '';
+        out.push({
+          title:   title,
+          link:    link,
+          date:    pubEl  ? pubEl.textContent  : '',
+          desc:    stripTags(descEl ? descEl.textContent : ''),
+          edition: parseEditionNumber(title)
+        });
+      });
+      return out.length ? out : null;
+    } catch(e){ return null; }
+  }
+
+  function tryFetch(url, opts) {
+    return fetch(url, opts || {}).then(function(r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r;
+    });
+  }
+
+  function loadFeed() {
+    var attempts = [
+      function() {
+        return tryFetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(FEED))
+          .then(function(r){ return r.json(); })
+          .then(function(d){
+            if (d && d.status === 'ok') return parseRSS2JSON(d);
+            throw new Error('rss2json bad status');
+          });
+      },
+      function() {
+        return tryFetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(FEED))
+          .then(function(r){ return r.text(); })
+          .then(function(t){
+            var parsed = parseRawXML(t);
+            if (parsed) return parsed;
+            throw new Error('allorigins parse failed');
+          });
+      },
+      function() {
+        return tryFetch('https://corsproxy.io/?' + encodeURIComponent(FEED))
+          .then(function(r){ return r.text(); })
+          .then(function(t){
+            var parsed = parseRawXML(t);
+            if (parsed) return parsed;
+            throw new Error('corsproxy parse failed');
+          });
+      }
+    ];
+
+    function next(i) {
+      if (i >= attempts.length) { renderFallback(); return; }
+      attempts[i]().then(function(items) {
+        if (items && items.length) {
+          render(items, 'live');
+        } else {
+          next(i + 1);
+        }
+      }).catch(function(){ next(i + 1); });
+    }
+    next(0);
+  }
+
+  loadFeed();
+
+})();
+</script>

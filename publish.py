@@ -104,6 +104,13 @@ def md_to_html(text: str) -> str:
     return ''.join(result)
 
 
+def inline_md(text: str) -> str:
+    """Convert **bold** and *italic* inline — no <p> wrapper."""
+    text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
+    text = re.sub(r'\*(.+?)\*',     r'<em>\1</em>',         text)
+    return text
+
+
 def parse_btp(path: Path) -> dict:
     text = path.read_text()
 
@@ -185,21 +192,90 @@ def parse_btp(path: Path) -> dict:
     return result
 
 
-def git_push(ledger: dict, photos: dict, btp: dict):
+def parse_dropin(path: Path) -> dict:
+    text = path.read_text()
+
+    fm = {}
+    fm_match = re.match(r'^---\n(.*?)\n---\n', text, re.DOTALL)
+    if fm_match:
+        for line in fm_match.group(1).splitlines():
+            if ':' in line:
+                k, v = line.split(':', 1)
+                fm[k.strip()] = v.strip()
+        text = text[fm_match.end():]
+
+    # Apply md conversions to prose fields
+    for key in ('masthead_title', 'subscribe_title'):
+        if key in fm:
+            fm[key] = inline_md(fm[key])
+    for key in ('hero_body', 'what_body', 'subscribe_body'):
+        if key in fm:
+            fm[key] = md_to_html(fm[key])
+
+    trio = []
+    socials = []
+
+    for section in re.split(r'^## ', text, flags=re.MULTILINE):
+        section = section.strip()
+        if not section:
+            continue
+        lines = section.splitlines()
+        name = lines[0].strip().lower()
+        body = '\n'.join(lines[1:])
+
+        if name == 'trio':
+            for item in re.split(r'^### ', body, flags=re.MULTILINE):
+                item = item.strip()
+                if not item:
+                    continue
+                ilines = item.splitlines()
+                label = ilines[0].strip()
+                text_body = '\n'.join(ilines[1:]).strip()
+                trio.append({'label': label, 'body': text_body})
+
+        elif name == 'socials':
+            for item in re.split(r'^### ', body, flags=re.MULTILINE):
+                item = item.strip()
+                if not item:
+                    continue
+                ilines = item.splitlines()
+                platform = ilines[0].strip()
+                fields = {}
+                for line in ilines[1:]:
+                    if ':' in line:
+                        k, v = line.split(':', 1)
+                        fields[k.strip()] = v.strip()
+                socials.append({
+                    'platform': platform,
+                    'url':      fields.get('url', '#'),
+                    'handle':   fields.get('handle', ''),
+                })
+
+    result = dict(fm)
+    result['trio'] = trio
+    result['socials'] = socials
+    return result
+
+
+def git_push(ledger: dict, photos: dict, btp: dict, dropin: dict):
     (ROOT / 'ledger.json').write_text(json.dumps(ledger, indent=2) + '\n')
     (ROOT / 'photos.json').write_text(json.dumps(photos, indent=2) + '\n')
     (ROOT / 'btp.json').write_text(json.dumps(btp, indent=2) + '\n')
+    (ROOT / 'dropin.json').write_text(json.dumps(dropin, indent=2) + '\n')
 
     subprocess.run(
         ['git', 'add',
-         'ledger.md', 'ledger.json',
-         'photos.md', 'photos.json',
-         'btp.md',    'btp.json',
+         'ledger.md',  'ledger.json',
+         'photos.md',  'photos.json',
+         'btp.md',     'btp.json',
+         'dropin.md',  'dropin.json',
          'squarespace-bundle.html',
          'squarespace-musings.html',
          'squarespace-btp.html',
+         'squarespace-dropin.html',
          'squarespace-header-inject.css',
          'squarespace-btp-header-inject.css',
+         'squarespace-dropin-header-inject.css',
          'publish.py'],
         check=True, cwd=ROOT,
     )
@@ -211,11 +287,12 @@ def git_push(ledger: dict, photos: dict, btp: dict):
         raise subprocess.CalledProcessError(result.returncode, result.args)
     subprocess.run(['git', 'push'], check=True, cwd=ROOT)
 
-    print(f'Published ledger ({ledger["entries"]} entries) + photos ({len(photos["photos"])} slots) + btp ({len(btp["faq"])} FAQs) for {ledger["date"]}')
+    print(f'Published ledger ({ledger["entries"]} entries) + photos ({len(photos["photos"])} slots) + btp ({len(btp["faq"])} FAQs) + dropin ({len(dropin["socials"])} socials) for {ledger["date"]}')
 
 
 if __name__ == '__main__':
     ledger = parse_ledger(ROOT / 'ledger.md')
     photos = parse_photos(ROOT / 'photos.md')
     btp    = parse_btp(ROOT / 'btp.md')
-    git_push(ledger, photos, btp)
+    dropin = parse_dropin(ROOT / 'dropin.md')
+    git_push(ledger, photos, btp, dropin)
