@@ -1,0 +1,1163 @@
+<!--
+  PASTE THIS ENTIRE BLOCK into a full-width Code Block on puhala.com/beyond-the-prompt.
+
+  Page Header Code Injection: paste squarespace-btp-header-inject.css into
+  Page Settings → Advanced → Page Header Code Injection.
+
+  "Apply" buttons scroll to #btp-apply. Place your Squarespace Form Block
+  immediately after this Code Block in the page editor, OR change the href
+  to link directly to your application form (e.g. Typeform).
+
+  Portrait placeholder: replace the inner div of .btp-cred-photo with:
+    <img src="YOUR-PHOTO-URL.jpg" alt="Michael Puhala" class="btp-cred-img">
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<div class="btp">
+
+  <!-- Top accent: yellow border + gradient bleed into dark background -->
+  <div class="btp-top-accent"></div>
+
+  <!-- ── HERO ──────────────────────────────────────────────── -->
+  <header class="btp-hero btp-wrap">
+
+    <!-- Banner: glow/dots are child divs (not ::before/::after — SS suppresses those) -->
+    <div class="btp-banner" aria-hidden="true">
+      <div class="btp-banner-glow"></div>
+      <div class="btp-banner-dots"></div>
+      <div class="btp-banner-inner">
+        <div class="btp-banner-big">BEYOND</div>
+        <div class="btp-banner-small">The Prompt</div>
+      </div>
+    </div>
+
+    <div class="btp-pill">
+      <span class="btp-dot"></span>
+      <span data-btp="pill">Cohort 2 — Applications Now Open · Start Date: June 9th</span>
+    </div>
+
+    <h1 class="btp-h1">
+      <span data-btp="headline">Move from AI prompting to</span> <span class="btp-dim" data-btp="headline_dim">autonomous agentic workflows.</span>
+    </h1>
+
+    <p class="btp-hero-sub" style="text-align:center;color:#E8EBF3;">
+      <span data-btp="subheadline">Beyond the Prompt is a 3-week sprint for knowledge workers who are already using AI and have started to wonder what they're trading for the speed. Small cohort. Weekly live calls. You bring your real work. You leave with a system.</span>
+    </p>
+
+    <div class="btp-cta-row">
+      <a href="https://www.puhala.com/store/beyond-the-prompt-cohort-2" class="btp-btn btp-btn-primary" data-btp-href="cohort_url">
+        <span data-btp="hero_cta">Join Cohort 2 — June 9</span>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+      <a href="#btp-weeks" class="btp-btn btp-btn-secondary">See the 3 weeks</a>
+    </div>
+
+  </header>
+
+  <!-- ── FEATURE CARDS ─────────────────────────────────────── -->
+  <section class="btp-feats-section btp-wrap">
+    <div class="btp-feats">
+
+      <div class="btp-feat">
+        <div class="btp-feat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+        </div>
+        <h3>Building, not prompting</h3>
+        <p>You leave with an AI operating system built around how you actually think — not a framework you'll forget by Monday.</p>
+      </div>
+
+      <div class="btp-feat btp-feat--warm">
+        <div class="btp-feat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9" r="2.6"/>
+            <path d="M3 19c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15 19c0-2 1-3.6 2.5-4.5"/>
+          </svg>
+        </div>
+        <h3>A cohort of 12</h3>
+        <p>Small enough that the room knows your work. Everyone in is at the same level, taking the same problem seriously.</p>
+      </div>
+
+      <div class="btp-feat btp-feat--violet">
+        <div class="btp-feat-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="7" y="8" width="10" height="12" rx="5"/>
+            <path d="M12 8V4M9 6l3-2 3 2"/>
+            <path d="M7 12H4M20 12h-3M7 16H4M20 16h-3"/>
+          </svg>
+        </div>
+        <h3>Your real work</h3>
+        <p>No demos. No labs. You bring the workflows you actually run — and rebuild them with the four principles.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── THE PROBLEM ────────────────────────────────────────── -->
+  <section class="btp-block">
+    <div class="btp-wrap">
+      <div class="btp-eyebrow">
+        <span class="btp-eyebrow-num">01</span><span class="btp-eyebrow-bar"></span> The Problem
+      </div>
+      <div class="btp-two-col">
+        <h2 class="btp-section-title">
+          Most people who think they're <em>building with AI</em> are still prompting.
+        </h2>
+        <div class="btp-prose">
+          <p>They've learned to write better prompts. Maybe they've chained a few together and called it a workflow. What they've actually done is get faster at asking the same questions from scratch every day.</p>
+          <p>The gap between prompting and building isn't technical. It's conceptual. <strong>Prompting is the floor</strong> — the level playing field that everyone with a ChatGPT account can reach. <strong>Building is something different</strong>: persistent context, systems that run, an operating rhythm designed around how you actually think.</p>
+          <p>Most people will stay at the floor. The gap is widening every month.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT IT IS ─────────────────────────────────────────── -->
+  <section class="btp-block">
+    <div class="btp-wrap">
+      <div class="btp-eyebrow">
+        <span class="btp-eyebrow-num">02</span><span class="btp-eyebrow-bar"></span> What It Is
+      </div>
+      <div class="btp-two-col">
+        <h2 class="btp-section-title">A 3-week sprint. <em>12 people max.</em></h2>
+        <div class="btp-prose">
+          <p>One weekly Zoom call, daily async support in a shared channel, and a 30-day check-in after the cohort ends.</p>
+          <p>You come in with your real work. You leave with an AI operating system built around how you actually think — not a framework you'll forget by the following Monday.</p>
+          <p><em>Not a course. Not a bootcamp. A working sprint with a small group of people taking the same problem seriously.</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHO IT'S FOR ───────────────────────────────────────── -->
+  <section class="btp-block">
+    <div class="btp-wrap">
+      <div class="btp-eyebrow">
+        <span class="btp-eyebrow-num">03</span><span class="btp-eyebrow-bar"></span> Who It's For
+      </div>
+      <div class="btp-two-col">
+        <h2 class="btp-section-title">
+          For people who've <em>started</em> — and feel like they're <span class="btp-accent-txt">circling.</span>
+        </h2>
+        <div class="btp-prose">
+          <p>You're already using AI daily. You've been at it for at least 6 months. You're getting output — sometimes good output — but you still feel like you're starting from scratch every time you open a chat window.</p>
+          <p>You've noticed something else, too. The thinking that used to happen in the friction is happening less. The work is easier. That should feel like progress.</p>
+          <p><em>It doesn't quite.</em></p>
+          <p>BTP is not for people who haven't started yet. It's for people who've started and feel like they're circling.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT HAPPENS / WEEKS ───────────────────────────────── -->
+  <section class="btp-block" id="btp-weeks">
+    <div class="btp-wrap">
+      <div class="btp-eyebrow">
+        <span class="btp-eyebrow-num">04</span><span class="btp-eyebrow-bar"></span> What Happens
+      </div>
+      <h2 class="btp-section-title btp-section-title--wide btp-mb56">
+        Three weeks of live work. <em>Built on a Week 0 you do alone.</em>
+      </h2>
+
+      <div class="btp-weeks">
+
+        <!-- Week 0 -->
+        <article class="btp-week btp-week--zero">
+          <div class="btp-week-tag">
+            <div class="btp-week-kicker">Week 0</div>
+            <div class="btp-week-num btp-week-num--warm">00</div>
+            <div class="btp-week-delivery">Delivered async<br>before the cohort starts</div>
+          </div>
+          <div class="btp-week-body">
+            <h3>The Audit</h3>
+            <div class="btp-prose">
+              <p>Before anything else, you map what you're actually doing. Not what you think you're doing. A structured self-assessment covering which tools you use and how often, what you're genuinely offloading versus what you still own, and where your thinking is engaging versus coasting.</p>
+              <p>The audit creates the gap the cohort closes. Without it, every framework that follows feels generic. With it, everything clicks against real behavior.</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Week 1 -->
+        <article class="btp-week">
+          <div class="btp-week-tag">
+            <div class="btp-week-kicker" data-btp="week1_kicker">Week 1 — Tuesday, June 9</div>
+            <div class="btp-week-num btp-week-num--blue">01</div>
+            <div class="btp-week-delivery">90-min live session<br>+ async channel</div>
+          </div>
+          <div class="btp-week-body">
+            <h3>Prompts to Workflows</h3>
+            <div class="btp-prose">
+              <p>The session opens with a live exercise. The same question, two containers. Once in a chat window where the answer evaporates. Once written to a file on your filesystem — a document you own, can edit, can build on. The debrief: <em>what changed?</em> Not the information. The relationship with the output.</p>
+              <p>Then: <strong>the Four Principles.</strong> Before any framework, the philosophy. Think before prompting. Simplify to the minimum. Make surgical changes. Define what done looks like before you start. These four explain why most prompting is still prompting even when people believe it's something more.</p>
+              <p>Main teaching: <strong>the 3-layer workflow model.</strong> Context layer — what the AI needs to know before you ask. Execution layer — the difference between a prompt and a brief. Review layer — how to evaluate output without outsourcing your judgment.</p>
+            </div>
+            <div class="btp-deliverable">
+              <div class="btp-deliverable-lbl">Deliverable</div>
+              <div class="btp-deliverable-val">One core workflow rebuilt from scratch using the 3-layer model.</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Week 2 -->
+        <article class="btp-week">
+          <div class="btp-week-tag">
+            <div class="btp-week-kicker" data-btp="week2_kicker">Week 2 — Tuesday, June 16</div>
+            <div class="btp-week-num btp-week-num--blue">02</div>
+            <div class="btp-week-delivery">90-min live session<br>+ async channel</div>
+          </div>
+          <div class="btp-week-body">
+            <h3>Operating Rhythm</h3>
+            <div class="btp-prose">
+              <p>The question isn't just <em>how</em> you work with AI. It's <em>when</em>.</p>
+              <p>Deep work blocks stay AI-free. That's where the cognitive reps happen — the thinking that has to remain yours. Synthesis blocks bring AI in after you've done the work. Recovery is non-negotiable.</p>
+              <p>You'll design your <strong>Personal Performance OS</strong>: a one-page document describing your daily rhythm, where AI fits in, and where it doesn't.</p>
+              <p>You'll also build your first recurring skill: <strong>the Weekly Intelligence Briefing.</strong> Every Friday, the agent pulls what you need to know across your specific domains and writes a structured report to a file. Not a chat answer that disappears. A document waiting for you when you sit down.</p>
+            </div>
+            <div class="btp-deliverable">
+              <div class="btp-deliverable-lbl">Deliverables</div>
+              <div class="btp-deliverable-val">Personal Performance OS · Weekly Intelligence Briefing running.</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Week 3 -->
+        <article class="btp-week btp-week--three">
+          <div class="btp-week-tag">
+            <div class="btp-week-kicker" data-btp="week3_kicker">Week 3 — Tuesday, June 23</div>
+            <div class="btp-week-num btp-week-num--blue">03</div>
+            <div class="btp-week-delivery">90-min live session<br>+ diagnostic prep</div>
+          </div>
+          <div class="btp-week-body">
+            <h3>Diagnostic</h3>
+            <div class="btp-prose">
+              <p>Content delivery ends in Week 2. <em>Week 3 is about what actually happened.</em></p>
+              <p>Before the live call, you complete a six-question diagnostic. Which skills ran every day. Which ran once. Which never ran. Where the output felt off. Where it surprised you. Michael reviews responses before the call. The session runs on this foundation, not on first-pass discovery.</p>
+              <p>Then: <strong>Skill 10.</strong> The answer to the highest-friction moment you named in the diagnostic. Not a template. Not a pre-built script. You name the gap, write a one-paragraph spec, and build it live. By the end of the session, it's running.</p>
+            </div>
+            <div class="btp-deliverable">
+              <div class="btp-deliverable-lbl">Deliverables</div>
+              <div class="btp-deliverable-val">System snapshot · Skill 10 built and running · one forward commitment said aloud to the group.</div>
+            </div>
+          </div>
+        </article>
+
+        <!-- +30 Days -->
+        <article class="btp-week">
+          <div class="btp-week-tag">
+            <div class="btp-week-kicker">+30 Days</div>
+            <div class="btp-week-num">30</div>
+            <div class="btp-week-delivery">One call<br>One month after Week 3</div>
+          </div>
+          <div class="btp-week-body">
+            <h3>The 30-Day Check-In</h3>
+            <div class="btp-prose">
+              <p>One call, a month out. What held. What broke. What surprised you. An accountability anchor — and a chance to reconnect with 11 other people who built the same thing.</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT YOU LEAVE WITH ────────────────────────────────── -->
+  <section class="btp-block">
+    <div class="btp-wrap">
+      <div class="btp-eyebrow">
+        <span class="btp-eyebrow-num">05</span><span class="btp-eyebrow-bar"></span> What You Leave With
+      </div>
+      <h2 class="btp-section-title btp-mb48">Seven things. <em>All of them yours.</em></h2>
+      <div class="btp-leave-grid">
+
+        <div class="btp-leave-item">
+          <div class="btp-leave-n">01</div>
+          <div>
+            <h4>A personal AI audit</h4>
+            <p>Baseline picture of how you were actually using AI before — the honest version, not the assumed one.</p>
+          </div>
+        </div>
+
+        <div class="btp-leave-item">
+          <div class="btp-leave-n">02</div>
+          <div>
+            <h4>A redesigned workflow</h4>
+            <p>One core process rebuilt with intentional 3-layer structure. Yours to use, modify, and extend.</p>
+          </div>
+        </div>
+
+        <div class="btp-leave-item">
+          <div class="btp-leave-n">03</div>
+          <div>
+            <h4>A Personal Performance OS</h4>
+            <p>One-page daily rhythm document integrating AI without sacrificing the deep work that requires only you.</p>
+          </div>
+        </div>
+
+        <div class="btp-leave-item">
+          <div class="btp-leave-n">04</div>
+          <div>
+            <h4>A Weekly Intelligence Briefing</h4>
+            <p>A configured, running skill that pulls what you need to know every Friday and writes it to a file. Automatic. Waiting.</p>
+          </div>
+        </div>
+
+        <div class="btp-leave-item">
+          <div class="btp-leave-n">05</div>
+          <div>
+            <h4>A system snapshot</h4>
+            <p>The OS as it actually runs at the end of Week 3 — not as designed, but as it held up against a real week of work.</p>
+          </div>
+        </div>
+
+        <div class="btp-leave-item">
+          <div class="btp-leave-n">06</div>
+          <div>
+            <h4>Skill 10</h4>
+            <p>Built from your own diagnostic gap. Not a template. Yours.</p>
+          </div>
+        </div>
+
+        <div class="btp-leave-item btp-leave-item--last">
+          <div class="btp-leave-n">07</div>
+          <div>
+            <h4>Eleven other high-agency people</h4>
+            <p>The smallest useful cohort. Everyone in the room at the same level, taking the same problem seriously.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CREDENTIALS ────────────────────────────────────────── -->
+  <section class="btp-block">
+    <div class="btp-wrap">
+      <div class="btp-eyebrow">
+        <span class="btp-eyebrow-num">06</span><span class="btp-eyebrow-bar"></span> Who's Teaching
+      </div>
+      <div class="btp-cred">
+
+        <div class="btp-cred-photo">
+          <!-- Replace with: <img src="URL" alt="Michael Puhala" class="btp-cred-img"> -->
+          <span class="btp-cred-photo-label">// portrait — Michael Puhala</span>
+        </div>
+
+        <div class="btp-cred-body">
+          <h3>Michael Puhala teaches what he uses — not what he read about.</h3>
+          <div class="btp-prose">
+            <p>Michael is <strong>VP of GTM and Product Strategy at Bevy</strong>. He's been building AI workflows inside an actual operating role since 2023 — not in demos, not in a lab, but in the daily work of running a GTM motion at a real company.</p>
+            <p>He's the author of <em>Human Traits</em> and the founder of <em>The Drop-In</em> newsletter. BTP runs the same way he does: everything in the curriculum comes from what he's built and what he's tested. <strong>The cohort is the proof.</strong></p>
+          </div>
+          <div class="btp-cred-credits">
+            <div>
+              <div class="btp-cred-k">Role</div>
+              <div class="btp-cred-v">VP, GTM &amp; Product Strategy — Bevy</div>
+            </div>
+            <div>
+              <div class="btp-cred-k">Author</div>
+              <div class="btp-cred-v">Human Traits</div>
+            </div>
+            <div>
+              <div class="btp-cred-k">Founder</div>
+              <div class="btp-cred-v">The Drop-In newsletter</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS — visibility + content controlled via btp.json ── -->
+  <section class="btp-block" data-btp-testimonials style="display:none">
+    <div class="btp-wrap">
+      <div class="btp-eyebrow">
+        <span class="btp-eyebrow-num">07</span><span class="btp-eyebrow-bar"></span> Cohort 1
+      </div>
+      <h2 class="btp-section-title" style="margin-bottom:16px">
+        What people said <em>after their 30-day check-in.</em>
+      </h2>
+      <div class="btp-testi" data-btp-testi-grid>
+        <!-- populated by btp.json fetch -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRICING ────────────────────────────────────────────── -->
+  <div id="btp-apply" style="scroll-margin-top:80px"></div>
+  <section class="btp-block">
+    <div class="btp-wrap">
+      <div class="btp-eyebrow">
+        <span class="btp-eyebrow-num">08</span><span class="btp-eyebrow-bar"></span> Pricing &amp; Logistics
+      </div>
+      <!-- Price card: glow is a child div, not ::before (SS would suppress ::before) -->
+      <div class="btp-price-card">
+        <div class="btp-price-glow" aria-hidden="true"></div>
+        <div class="btp-price-left">
+          <div class="btp-price-amt"><span class="btp-price-sign">$</span><span data-btp="price">250</span></div>
+          <div class="btp-price-meta" data-btp="price_meta">Cohort 2 · One-time</div>
+        </div>
+        <div class="btp-price-right">
+          <div class="btp-price-row">
+            <div class="btp-price-k">Seats</div>
+            <div class="btp-price-v">12 maximum<small>Hard cap. No exceptions.</small></div>
+          </div>
+          <div class="btp-price-row">
+            <div class="btp-price-k">First call</div>
+            <div class="btp-price-v"><span data-btp="first_call">Tuesday, June 9 · 4:00 PM CDT</span><small data-btp="first_call_note">Then weekly through June 23</small></div>
+          </div>
+          <div class="btp-price-row">
+            <div class="btp-price-k">Format</div>
+            <div class="btp-price-v">Zoom · async channel · 30-day check-in</div>
+          </div>
+          <div class="btp-price-row">
+            <div class="btp-price-k">Refund</div>
+            <div class="btp-price-v">Full refund if you cancel before Week 1<small>No questions asked</small></div>
+          </div>
+          <div class="btp-price-cta">
+            <a href="https://www.puhala.com/store/beyond-the-prompt-cohort-2" class="btp-btn btp-btn-primary btp-btn-full" data-btp-href="cohort_url">
+              <span data-btp="secure_cta">Secure your spot — $250</span>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ───────────────────────────────────────────────── -->
+  <section class="btp-block">
+    <div class="btp-wrap-narrow">
+      <div class="btp-eyebrow">
+        <span class="btp-eyebrow-num">09</span><span class="btp-eyebrow-bar"></span> Questions
+      </div>
+      <h2 class="btp-section-title btp-mb36">The honest answers.</h2>
+      <div class="btp-faq" data-btp-faq>
+        <!-- populated by btp.json fetch; static fallback below in case fetch fails -->
+        <details class="btp-faq-item" open>
+          <summary><span>Is this recorded?</span><span class="btp-faq-sign">+</span></summary>
+          <div class="btp-faq-answer">Sessions are recorded for cohort members only. The live interaction is the point — recordings are a backup, not the product.</div>
+        </details>
+        <details class="btp-faq-item">
+          <summary><span>What tools do I need?</span><span class="btp-faq-sign">+</span></summary>
+          <div class="btp-faq-answer">Whatever you're already using. The Week 0 audit meets you where you are. The cohort is tool-agnostic.</div>
+        </details>
+        <details class="btp-faq-item">
+          <summary><span>Is this right for me if I'm just starting with AI?</span><span class="btp-faq-sign">+</span></summary>
+          <div class="btp-faq-answer">Probably not. BTP is for people 6 months or more in who still feel like they're circling. If you're earlier in the journey, start with The Drop-In.</div>
+        </details>
+        <details class="btp-faq-item">
+          <summary><span>What's the refund policy?</span><span class="btp-faq-sign">+</span></summary>
+          <div class="btp-faq-answer">Full refund if you cancel before Week 1 begins.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CLOSING CTA ────────────────────────────────────────── -->
+  <section class="btp-close">
+    <div class="btp-wrap-narrow">
+      <div class="btp-pill" style="margin-bottom:28px">
+        <span class="btp-dot"></span>
+        <span data-btp="close_pill">12 seats · Closes when full</span>
+      </div>
+      <h2 class="btp-close-h2">
+        <span data-btp="close_headline">You already know</span> <em data-btp="close_headline_em">which problem this solves.</em>
+      </h2>
+      <p class="btp-close-sub">
+        <span data-btp="close_sub">Cohort 2 is capped at 12. If you've read this far, you've made the decision somewhere already. The button just confirms it.</span>
+      </p>
+      <a href="https://www.puhala.com/store/beyond-the-prompt-cohort-2" class="btp-btn btp-btn-primary" data-btp-href="cohort_url">
+        <span data-btp="close_cta">Join Cohort 2 — $250</span>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </section>
+
+</div><!-- /btp -->
+
+
+<style>
+/* ============================================================
+   puhala.com/beyond-the-prompt — Dark Landing Page
+   All selectors prefixed .btp- · safe for Squarespace injection
+   ============================================================ */
+
+/* ── Squarespace wrapper resets ─────────────────────────────── */
+/* Page section gets the dark background. */
+body .page-section[data-section-id],
+body section.page-section,
+body [data-section-id] {
+  background: #06080E !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+/* All containers between the section and our content block:
+   strip max-width, padding, white backgrounds.
+   No overflow changes — those caused the blank-page bug. */
+body .content-wrapper,
+body [class*="content-width"],
+body .sqs-layout,
+body .sqs-row,
+body [class*="sqs-col-"],
+body .sqs-block,
+body .sqs-block-code,
+body .sqs-block-content,
+body [data-type="code"],
+body [class*="fe-block"],
+body [class*="fe-col"] {
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+body .page-section[data-section-id],
+body section.page-section,
+body [data-section-id] {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* ── Variables ──────────────────────────────────────────────── */
+.btp {
+  --btp-bg:     #06080E;
+  --btp-bg2:    #0A0D17;
+  --btp-bg3:    #0F1320;
+  --btp-ink:    #F8FAFF;
+  --btp-ink2:   #E8EBF3;
+  --btp-muted:  #E2E6F0;
+  --btp-muted2: #D4DAE8;
+  --btp-line:   rgba(255,255,255,0.08);
+  --btp-linehi: rgba(255,255,255,0.16);
+  --btp-card:   #0C1019;
+  --btp-accent: #4F7BFF;
+  --btp-warm:   #E07A3E;
+  --btp-violet: #9B6DFF;
+  --btp-asoft:  rgba(79,123,255,0.14);
+  --btp-glow:   rgba(79,123,255,0.45);
+  --btp-sans:   "Geist", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --btp-serif:  "Instrument Serif", Georgia, serif;
+  --btp-mono:   "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+/* ── Squarespace pseudo-element suppressor ──────────────────── */
+.btp *::before, .btp *::after { content: none !important; display: none !important; }
+
+/* ── Base ───────────────────────────────────────────────────── */
+.btp {
+  font-family: var(--btp-sans);
+  /* Ambient glow baked into background — avoids fixed-position stacking issues */
+  background:
+    radial-gradient(900px 600px at 50% -10%, rgba(79,123,255,0.18), transparent 60%),
+    radial-gradient(600px 400px at 90% 30%,  rgba(224,122,62,0.08),  transparent 70%),
+    radial-gradient(700px 500px at 10% 60%,  rgba(155,109,255,0.06), transparent 70%),
+    var(--btp-bg);
+  color: var(--btp-ink);
+  font-size: 16px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  width: 100%;
+}
+.btp * { box-sizing: border-box; }
+.btp a { color: inherit; text-decoration: none; }
+.btp h1, .btp h2, .btp h3, .btp h4, .btp p { margin: 0; }
+
+::selection { background: #4F7BFF; color: #fff; }
+
+/* ── Layout ─────────────────────────────────────────────────── */
+.btp-wrap        { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+.btp-wrap-narrow { max-width: 880px;  margin: 0 auto; padding: 0 32px; }
+
+/* ── Pill ───────────────────────────────────────────────────── */
+.btp-pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--btp-asoft);
+  border: 1px solid rgba(79,123,255,0.35);
+  color: rgba(150,185,255,0.9);
+  padding: 9px 16px; border-radius: 999px;
+  font-family: var(--btp-sans); font-size: 13px; font-weight: 500;
+}
+.btp-dot {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--btp-accent);
+  box-shadow: 0 0 12px rgba(79,123,255,0.6);
+  animation: btp-pulse 2.4s infinite;
+  flex-shrink: 0;
+}
+@keyframes btp-pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.btp-btn {
+  font-family: var(--btp-sans); font-weight: 500; font-size: 15px;
+  border-radius: 12px; border: 1px solid transparent; cursor: pointer;
+  transition: transform .15s, background .15s, border-color .15s, box-shadow .2s;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 22px; line-height: 1; text-decoration: none;
+}
+.btp-btn-primary {
+  background: var(--btp-accent); color: #fff;
+  box-shadow: 0 10px 30px -10px var(--btp-glow), inset 0 1px 0 rgba(255,255,255,0.18);
+}
+.btp-btn-primary:hover { background: #6389ff; transform: translateY(-1px); }
+.btp-btn-secondary {
+  background: transparent; color: var(--btp-ink); border-color: var(--btp-linehi);
+}
+.btp-btn-secondary:hover { background: var(--btp-bg3); }
+.btp-btn-full { width: 100%; justify-content: center; }
+
+/* ── Hero ────────────────────────────────────────────────────── */
+.btp-hero { padding: 56px 0 96px; text-align: center; }
+
+/* Banner: glow and dot layers are child divs since ::before/::after are suppressed */
+.btp-banner {
+  width: min(960px, 100%); aspect-ratio: 16/5.2;
+  margin: 0 auto 36px; border-radius: 18px;
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(140% 100% at 20% 60%, #2a1f55, transparent 55%),
+    radial-gradient(120% 100% at 80% 50%, #4a2818, transparent 55%),
+    linear-gradient(180deg, #0c0a1a, #110a16);
+  box-shadow: 0 30px 80px -30px rgba(0,0,0,0.6);
+}
+.btp-banner-glow {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(60% 35% at 30% 60%, rgba(120,120,255,0.55), transparent 70%),
+    radial-gradient(60% 35% at 70% 50%, rgba(230,130,70,0.50), transparent 70%);
+  filter: blur(20px);
+}
+.btp-banner-dots {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.6) 0.6px, transparent 0.6px),
+    radial-gradient(rgba(255,200,150,0.5) 0.8px, transparent 0.8px);
+  background-size: 3px 3px, 5px 5px;
+  background-position: 0 0, 2px 1px;
+  mask-image: radial-gradient(60% 70% at 50% 60%, black, transparent 80%);
+  -webkit-mask-image: radial-gradient(60% 70% at 50% 60%, black, transparent 80%);
+  opacity: 0.7;
+}
+.btp-banner-inner {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 6px;
+}
+.btp-banner-big {
+  font-family: var(--btp-sans); font-weight: 700;
+  font-size: clamp(40px,6vw,86px); letter-spacing: -0.02em; line-height: 1;
+  color: #fff; text-shadow: 0 6px 30px rgba(0,0,0,0.5);
+}
+.btp-banner-small {
+  font-family: var(--btp-sans); font-weight: 500;
+  font-size: clamp(11px,1.1vw,14px); letter-spacing: 0.42em;
+  color: #d6b9ff; text-transform: uppercase;
+}
+
+.btp-h1 {
+  font-family: var(--btp-sans); font-weight: 700;
+  font-size: clamp(42px,6.4vw,92px); line-height: 1.02; letter-spacing: -0.025em;
+  margin: 32px auto 0; max-width: 18ch; color: var(--btp-ink); text-wrap: balance;
+}
+.btp-dim { color: var(--btp-muted); }
+
+.btp-hero-sub {
+  margin: 32px auto 0; max-width: 60ch;
+  font-size: 18px; color: var(--btp-ink2); line-height: 1.55;
+  text-align: center !important;
+}
+.btp-cta-row {
+  margin-top: 44px;
+  display: flex; align-items: center; justify-content: center;
+  gap: 18px; flex-wrap: wrap;
+}
+
+/* ── Feature cards ──────────────────────────────────────────── */
+.btp-feats-section { margin-top: 16px; }
+.btp-feats { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+
+.btp-feat {
+  background: var(--btp-card); border: 1px solid var(--btp-line);
+  border-radius: 16px; padding: 28px 28px 30px;
+  transition: border-color .2s;
+}
+.btp-feat:hover { border-color: var(--btp-linehi); }
+.btp-feat-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+  margin-bottom: 22px;
+  background: rgba(79,123,255,0.18); color: rgba(150,185,255,0.9);
+}
+.btp-feat--warm   .btp-feat-icon { background: rgba(224,122,62,0.18);  color: rgba(255,180,120,0.9); }
+.btp-feat--violet .btp-feat-icon { background: rgba(155,109,255,0.18); color: rgba(200,170,255,0.9); }
+.btp-feat h3 {
+  font-family: var(--btp-sans); font-size: 18px; font-weight: 600;
+  letter-spacing: -0.01em; margin: 0 0 10px; color: var(--btp-ink);
+}
+.btp-feat p { margin: 0; color: var(--btp-muted); font-size: 14.5px; line-height: 1.55; }
+
+/* ── Section blocks ─────────────────────────────────────────── */
+.btp-block { padding: 100px 0; }
+
+.btp-eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--btp-mono); font-size: 11.5px;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--btp-muted); margin-bottom: 28px;
+}
+.btp-eyebrow-num { color: var(--btp-accent); font-weight: 500; }
+.btp-eyebrow-bar { width: 28px; height: 1px; background: var(--btp-linehi); display: block; }
+
+.btp-section-title {
+  font-family: var(--btp-sans); font-weight: 600;
+  font-size: clamp(32px,4.4vw,58px); line-height: 1.05;
+  letter-spacing: -0.022em; margin: 0 0 24px;
+  max-width: 22ch; color: var(--btp-ink); text-wrap: balance;
+}
+.btp-section-title--wide { max-width: 28ch; }
+.btp-section-title em { font-style: normal; color: var(--btp-muted); }
+.btp-accent-txt { color: var(--btp-accent); }
+
+.btp-mb36 { margin-bottom: 36px; }
+.btp-mb48 { margin-bottom: 48px; }
+.btp-mb56 { margin-bottom: 56px; }
+
+.btp-prose {
+  max-width: 64ch; font-size: 17.5px; line-height: 1.65; color: var(--btp-ink2);
+}
+.btp-prose p { margin: 0 0 1.15em; }
+.btp-prose p:last-child { margin-bottom: 0; }
+.btp-prose em { font-style: italic; color: var(--btp-ink); }
+.btp-prose strong { color: var(--btp-ink); font-weight: 500; }
+
+.btp-two-col {
+  display: grid; grid-template-columns: 1fr 1.2fr;
+  gap: 80px; align-items: start;
+}
+
+/* ── Week cards ─────────────────────────────────────────────── */
+.btp-weeks { display: flex; flex-direction: column; gap: 18px; }
+
+.btp-week {
+  background: var(--btp-card); border: 1px solid var(--btp-line);
+  border-radius: 20px; padding: 40px 44px;
+  display: grid !important; grid-template-columns: 220px 1fr;
+  gap: 48px; position: relative; overflow: hidden;
+}
+.btp-week-tag, .btp-week-body { display: block !important; }
+.btp-week--zero  { background: linear-gradient(180deg, #0C1019 0%, #121018 100%); }
+.btp-week--three { background: linear-gradient(180deg, #0C1019 0%, #0c1021 100%); }
+
+.btp-week-kicker {
+  font-family: var(--btp-mono); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  color: var(--btp-muted); margin-bottom: 12px;
+}
+.btp-week-num {
+  font-family: var(--btp-sans); font-weight: 600;
+  font-size: 96px; line-height: 0.9; letter-spacing: -0.045em;
+  color: var(--btp-ink);
+}
+.btp-week-num--blue {
+  background: linear-gradient(135deg, #4F7BFF, #9B6DFF);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.btp-week-num--warm {
+  background: linear-gradient(135deg, #E07A3E, #ffb678);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.btp-week-delivery {
+  margin-top: 14px; font-family: var(--btp-mono); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--btp-muted); line-height: 1.5;
+}
+.btp-week-body h3 {
+  font-family: var(--btp-sans); font-weight: 600;
+  font-size: clamp(24px,2.4vw,32px); line-height: 1.12;
+  letter-spacing: -0.018em; margin: 0 0 18px; color: var(--btp-ink);
+}
+.btp-week-body .btp-prose { font-size: 16px; }
+
+.btp-deliverable {
+  margin-top: 26px; padding-top: 22px;
+  border-top: 1px solid var(--btp-line);
+  display: flex; align-items: flex-start; gap: 18px; flex-wrap: wrap;
+}
+.btp-deliverable-lbl {
+  font-family: var(--btp-mono); font-size: 10.5px;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--btp-muted); padding-top: 3px; flex: 0 0 110px;
+}
+.btp-deliverable-val { flex: 1; color: var(--btp-ink); font-size: 15.5px; line-height: 1.45; }
+
+/* ── Leave With ─────────────────────────────────────────────── */
+.btp-leave-grid {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 0;
+  border-top: 1px solid var(--btp-line);
+}
+.btp-leave-item {
+  padding: 30px 40px 30px 0;
+  border-bottom: 1px solid var(--btp-line);
+  display: grid; grid-template-columns: 48px 1fr;
+  gap: 18px; align-items: baseline;
+}
+.btp-leave-item:nth-child(even) { padding: 30px 0 30px 40px; border-left: 1px solid var(--btp-line); }
+.btp-leave-item--last { border-bottom: none; }
+.btp-leave-n {
+  font-family: var(--btp-mono); font-size: 11.5px;
+  letter-spacing: 0.12em; color: var(--btp-accent); padding-top: 6px;
+}
+.btp-leave-item h4 {
+  font-family: var(--btp-sans); font-weight: 600; font-size: 20px;
+  line-height: 1.25; letter-spacing: -0.012em; margin: 0 0 8px; color: var(--btp-ink);
+}
+.btp-leave-item p { margin: 0; color: var(--btp-muted); font-size: 14.5px; line-height: 1.55; }
+
+/* ── Credentials ─────────────────────────────────────────────── */
+.btp-cred {
+  display: grid; grid-template-columns: 360px 1fr;
+  gap: 64px; align-items: start;
+}
+.btp-cred-photo {
+  aspect-ratio: 4/5; border-radius: 18px;
+  background: repeating-linear-gradient(
+    45deg, #0A0D17 0, #0A0D17 14px, #0F1320 14px, #0F1320 28px
+  );
+  border: 1px solid var(--btp-line);
+  display: flex; align-items: flex-end; padding: 20px;
+}
+.btp-cred-img { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; }
+.btp-cred-photo-label {
+  font-family: var(--btp-mono); font-size: 10.5px;
+  text-transform: uppercase; letter-spacing: 0.14em; color: var(--btp-muted);
+  background: var(--btp-bg); padding: 6px 10px;
+  border-radius: 6px; border: 1px solid var(--btp-line);
+}
+.btp-cred-body h3 {
+  font-family: var(--btp-sans); font-weight: 600;
+  font-size: clamp(28px,3.4vw,48px); line-height: 1.05;
+  letter-spacing: -0.022em; margin: 0 0 24px; color: var(--btp-ink); max-width: 20ch;
+}
+.btp-cred-credits {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 18px; margin-top: 36px; padding-top: 28px;
+  border-top: 1px solid var(--btp-line);
+}
+.btp-cred-k {
+  font-family: var(--btp-mono); font-size: 10.5px;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--btp-muted); margin-bottom: 6px;
+}
+.btp-cred-v { color: var(--btp-ink); font-size: 15px; font-weight: 500; line-height: 1.35; }
+
+/* ── Testimonials ────────────────────────────────────────────── */
+.btp-testi { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.btp-testi-card {
+  border: 1px dashed var(--btp-linehi); border-radius: 16px;
+  padding: 28px; min-height: 220px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.btp-testi-q {
+  font-family: var(--btp-sans); font-size: 20px;
+  line-height: 1.3; color: var(--btp-muted2); letter-spacing: -0.01em;
+}
+.btp-testi-meta {
+  font-family: var(--btp-mono); font-size: 10.5px;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--btp-muted2); margin-top: 20px;
+}
+
+/* ── Pricing ─────────────────────────────────────────────────── */
+.btp-price-card {
+  border: 1px solid var(--btp-linehi); border-radius: 24px;
+  background:
+    radial-gradient(80% 100% at 100% 0%, rgba(79,123,255,0.12), transparent 60%),
+    var(--btp-card);
+  padding: 56px;
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px;
+  align-items: center; position: relative; overflow: hidden;
+  box-shadow: 0 30px 80px -40px rgba(0,0,0,0.6);
+}
+/* Glow orb is a child div instead of ::before */
+.btp-price-glow {
+  position: absolute; top: -40%; right: -40%;
+  width: 480px; height: 480px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(79,123,255,0.3), transparent 70%);
+  filter: blur(50px); pointer-events: none;
+}
+.btp-price-amt {
+  display: flex; align-items: flex-start;
+  font-family: var(--btp-sans); font-weight: 600;
+  font-size: clamp(96px,12vw,168px); line-height: 0.9;
+  letter-spacing: -0.04em; color: var(--btp-ink);
+}
+.btp-price-sign { font-size: 0.35em; margin-top: 0.4em; color: var(--btp-muted); font-weight: 500; }
+.btp-price-meta {
+  font-family: var(--btp-mono); font-size: 12px;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--btp-muted); margin-top: 18px;
+}
+.btp-price-right { display: flex; flex-direction: column; position: relative; z-index: 2; }
+.btp-price-row {
+  display: flex; justify-content: space-between; gap: 24px;
+  padding: 14px 0; border-bottom: 1px solid var(--btp-line);
+}
+.btp-price-row:last-of-type { border-bottom: none; }
+.btp-price-k {
+  font-family: var(--btp-mono); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--btp-muted); flex: 0 0 110px; padding-top: 2px;
+}
+.btp-price-v { color: var(--btp-ink); font-size: 15px; text-align: right; line-height: 1.4; flex: 1; }
+.btp-price-v small { display: block; color: var(--btp-muted); font-size: 13px; margin-top: 4px; }
+.btp-price-cta { margin-top: 14px; }
+
+/* ── FAQ ─────────────────────────────────────────────────────── */
+.btp-faq { border-top: 1px solid var(--btp-line); }
+.btp-faq-item { border-bottom: 1px solid var(--btp-line); padding: 26px 0; }
+.btp-faq-item summary {
+  list-style: none; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  font-family: var(--btp-sans); font-weight: 500;
+  font-size: clamp(18px,2vw,24px); color: var(--btp-ink);
+  letter-spacing: -0.01em; line-height: 1.3;
+}
+.btp-faq-item summary::-webkit-details-marker { display: none; }
+.btp-faq-sign {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid var(--btp-linehi); color: var(--btp-muted);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--btp-mono); font-size: 16px; line-height: 1;
+  transition: transform .25s, color .2s, border-color .2s; flex: 0 0 auto;
+}
+.btp-faq-item[open] .btp-faq-sign {
+  transform: rotate(45deg); color: var(--btp-accent); border-color: var(--btp-accent);
+}
+.btp-faq-answer {
+  margin-top: 16px; color: var(--btp-ink2); font-size: 16px;
+  line-height: 1.65; max-width: 64ch;
+}
+
+/* ── Closing CTA ─────────────────────────────────────────────── */
+.btp-close { text-align: center; padding: 120px 0; }
+.btp-close-h2 {
+  font-family: var(--btp-sans); font-weight: 700;
+  font-size: clamp(40px,5.6vw,84px); line-height: 1.02;
+  letter-spacing: -0.028em; margin: 0 auto 28px; max-width: 18ch;
+  color: var(--btp-ink); text-wrap: balance;
+}
+.btp-close-h2 em { font-style: normal; color: var(--btp-muted); }
+.btp-close-sub {
+  max-width: 50ch; margin: 0 auto 36px;
+  font-size: 17px; color: var(--btp-ink2);
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .btp-wrap, .btp-wrap-narrow { padding: 0 22px; }
+  .btp-hero { padding: 28px 0 60px; }
+  .btp-block { padding: 64px 0; }
+  .btp-feats { grid-template-columns: 1fr; }
+  .btp-two-col { grid-template-columns: 1fr; gap: 36px; }
+  .btp-week { grid-template-columns: 1fr; gap: 28px; padding: 32px 28px; }
+  .btp-week-num { font-size: 72px; }
+  .btp-leave-grid { grid-template-columns: 1fr; }
+  .btp-leave-item,
+  .btp-leave-item:nth-child(even) { padding: 24px 0; border-left: none; }
+  .btp-cred { grid-template-columns: 1fr; }
+  .btp-cred-photo { max-width: 360px; }
+  .btp-cred-credits { grid-template-columns: 1fr 1fr; }
+  .btp-testi { grid-template-columns: 1fr; }
+  .btp-price-card { grid-template-columns: 1fr; gap: 28px; padding: 36px 28px; }
+  .btp-close { padding: 80px 0; }
+}
+@media (max-width: 600px) {
+  .btp-cred-credits { grid-template-columns: 1fr; }
+  .btp-price-row { flex-direction: column; gap: 4px; }
+  .btp-price-v { text-align: left; }
+}
+
+/* ── Color overrides — hardcoded, last in sheet, .btp scoped ───
+   Beats any Squarespace rule that targets p, em, h3 etc.       */
+/* Top yellow accent border + gradient bleed */
+.btp { position: relative !important; }
+.btp-top-accent {
+  position: absolute !important;
+  top: 0 !important; left: 0 !important; right: 0 !important;
+  height: 180px !important;
+  background: linear-gradient(180deg,
+    rgba(245,196,52,0.55) 0px,
+    rgba(245,196,52,0.22) 24px,
+    rgba(245,196,52,0.06) 72px,
+    transparent 180px
+  ) !important;
+  border-top: 1.5px solid rgba(245,196,52,0.85) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.btp .btp-hero {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+.btp .btp-h1               { text-align: center !important; width: 100%; }
+.btp .btp-hero-sub          { color: #E8EBF3 !important; text-align: center !important; width: 100%; }
+.btp .btp-prose             { color: #E8EBF3 !important; }
+.btp .btp-prose p           { color: #E8EBF3 !important; }
+.btp .btp-close,
+.btp .btp-close .btp-wrap-narrow { text-align: center !important; display: flex !important; flex-direction: column !important; align-items: center !important; }
+.btp .btp-close-h2          { text-align: center !important; width: 100%; }
+.btp .btp-close-sub         { color: #E8EBF3 !important; text-align: center !important; width: 100%; }
+.btp .btp-feat p            { color: #E2E6F0 !important; }
+.btp .btp-leave-item p      { color: #E2E6F0 !important; }
+.btp .btp-eyebrow           { color: #E2E6F0 !important; }
+.btp .btp-section-title em  { color: #C8D0E0 !important; }
+.btp .btp-dim               { color: #C8D0E0 !important; }
+.btp .btp-week-kicker        { color: #E2E6F0 !important; }
+.btp .btp-week-delivery      { color: #E2E6F0 !important; }
+.btp .btp-deliverable-lbl   { color: #E2E6F0 !important; }
+.btp .btp-cred-k            { color: #E2E6F0 !important; }
+.btp .btp-cred-photo-label  { color: #E2E6F0 !important; }
+.btp .btp-testi-q           { color: #E2E6F0 !important; }
+.btp .btp-testi-meta        { color: #D4DAE8 !important; }
+.btp .btp-price-sign        { color: #E2E6F0 !important; }
+.btp .btp-price-row-k       { color: #E2E6F0 !important; }
+.btp .btp-price-v small     { color: #D4DAE8 !important; }
+.btp .btp-close-h2 em       { color: #C8D0E0 !important; }
+</style>
+
+<script>
+(function() {
+  function btpReset() {
+    var btp = document.querySelector('.btp');
+    if (!btp) return;
+
+    /* Walk every ancestor between .btp and <body>, nuke constraints */
+    var el = btp.parentElement;
+    while (el && el !== document.body) {
+      el.style.setProperty('max-width',      'none',        'important');
+      el.style.setProperty('width',          '100%',        'important');
+      el.style.setProperty('padding',        '0',           'important');
+      el.style.setProperty('margin',         '0',           'important');
+      el.style.setProperty('overflow',       'visible',     'important');
+      el.style.setProperty('background',     'transparent', 'important');
+      el = el.parentElement;
+    }
+
+    /* Force the page section background dark so no white shows behind .btp */
+    var section = btp.closest('[data-section-id], .page-section, section');
+    if (section) {
+      section.style.setProperty('background', '#06080E', 'important');
+    }
+
+    /* Hero centering — flex on container + text-align on children */
+    var hero = btp.querySelector('.btp-hero');
+    if (hero) {
+      hero.style.setProperty('display',        'flex',    'important');
+      hero.style.setProperty('flex-direction', 'column',  'important');
+      hero.style.setProperty('align-items',    'center',  'important');
+      hero.style.setProperty('text-align',     'center',  'important');
+    }
+    ['.btp-h1', '.btp-hero-sub', '.btp-cta-row'].forEach(function(sel) {
+      var node = btp.querySelector(sel);
+      if (node) {
+        node.style.setProperty('text-align', 'center', 'important');
+        node.style.setProperty('width',      '100%',   'important');
+      }
+    });
+    /* Closing section centering — content lives inside .btp-wrap-narrow */
+    ['.btp-close', '.btp-close .btp-wrap-narrow'].forEach(function(sel) {
+      var node = btp.querySelector(sel);
+      if (node) {
+        node.style.setProperty('display',        'flex',   'important');
+        node.style.setProperty('flex-direction', 'column', 'important');
+        node.style.setProperty('align-items',    'center', 'important');
+        node.style.setProperty('text-align',     'center', 'important');
+      }
+    });
+    ['.btp-close-h2', '.btp-close-sub'].forEach(function(sel) {
+      var node = btp.querySelector(sel);
+      if (node) {
+        node.style.setProperty('text-align', 'center', 'important');
+        node.style.setProperty('width',      '100%',   'important');
+      }
+    });
+
+    /* Pill stays auto-width so it doesn't stretch */
+    var pill = btp.querySelector('.btp-pill');
+    if (pill) {
+      pill.style.setProperty('width',      'auto',   'important');
+      pill.style.setProperty('text-align', 'center', 'important');
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', btpReset);
+  } else {
+    btpReset();
+  }
+
+  /* ── btp.json content fetch ───────────────────────────────── */
+  var BTP_JSON = 'https://raw.githubusercontent.com/puhala-code/puhala-website/main/btp.json';
+
+  fetch(BTP_JSON)
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+
+      /* Simple text fields — any element with data-btp="key" */
+      document.querySelectorAll('[data-btp]').forEach(function(el) {
+        var v = d[el.getAttribute('data-btp')];
+        if (v !== undefined) el.textContent = v;
+      });
+
+      /* href fields — any <a> with data-btp-href="key" */
+      document.querySelectorAll('[data-btp-href]').forEach(function(el) {
+        var v = d[el.getAttribute('data-btp-href')];
+        if (v) el.href = v;
+      });
+
+      /* FAQ — render into [data-btp-faq] container */
+      var faqEl = document.querySelector('[data-btp-faq]');
+      if (faqEl && d.faq && d.faq.length) {
+        faqEl.innerHTML = d.faq.map(function(item, i) {
+          return '<details class="btp-faq-item"' + (i === 0 ? ' open' : '') + '>' +
+            '<summary><span>' + item.q + '</span><span class="btp-faq-sign">+</span></summary>' +
+            '<div class="btp-faq-answer">' + item.a + '</div>' +
+            '</details>';
+        }).join('');
+      }
+
+      /* Testimonials — show section and render grid if visible */
+      if (d.testimonials_visible && d.testimonials && d.testimonials.length) {
+        var testiSection = document.querySelector('[data-btp-testimonials]');
+        if (testiSection) {
+          testiSection.style.removeProperty('display');
+          var grid = testiSection.querySelector('[data-btp-testi-grid]');
+          if (grid) {
+            grid.innerHTML = d.testimonials.map(function(t) {
+              return '<div class="btp-testi-card">' +
+                '<div class="btp-testi-q">' + t.quote + '</div>' +
+                '<div class="btp-testi-meta">— ' + t.meta + '</div>' +
+                '</div>';
+            }).join('');
+          }
+        }
+      }
+
+    })
+    .catch(function() { /* fetch failed — static fallback content remains */ });
+
+})();
+</script>

@@ -874,7 +874,7 @@
     return new Date(ts).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
   }
 
-  fetch('/musings?format=json')
+  fetch('/blog?format=json')
     .then(function(r) { return r.json(); })
     .then(function(data) {
       var items = (data.collection && data.collection.items) || data.items || [];

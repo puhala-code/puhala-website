@@ -92,16 +92,73 @@ def parse_photos(path: Path) -> dict:
     }
 
 
-def git_push(ledger: dict, photos: dict):
+def parse_btp(path: Path) -> dict:
+    text = path.read_text()
+
+    fm = {}
+    fm_match = re.match(r'^---\n(.*?)\n---\n', text, re.DOTALL)
+    if fm_match:
+        for line in fm_match.group(1).splitlines():
+            if ':' in line:
+                k, v = line.split(':', 1)
+                fm[k.strip()] = v.strip()
+        text = text[fm_match.end():]
+
+    faq = []
+    testimonials = []
+
+    for section in re.split(r'^## ', text, flags=re.MULTILINE):
+        section = section.strip()
+        if not section:
+            continue
+        lines = section.splitlines()
+        name = lines[0].strip().lower()
+        body = '\n'.join(lines[1:])
+
+        if name == 'faq':
+            for item in re.split(r'^### ', body, flags=re.MULTILINE):
+                item = item.strip()
+                if not item:
+                    continue
+                ilines = item.splitlines()
+                q = ilines[0].strip()
+                a = '\n'.join(ilines[1:]).strip()
+                if q:
+                    faq.append({'q': q, 'a': a})
+
+        elif name == 'testimonials':
+            for item in re.split(r'^### ', body, flags=re.MULTILINE):
+                item = item.strip()
+                if not item:
+                    continue
+                ilines = item.splitlines()
+                meta = ilines[0].strip()
+                quote = '\n'.join(ilines[1:]).strip()
+                if meta:
+                    testimonials.append({'meta': meta, 'quote': quote})
+
+    result = dict(fm)
+    result['testimonials_visible'] = fm.get('testimonials_visible', 'false').lower() == 'true'
+    result['faq'] = faq
+    result['testimonials'] = testimonials
+    return result
+
+
+def git_push(ledger: dict, photos: dict, btp: dict):
     (ROOT / 'ledger.json').write_text(json.dumps(ledger, indent=2) + '\n')
     (ROOT / 'photos.json').write_text(json.dumps(photos, indent=2) + '\n')
+    (ROOT / 'btp.json').write_text(json.dumps(btp, indent=2) + '\n')
 
     subprocess.run(
         ['git', 'add',
          'ledger.md', 'ledger.json',
          'photos.md', 'photos.json',
+         'btp.md',    'btp.json',
          'squarespace-bundle.html',
+         'squarespace-musings.html',
+         'squarespace-btp.html',
          'squarespace-header-inject.css',
+         'squarespace-btp-header-inject.css',
          'publish.py'],
         check=True, cwd=ROOT,
     )
@@ -113,10 +170,11 @@ def git_push(ledger: dict, photos: dict):
         raise subprocess.CalledProcessError(result.returncode, result.args)
     subprocess.run(['git', 'push'], check=True, cwd=ROOT)
 
-    print(f'Published ledger ({ledger["entries"]} entries) + photos ({len(photos["photos"])} slots) for {ledger["date"]}')
+    print(f'Published ledger ({ledger["entries"]} entries) + photos ({len(photos["photos"])} slots) + btp ({len(btp["faq"])} FAQs) for {ledger["date"]}')
 
 
 if __name__ == '__main__':
     ledger = parse_ledger(ROOT / 'ledger.md')
     photos = parse_photos(ROOT / 'photos.md')
-    git_push(ledger, photos)
+    btp    = parse_btp(ROOT / 'btp.md')
+    git_push(ledger, photos, btp)

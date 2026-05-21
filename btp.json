@@ -1,0 +1,56 @@
+{
+  "cohort": "Cohort 2",
+  "cohort_url": "https://www.puhala.com/store/beyond-the-prompt-cohort-2",
+  "price": "250",
+  "seats": "12",
+  "testimonials_visible": false,
+  "pill": "Cohort 2 \u2014 Applications Now Open \u00b7 Start Date: June 9th",
+  "headline": "Move from AI prompting to",
+  "headline_dim": "autonomous agentic workflows.",
+  "subheadline": "Beyond the Prompt is a 3-week sprint for knowledge workers who are already using AI and have started to wonder what they're trading for the speed. Small cohort. Weekly live calls. You bring your real work. You leave with a system.",
+  "hero_cta": "Join Cohort 2 \u2014 June 9",
+  "week1_kicker": "Week 1 \u2014 Tuesday, June 9",
+  "week2_kicker": "Week 2 \u2014 Tuesday, June 16",
+  "week3_kicker": "Week 3 \u2014 Tuesday, June 23",
+  "first_call": "Tuesday, June 9 \u00b7 4:00 PM CDT",
+  "first_call_note": "Then weekly through June 23",
+  "price_meta": "Cohort 2 \u00b7 One-time",
+  "secure_cta": "Secure your spot \u2014 $250",
+  "close_pill": "12 seats \u00b7 Closes when full",
+  "close_headline": "You already know",
+  "close_headline_em": "which problem this solves.",
+  "close_sub": "Cohort 2 is capped at 12. If you've read this far, you've made the decision somewhere already. The button just confirms it.",
+  "close_cta": "Join Cohort 2 \u2014 $250",
+  "faq": [
+    {
+      "q": "Is this recorded?",
+      "a": "Sessions are recorded for cohort members only. The live interaction is the point \u2014 recordings are a backup, not the product."
+    },
+    {
+      "q": "What tools do I need?",
+      "a": "Whatever you're already using. The Week 0 audit meets you where you are. The cohort is tool-agnostic."
+    },
+    {
+      "q": "Is this right for me if I'm just starting with AI?",
+      "a": "Probably not. BTP is for people 6 months or more in who still feel like they're circling. If you're earlier in the journey, start with The Drop-In."
+    },
+    {
+      "q": "What's the refund policy?",
+      "a": "Full refund if you cancel before Week 1 begins."
+    }
+  ],
+  "testimonials": [
+    {
+      "meta": "Name \u00b7 Role \u00b7 Company",
+      "quote": "\"Placeholder \u2014 replace with a real Cohort 1 pull-quote after the 30-day call.\""
+    },
+    {
+      "meta": "Name \u00b7 Role \u00b7 Company",
+      "quote": "\"Placeholder \u2014 replace with a real Cohort 1 pull-quote after the 30-day call.\""
+    },
+    {
+      "meta": "Name \u00b7 Role \u00b7 Company",
+      "quote": "\"Placeholder \u2014 replace with a real Cohort 1 pull-quote after the 30-day call.\""
+    }
+  ]
+}
