@@ -92,6 +92,18 @@ def parse_photos(path: Path) -> dict:
     }
 
 
+def md_to_html(text: str) -> str:
+    """Convert plain paragraphs with **bold** and *italic* to HTML."""
+    paras = [p.strip() for p in text.strip().split('\n\n') if p.strip()]
+    result = []
+    for p in paras:
+        p = p.replace('\n', ' ')
+        p = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', p)
+        p = re.sub(r'\*(.+?)\*',     r'<em>\1</em>',         p)
+        result.append(f'<p>{p}</p>')
+    return ''.join(result)
+
+
 def parse_btp(path: Path) -> dict:
     text = path.read_text()
 
@@ -104,6 +116,7 @@ def parse_btp(path: Path) -> dict:
                 fm[k.strip()] = v.strip()
         text = text[fm_match.end():]
 
+    weeks = []
     faq = []
     testimonials = []
 
@@ -115,7 +128,34 @@ def parse_btp(path: Path) -> dict:
         name = lines[0].strip().lower()
         body = '\n'.join(lines[1:])
 
-        if name == 'faq':
+        if name == 'weeks':
+            for item in re.split(r'^### ', body, flags=re.MULTILINE):
+                item = item.strip()
+                if not item:
+                    continue
+                ilines = item.splitlines()
+                week_id = ilines[0].strip()
+                rest = '\n'.join(ilines[1:])
+                # Split key:value header from prose body (separated by blank line)
+                parts = re.split(r'\n\n', rest, maxsplit=1)
+                fields = {}
+                for line in parts[0].splitlines():
+                    if ':' in line:
+                        k, v = line.split(':', 1)
+                        fields[k.strip()] = v.strip()
+                prose = parts[1].strip() if len(parts) > 1 else ''
+                delivery = fields.get('delivery', '').replace(' | ', '<br>')
+                weeks.append({
+                    'id':              week_id,
+                    'kicker':          fields.get('kicker', ''),
+                    'delivery':        delivery,
+                    'title':           fields.get('title', ''),
+                    'body':            md_to_html(prose),
+                    'deliverable_lbl': fields.get('deliverable_lbl', ''),
+                    'deliverable_val': fields.get('deliverable_val', ''),
+                })
+
+        elif name == 'faq':
             for item in re.split(r'^### ', body, flags=re.MULTILINE):
                 item = item.strip()
                 if not item:
@@ -139,6 +179,7 @@ def parse_btp(path: Path) -> dict:
 
     result = dict(fm)
     result['testimonials_visible'] = fm.get('testimonials_visible', 'false').lower() == 'true'
+    result['weeks'] = weeks
     result['faq'] = faq
     result['testimonials'] = testimonials
     return result

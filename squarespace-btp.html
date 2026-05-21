@@ -164,7 +164,7 @@
       <div class="btp-weeks">
 
         <!-- Week 0 -->
-        <article class="btp-week btp-week--zero">
+        <article class="btp-week btp-week--zero" data-btp-week="0">
           <div class="btp-week-tag">
             <div class="btp-week-kicker">Week 0</div>
             <div class="btp-week-num btp-week-num--warm">00</div>
@@ -180,9 +180,9 @@
         </article>
 
         <!-- Week 1 -->
-        <article class="btp-week">
+        <article class="btp-week" data-btp-week="1">
           <div class="btp-week-tag">
-            <div class="btp-week-kicker" data-btp="week1_kicker">Week 1 — Tuesday, June 9</div>
+            <div class="btp-week-kicker">Week 1 — Tuesday, June 9</div>
             <div class="btp-week-num btp-week-num--blue">01</div>
             <div class="btp-week-delivery">90-min live session<br>+ async channel</div>
           </div>
@@ -201,9 +201,9 @@
         </article>
 
         <!-- Week 2 -->
-        <article class="btp-week">
+        <article class="btp-week" data-btp-week="2">
           <div class="btp-week-tag">
-            <div class="btp-week-kicker" data-btp="week2_kicker">Week 2 — Tuesday, June 16</div>
+            <div class="btp-week-kicker">Week 2 — Tuesday, June 16</div>
             <div class="btp-week-num btp-week-num--blue">02</div>
             <div class="btp-week-delivery">90-min live session<br>+ async channel</div>
           </div>
@@ -223,9 +223,9 @@
         </article>
 
         <!-- Week 3 -->
-        <article class="btp-week btp-week--three">
+        <article class="btp-week btp-week--three" data-btp-week="3">
           <div class="btp-week-tag">
-            <div class="btp-week-kicker" data-btp="week3_kicker">Week 3 — Tuesday, June 23</div>
+            <div class="btp-week-kicker">Week 3 — Tuesday, June 23</div>
             <div class="btp-week-num btp-week-num--blue">03</div>
             <div class="btp-week-delivery">90-min live session<br>+ diagnostic prep</div>
           </div>
@@ -244,7 +244,7 @@
         </article>
 
         <!-- +30 Days -->
-        <article class="btp-week">
+        <article class="btp-week" data-btp-week="30">
           <div class="btp-week-tag">
             <div class="btp-week-kicker">+30 Days</div>
             <div class="btp-week-num">30</div>
@@ -1127,6 +1127,33 @@ body [data-section-id] {
         var v = d[el.getAttribute('data-btp-href')];
         if (v) el.href = v;
       });
+
+      /* Weeks — populate each article by data-btp-week id */
+      if (d.weeks && d.weeks.length) {
+        d.weeks.forEach(function(w) {
+          var art = document.querySelector('[data-btp-week="' + w.id + '"]');
+          if (!art) return;
+          var kicker = art.querySelector('.btp-week-kicker');
+          if (kicker) kicker.textContent = w.kicker;
+          var delivery = art.querySelector('.btp-week-delivery');
+          if (delivery) delivery.innerHTML = w.delivery;
+          var title = art.querySelector('.btp-week-body h3');
+          if (title) title.textContent = w.title;
+          var prose = art.querySelector('.btp-week-body .btp-prose');
+          if (prose) prose.innerHTML = w.body;
+          var deliv = art.querySelector('.btp-deliverable');
+          if (deliv) {
+            if (w.deliverable_val) {
+              var lbl = deliv.querySelector('.btp-deliverable-lbl');
+              if (lbl) lbl.textContent = w.deliverable_lbl || 'Deliverable';
+              var val = deliv.querySelector('.btp-deliverable-val');
+              if (val) val.textContent = w.deliverable_val;
+            } else {
+              deliv.style.display = 'none';
+            }
+          }
+        });
+      }
 
       /* FAQ — render into [data-btp-faq] container */
       var faqEl = document.querySelector('[data-btp-faq]');

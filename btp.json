@@ -9,9 +9,6 @@
   "headline_dim": "autonomous agentic workflows.",
   "subheadline": "Beyond the Prompt is a 3-week sprint for knowledge workers who are already using AI and have started to wonder what they're trading for the speed. Small cohort. Weekly live calls. You bring your real work. You leave with a system.",
   "hero_cta": "Join Cohort 2 \u2014 June 9",
-  "week1_kicker": "Week 1 \u2014 Tuesday, June 9",
-  "week2_kicker": "Week 2 \u2014 Tuesday, June 16",
-  "week3_kicker": "Week 3 \u2014 Tuesday, June 23",
   "first_call": "Tuesday, June 9 \u00b7 4:00 PM CDT",
   "first_call_note": "Then weekly through June 23",
   "price_meta": "Cohort 2 \u00b7 One-time",
@@ -21,6 +18,53 @@
   "close_headline_em": "which problem this solves.",
   "close_sub": "Cohort 2 is capped at 12. If you've read this far, you've made the decision somewhere already. The button just confirms it.",
   "close_cta": "Join Cohort 2 \u2014 $250",
+  "weeks": [
+    {
+      "id": "0",
+      "kicker": "Week 0",
+      "delivery": "Delivered async<br>before the cohort starts",
+      "title": "The Audit",
+      "body": "<p>Before anything else, you map what you're actually doing. Not what you think you're doing. A structured self-assessment covering which tools you use and how often, what you're genuinely offloading versus what you still own, and where your thinking is engaging versus coasting.</p><p>The audit creates the gap the cohort closes. Without it, every framework that follows feels generic. With it, everything clicks against real behavior.</p>",
+      "deliverable_lbl": "",
+      "deliverable_val": ""
+    },
+    {
+      "id": "1",
+      "kicker": "Week 1 \u2014 Tuesday, June 9",
+      "delivery": "90-min live session<br>+ async channel",
+      "title": "Prompts to Workflows",
+      "body": "<p>The session opens with a live exercise. The same question, two containers. Once in a chat window where the answer evaporates. Once written to a file on your filesystem \u2014 a document you own, can edit, can build on. The debrief: <em>what changed?</em> Not the information. The relationship with the output.</p><p>Then: <strong>the Four Principles.</strong> Before any framework, the philosophy. Think before prompting. Simplify to the minimum. Make surgical changes. Define what done looks like before you start. These four explain why most prompting is still prompting even when people believe it's something more.</p><p>Main teaching: <strong>the 3-layer workflow model.</strong> Context layer \u2014 what the AI needs to know before you ask. Execution layer \u2014 the difference between a prompt and a brief. Review layer \u2014 how to evaluate output without outsourcing your judgment.</p>",
+      "deliverable_lbl": "Deliverable",
+      "deliverable_val": "One core workflow rebuilt from scratch using the 3-layer model."
+    },
+    {
+      "id": "2",
+      "kicker": "Week 2 \u2014 Tuesday, June 16",
+      "delivery": "90-min live session<br>+ async channel",
+      "title": "Operating Rhythm",
+      "body": "<p>The question isn't just <em>how</em> you work with AI. It's <em>when</em>.</p><p>Deep work blocks stay AI-free. That's where the cognitive reps happen \u2014 the thinking that has to remain yours. Synthesis blocks bring AI in after you've done the work. Recovery is non-negotiable.</p><p>You'll design your <strong>Personal Performance OS</strong>: a one-page document describing your daily rhythm, where AI fits in, and where it doesn't.</p><p>You'll also build your first recurring skill: <strong>the Weekly Intelligence Briefing.</strong> Every Friday, the agent pulls what you need to know across your specific domains and writes a structured report to a file. Not a chat answer that disappears. A document waiting for you when you sit down.</p>",
+      "deliverable_lbl": "Deliverables",
+      "deliverable_val": "Personal Performance OS \u00b7 Weekly Intelligence Briefing running."
+    },
+    {
+      "id": "3",
+      "kicker": "Week 3 \u2014 Tuesday, June 23",
+      "delivery": "90-min live session<br>+ diagnostic prep",
+      "title": "Diagnostic",
+      "body": "<p>Content delivery ends in Week 2. <em>Week 3 is about what actually happened.</em></p><p>Before the live call, you complete a six-question diagnostic. Which skills ran every day. Which ran once. Which never ran. Where the output felt off. Where it surprised you. Michael reviews responses before the call. The session runs on this foundation, not on first-pass discovery.</p><p>Then: <strong>Skill 10.</strong> The answer to the highest-friction moment you named in the diagnostic. Not a template. Not a pre-built script. You name the gap, write a one-paragraph spec, and build it live. By the end of the session, it's running.</p>",
+      "deliverable_lbl": "Deliverables",
+      "deliverable_val": "System snapshot \u00b7 Skill 10 built and running \u00b7 one forward commitment said aloud to the group."
+    },
+    {
+      "id": "30",
+      "kicker": "+30 Days",
+      "delivery": "One call<br>One month after Week 3",
+      "title": "The 30-Day Check-In",
+      "body": "<p>One call, a month out. What held. What broke. What surprised you. An accountability anchor \u2014 and a chance to reconnect with 11 other people who built the same thing.</p>",
+      "deliverable_lbl": "",
+      "deliverable_val": ""
+    }
+  ],
   "faq": [
     {
       "q": "Is this recorded?",
