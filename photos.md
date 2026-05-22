@@ -34,10 +34,10 @@ caption_left: Tokyo
 caption_right: Leica · 28mm · 2024
 
 ## p06
-url:
-alt: Coffee, Tuesday
-caption_left: Coffee, Tuesday
-caption_right: Phoenix · 35mm · 2026
+url:https://images.squarespace-cdn.com/content/v1/5b8ec617b98a78f74d735728/1779465284452-GX916ATAOUSYF34ZPEEJ/IMG_4287+Copy.JPG
+alt: Queensbath
+caption_left: Queensbath
+caption_right: Hawaii
 
 ## p07
 url:
