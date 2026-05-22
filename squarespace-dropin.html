@@ -841,7 +841,7 @@ body [class*="fe-block"], body [class*="fe-col"] {
 
   /* ===== Editions — JSON-first, RSS fallback ===== */
   var MAX = 5;
-  var FEED = 'https://thedropin.beehiiv.com/feed';
+  var FEED = 'https://rss.beehiiv.com/feeds/WBWvs96dF3.xml';
 
   fetch(DI_JSON).then(function(r){ return r.json(); }).then(function(d) {
     // Plain text fields
@@ -901,27 +901,23 @@ body [class*="fe-block"], body [class*="fe-col"] {
         }
       }
     }
-    // Editions — if curated list present, render it; otherwise try live RSS
-    if (d.editions && d.editions.length) {
-      var items = d.editions.slice(0, MAX).map(function(e) {
-        return {
-          title:   e.title,
-          link:    e.url,
-          date:    e.date,
-          desc:    '',
-          edition: parseInt(e.no, 10) || null,
-        };
-      });
-      render(items, 'curated');
-    } else {
-      loadFeed();
-    }
-  }).catch(function(){ loadFeed(); });
+    // Store curated list for use as RSS fallback
+    _curatedEditions = (d.editions || []).filter(function(e) {
+      return e.url && e.url.indexOf('REPLACE') === -1;
+    });
+  }).catch(function(){});
+
+  // Always try live RSS first; curated list catches it if all proxies fail
+  loadFeed();
+
+  var _curatedEditions = [];
 
   var FALLBACK = [
-    { title: 'Revisiting Protopia', link: 'https://thedropin.beehiiv.com/p/the-drop-in-revisiting-protopia', edition: 15, date: '' },
-    { title: 'The Drop-In is Back', link: 'https://thedropin.beehiiv.com/p/the-drop-in-is-back',            edition: 14, date: '' },
-    { title: 'Phones & Flow',       link: 'https://thedropin.beehiiv.com/p/the-drop-in-phones-flow',        edition: 13, date: '' }
+    { title: 'Faster Output, Softer Mind', link: 'https://thedropin.beehiiv.com/p/the-drop-in-faster-output-softer-mind', edition: 22, date: '2026-05-21' },
+    { title: 'Lo-Fi in a Wi-Fi World',     link: 'https://thedropin.beehiiv.com/p/the-drop-in-lo-fi-in-a-wi-fi-world',    edition: 21, date: '2026-05-14' },
+    { title: 'Stuck at the Prompt',        link: 'https://thedropin.beehiiv.com/p/the-drop-in-stuck-at-the-prompt',       edition: 20, date: '2026-05-07' },
+    { title: 'Bring Your Own Agent',       link: 'https://thedropin.beehiiv.com/p/bring-your-own-agent',                  edition: 19, date: '2026-04-30' },
+    { title: 'The Quiet Trade',            link: 'https://thedropin.beehiiv.com/p/the-drop-in-the-quiet-trade',           edition: 18, date: '2026-04-23' },
   ];
 
   function fmtDate(d) {
@@ -1001,9 +997,12 @@ body [class*="fe-block"], body [class*="fe-col"] {
   }
 
   function renderFallback() {
-    render(FALLBACK.map(function(f) {
+    var source = _curatedEditions.length ? _curatedEditions.map(function(e) {
+      return { title: e.title, link: e.url, edition: parseInt(e.no, 10) || null, date: e.date, desc: '' };
+    }) : FALLBACK.map(function(f) {
       return { title: f.title, link: f.link, edition: f.edition, date: f.date, desc: '' };
-    }), 'cached');
+    });
+    render(source, 'cached');
   }
 
   function parseRSS2JSON(data) {

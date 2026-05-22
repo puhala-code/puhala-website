@@ -16,36 +16,6 @@ subscribe_fine_url: https://www.puhala.com/beyond-the-prompt
 
 ## editions
 
-### 022
-url: https://thedropin.beehiiv.com/p/REPLACE-022
-title: REPLACE WITH EDITION TITLE
-date: 2026-05-18
-
-### 021
-url: https://thedropin.beehiiv.com/p/REPLACE-021
-title: REPLACE WITH EDITION TITLE
-date: 2026-05-11
-
-### 020
-url: https://thedropin.beehiiv.com/p/REPLACE-020
-title: REPLACE WITH EDITION TITLE
-date: 2026-05-04
-
-### 019
-url: https://thedropin.beehiiv.com/p/REPLACE-019
-title: REPLACE WITH EDITION TITLE
-date: 2026-04-27
-
-### 018
-url: https://thedropin.beehiiv.com/p/REPLACE-018
-title: REPLACE WITH EDITION TITLE
-date: 2026-04-20
-
-### 017
-url: https://thedropin.beehiiv.com/p/REPLACE-017
-title: REPLACE WITH EDITION TITLE
-date: 2026-04-13
-
 ## trio
 
 ### A · Idea
