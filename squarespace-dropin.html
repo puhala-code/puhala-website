@@ -831,7 +831,7 @@ body [class*="fe-block"], body [class*="fe-col"] {
   btnDark .addEventListener('click', function(){ applyMode('dark'); });
 
   /* ===== dropin.json content fetch ===== */
-  var DI_JSON = 'https://raw.githubusercontent.com/puhala-code/puhala-website/main/dropin.json';
+  var DI_JSON = 'https://raw.githubusercontent.com/puhala-code/puhala-website/main/dropin.json?_=' + Date.now();
 
   function escHTML(s) {
     return String(s == null ? '' : s)

@@ -1110,7 +1110,7 @@ body [data-section-id] {
   }
 
   /* ── btp.json content fetch ───────────────────────────────── */
-  var BTP_JSON = 'https://raw.githubusercontent.com/puhala-code/puhala-website/main/btp.json';
+  var BTP_JSON = 'https://raw.githubusercontent.com/puhala-code/puhala-website/main/btp.json?_=' + Date.now();
 
   fetch(BTP_JSON)
     .then(function(r) { return r.json(); })

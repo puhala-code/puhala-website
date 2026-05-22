@@ -776,7 +776,7 @@
 (function(){
   // SET THIS after pushing the repo to GitHub:
   // https://raw.githubusercontent.com/YOUR_USERNAME/puhala-website/main/ledger.json
-  var LEDGER_URL = 'https://raw.githubusercontent.com/puhala-code/puhala-website/main/ledger.json';
+  var LEDGER_URL = 'https://raw.githubusercontent.com/puhala-code/puhala-website/main/ledger.json?_=' + Date.now();
 
   var container = document.getElementById('pmvp-ledger-rows');
   var meta      = document.getElementById('pmvp-ledger-meta');
@@ -820,7 +820,7 @@
 (function(){
   // SET THIS after pushing the repo to GitHub:
   // https://raw.githubusercontent.com/puhala-code/puhala-website/main/photos.json
-  var PHOTOS_URL = 'https://raw.githubusercontent.com/puhala-code/puhala-website/main/photos.json';
+  var PHOTOS_URL = 'https://raw.githubusercontent.com/puhala-code/puhala-website/main/photos.json?_=' + Date.now();
 
   function applyToPlate(frame, url, alt) {
     var inner = frame.querySelector('.pmvp-plate__inner');
