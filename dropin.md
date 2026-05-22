@@ -12,6 +12,7 @@ subscribe_title: Get the next one in your *inbox*.
 subscribe_body: Free. Drops weekly. Unsubscribe anytime. The signup is hosted on Beehiiv — enter your email below and we'll pass you over.
 subscribe_url: https://thedropin.beehiiv.com/subscribe
 subscribe_fine_url: https://www.puhala.com/beyond-the-prompt
+latest_edition: 22
 ---
 
 ## editions

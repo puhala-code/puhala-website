@@ -842,6 +842,8 @@ body [class*="fe-block"], body [class*="fe-col"] {
   /* ===== Editions — JSON-first, RSS fallback ===== */
   var MAX = 5;
   var FEED = 'https://rss.beehiiv.com/feeds/WBWvs96dF3.xml';
+  var _latestEdition = null;
+  var _curatedEditions = [];
 
   fetch(DI_JSON).then(function(r){ return r.json(); }).then(function(d) {
     // Plain text fields
@@ -905,12 +907,16 @@ body [class*="fe-block"], body [class*="fe-col"] {
     _curatedEditions = (d.editions || []).filter(function(e) {
       return e.url && e.url.indexOf('REPLACE') === -1;
     });
+    // Masthead edition count
+    if (d.latest_edition) {
+      _latestEdition = parseInt(d.latest_edition, 10) || null;
+      var countEl = root.querySelector('#pmvp-masthead-count');
+      if (countEl && _latestEdition) countEl.textContent = _latestEdition + ' editions shipped';
+    }
   }).catch(function(){});
 
   // Always try live RSS first; curated list catches it if all proxies fail
   loadFeed();
-
-  var _curatedEditions = [];
 
   var FALLBACK = [
     { title: 'Faster Output, Softer Mind', link: 'https://thedropin.beehiiv.com/p/the-drop-in-faster-output-softer-mind', edition: 22, date: '2026-05-21' },
@@ -962,23 +968,23 @@ body [class*="fe-block"], body [class*="fe-col"] {
       return;
     }
     items = items.slice(0, MAX);
-    var maxEd = 0;
-    items.forEach(function(it){ if (it.edition && it.edition > maxEd) maxEd = it.edition; });
-    if (maxEd) {
+    // Use latest_edition from dropin.json; items with parsed edition numbers also contribute
+    var effectiveMax = _latestEdition || 0;
+    items.forEach(function(it){ if (it.edition && it.edition > effectiveMax) effectiveMax = it.edition; });
+    if (effectiveMax) {
       var meta = document.getElementById('pmvp-ledger-meta');
-      if (meta) meta.textContent = maxEd + ' editions · live from Beehiiv';
+      if (meta) meta.textContent = effectiveMax + ' editions · live from Beehiiv';
       var strip = document.getElementById('pmvp-strip-edition');
-      if (strip) strip.textContent = 'Edition ' + String(maxEd).padStart(3, '0');
-      var count = document.getElementById('pmvp-masthead-count');
-      if (count) count.textContent = maxEd + ' editions shipped';
+      if (strip) strip.textContent = 'Edition ' + String(effectiveMax).padStart(3, '0');
     } else {
       var meta2 = document.getElementById('pmvp-ledger-meta');
       if (meta2) meta2.textContent = items.length + ' editions · ' + (source || 'live');
     }
     container.innerHTML = items.map(function(it, idx) {
-      var no = it.edition
-        ? String(it.edition).padStart(3, '0')
-        : String(items.length - idx).padStart(3, '0');
+      // Edition number: explicit > inferred from latest_edition > positional
+      var edNo = it.edition
+        || (_latestEdition ? _latestEdition - idx : items.length - idx);
+      var no = String(edNo).padStart(3, '0');
       var date = fmtDate(it.date) || '—';
       var title = escHTML(cleanTitle(it.title));
       var desc = it.desc ? '<span class="pmvp-edition__desc">' + escHTML(it.desc) + '</span>' : '';
@@ -1012,8 +1018,9 @@ body [class*="fe-block"], body [class*="fe-col"] {
         title:   it.title,
         link:    it.link,
         date:    it.pubDate || it.published || '',
-        desc:    stripTags(it.description || it.content || ''),
-        edition: parseEditionNumber(it.title)
+        // description = "Edition 022"; content = full HTML — use content for teaser
+        desc:    stripTags(it.content || ''),
+        edition: parseEditionNumber(it.title) || parseEditionNumber(it.description || '')
       };
     });
   }
