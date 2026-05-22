@@ -28,10 +28,10 @@ caption_left: Movement
 caption_right: Home · Leica · 2025
 
 ## p05
-url:
-alt: Type specimen
-caption_left: Type specimen
-caption_right: Library · 35mm · 2024
+url:https://images.squarespace-cdn.com/content/v1/5b8ec617b98a78f74d735728/1779460219873-7ZDUJ5OK68WEKF5NI6T2/DO01000683.jpg
+alt: Tokyo
+caption_left: Tokyo
+caption_right: Leica · 28mm · 2024
 
 ## p06
 url:
