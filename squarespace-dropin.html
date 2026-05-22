@@ -839,6 +839,10 @@ body [class*="fe-block"], body [class*="fe-col"] {
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
+  /* ===== Editions — JSON-first, RSS fallback ===== */
+  var MAX = 5;
+  var FEED = 'https://thedropin.beehiiv.com/feed';
+
   fetch(DI_JSON).then(function(r){ return r.json(); }).then(function(d) {
     // Plain text fields
     ['hero_sub', 'masthead_strap', 'aside_kicker', 'aside_blurb',
@@ -897,11 +901,22 @@ body [class*="fe-block"], body [class*="fe-col"] {
         }
       }
     }
-  }).catch(function(){});
-
-  /* ===== Pull recent editions from Beehiiv RSS ===== */
-  var FEED = 'https://thedropin.beehiiv.com/feed';
-  var MAX = 5;
+    // Editions — if curated list present, render it; otherwise try live RSS
+    if (d.editions && d.editions.length) {
+      var items = d.editions.slice(0, MAX).map(function(e) {
+        return {
+          title:   e.title,
+          link:    e.url,
+          date:    e.date,
+          desc:    '',
+          edition: parseInt(e.no, 10) || null,
+        };
+      });
+      render(items, 'curated');
+    } else {
+      loadFeed();
+    }
+  }).catch(function(){ loadFeed(); });
 
   var FALLBACK = [
     { title: 'Revisiting Protopia', link: 'https://thedropin.beehiiv.com/p/the-drop-in-revisiting-protopia', edition: 15, date: '' },
@@ -1077,8 +1092,6 @@ body [class*="fe-block"], body [class*="fe-col"] {
     }
     next(0);
   }
-
-  loadFeed();
 
 })();
 </script>

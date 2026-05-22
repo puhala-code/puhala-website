@@ -212,6 +212,7 @@ def parse_dropin(path: Path) -> dict:
         if key in fm:
             fm[key] = md_to_html(fm[key])
 
+    editions = []
     trio = []
     socials = []
 
@@ -223,7 +224,26 @@ def parse_dropin(path: Path) -> dict:
         name = lines[0].strip().lower()
         body = '\n'.join(lines[1:])
 
-        if name == 'trio':
+        if name == 'editions':
+            for item in re.split(r'^### ', body, flags=re.MULTILINE):
+                item = item.strip()
+                if not item:
+                    continue
+                ilines = item.splitlines()
+                edition_no = ilines[0].strip()
+                fields = {}
+                for line in ilines[1:]:
+                    if ':' in line:
+                        k, v = line.split(':', 1)
+                        fields[k.strip()] = v.strip()
+                editions.append({
+                    'no':    edition_no,
+                    'url':   fields.get('url', '#'),
+                    'title': fields.get('title', ''),
+                    'date':  fields.get('date', ''),
+                })
+
+        elif name == 'trio':
             for item in re.split(r'^### ', body, flags=re.MULTILINE):
                 item = item.strip()
                 if not item:
@@ -252,6 +272,7 @@ def parse_dropin(path: Path) -> dict:
                 })
 
     result = dict(fm)
+    result['editions'] = editions
     result['trio'] = trio
     result['socials'] = socials
     return result
