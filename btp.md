@@ -21,6 +21,8 @@ close_headline: Beyond the Prompt takes you from an AI user to
 close_headline_em: an AI architect.
 close_sub: Cohort 2 is capped at 12. If you've read this far, you've made the decision somewhere already. The button just confirms it.
 close_cta: Join Cohort 2 — $250
+
+portrait_url:
 ---
 
 ## weeks

@@ -339,8 +339,7 @@
       </div>
       <div class="btp-cred">
 
-        <div class="btp-cred-photo">
-          <!-- Replace with: <img src="URL" alt="Michael Puhala" class="btp-cred-img"> -->
+        <div class="btp-cred-photo" data-btp-photo="portrait_url">
           <span class="btp-cred-photo-label">// portrait — Michael Puhala</span>
         </div>
 
@@ -1180,6 +1179,19 @@ body [data-section-id] {
                 '</div>';
             }).join('');
           }
+        }
+      }
+
+      /* Portrait photo */
+      if (d.portrait_url) {
+        var photoEl = document.querySelector('[data-btp-photo="portrait_url"]');
+        if (photoEl) {
+          var img = document.createElement('img');
+          img.src = d.portrait_url;
+          img.alt = 'Michael Puhala';
+          img.className = 'btp-cred-img';
+          photoEl.innerHTML = '';
+          photoEl.appendChild(img);
         }
       }
 
