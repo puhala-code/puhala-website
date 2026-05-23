@@ -5,14 +5,14 @@ price: 250
 seats: 12
 testimonials_visible: false
 
-pill: Cohort 2 — Applications Now Open · Start Date: June 9th
+pill: Cohort 2 — Applications Now Open · Start Date: July 7th
 headline: Move from AI prompting to
 headline_dim: autonomous agentic workflows.
 subheadline: Beyond the Prompt is a 3-week sprint for knowledge workers who are already using AI and have started to wonder what they're trading for the speed. Small cohort. Weekly live calls. You bring your real work. You leave with a system.
-hero_cta: Join Cohort 2 — June 9
+hero_cta: Join Cohort 2 — July 7
 
-first_call: Tuesday, June 9 · 4:00 PM CDT
-first_call_note: Then weekly through June 23
+first_call: Tuesday, July 7 · 4:00 PM CDT
+first_call_note: Then weekly through July 21
 price_meta: Cohort 2 · One-time
 secure_cta: Secure your spot — $250
 
@@ -22,7 +22,7 @@ close_headline_em: an AI architect.
 close_sub: Cohort 2 is capped at 12. If you've read this far, you've made the decision somewhere already. The button just confirms it.
 close_cta: Join Cohort 2 — $250
 
-portrait_url:https://images.squarespace-cdn.com/content/v1/5b8ec617b98a78f74d735728/1779463030060-AIJ370IPQS9DB3D7DW4D/headshot-btp.png?
+portrait_url:https://images.squarespace-cdn.com/content/v1/5b8ec617b98a78f74d735728/1779549956852-CDBH0B0IB9XCEO8UQ6P2/head-shot-btp.png?
 ---
 
 ## weeks
@@ -32,7 +32,7 @@ kicker: Week 0
 delivery: Delivered async | before the cohort starts
 title: The Audit
 
-Before anything else, you map what you're actually doing. Not what you think you're doing. A structured self-assessment covering which tools you use and how often, what you're genuinely offloading versus what you still own, and where your thinking is engaging versus coasting.
+Before anything else, you map what you're actually doing. Not what you think you're doing. A structured self-assessment covering which tools you use and how often, what you're genuinely offloading versus what you still own, and where your thinking is engaging versus coasting. Week 0 also produces a About Me file that your Agentic OS will use as context for every conversation and every agent.
 
 The audit creates the gap the cohort closes. Without it, every framework that follows feels generic. With it, everything clicks against real behavior.
 
