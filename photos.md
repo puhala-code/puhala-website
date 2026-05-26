@@ -34,13 +34,13 @@ caption_left: Tokyo
 caption_right: Leica · 28mm · 2024
 
 ## p06
-url:https://images.squarespace-cdn.com/content/v1/5b8ec617b98a78f74d735728/1779465284452-GX916ATAOUSYF34ZPEEJ/IMG_4287+Copy.JPG
-alt: Queensbath
-caption_left: Queensbath
-caption_right: Hawaii
+url:https://images.squarespace-cdn.com/content/v1/5b8ec617b98a78f74d735728/1652987399157-3C6OO4KZ919BX8AYPGWR/DO01000380.jpeg
+alt: London
+caption_left: London
+caption_right: 35mm
 
 ## p07
-url:
-alt: On the road
-caption_left: On the road
+url:https://images.squarespace-cdn.com/content/v1/5b8ec617b98a78f74d735728/1650758878216-092B506RCQIOSCXRTOB5/IMG_3765.jpg
+alt: The Tool
+caption_left: Leica Q2 Monochrome
 caption_right: I-10 · 35mm · 2025
