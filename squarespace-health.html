@@ -182,6 +182,36 @@
   color: var(--muted);
 }
 
+/* Week tabs */
+.pmvp-h-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.pmvp-h-tab {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 8px 16px 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.pmvp-h-tab:hover { color: var(--ink); }
+
+.pmvp-h-tab.active {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
 /* Pass/fail flags */
 .pmvp-h-pass  { color: var(--green); font-weight: 500; }
 .pmvp-h-fail  { color: var(--red);   font-weight: 500; }
@@ -572,66 +602,31 @@
     }
     html += '</div>'; // end yesterday section
 
-    // ── Nutrition — This Week ─────────────────────────────────
-    var week = nutr.week || [];
-    if (week.length > 0) {
-      // Find current week bounds
-      var startLabel = '', endLabel = '';
-      var mon = week.find(function(r){ return r.day === 'Mon'; });
-      var sun = week.find(function(r){ return r.day === 'Sun'; });
-      if (mon) startLabel = formatDateLabel(mon.date);
-      if (sun) endLabel   = formatDateLabel(sun.date);
-      var weekRangeLabel  = startLabel && endLabel ? startLabel + '–' + endLabel : 'this week';
+    // ── Nutrition — This Week / Last Week (tabbed) ───────────
+    var week     = nutr.week      || [];
+    var lastWeek = nutr.last_week || [];
+
+    if (week.length > 0 || lastWeek.length > 0) {
+      var thisWeekMon  = week.find(function(r){ return r.day === 'Mon'; });
+      var thisWeekSun  = week.find(function(r){ return r.day === 'Sun'; });
+      var thisWeekLabel = (thisWeekMon && thisWeekSun)
+        ? formatDateLabel(thisWeekMon.date) + '–' + formatDateLabel(thisWeekSun.date)
+        : 'this week';
+      var lastWeekLabel = nutr.last_week_label || 'last week';
 
       html += '<div class="pmvp-h-section">';
-      html += '<div class="pmvp-h-section-label">Nutrition — ' + weekRangeLabel + '</div>';
-      html += '<table class="pmvp-h-week-table"><thead><tr>';
-      html += '<th></th>';
-      for (var j = 0; j < week.length; j++) {
-        html += '<th>' + week[j].day + '</th>';
-      }
-      html += '</tr></thead><tbody>';
+      html += '<div class="pmvp-h-section-label">Nutrition — weekly</div>';
 
-      var rows = [
-        { key: 'kcal',      label: 'kcal',  suffix: '',  target: targets.kcal_min },
-        { key: 'protein_g', label: 'prot',  suffix: 'g', target: targets.protein_g, proteinRow: true },
-        { key: 'carbs_g',   label: 'carbs', suffix: 'g', target: null },
-        { key: 'fat_g',     label: 'fat',   suffix: 'g', target: null },
-      ];
+      // Tab bar
+      html += '<div class="pmvp-h-tabs">'
+        + '<button class="pmvp-h-tab active" id="pmvp-tab-this" onclick="pmvpSwitchTab(\'this\')">' + thisWeekLabel + '</button>'
+        + '<button class="pmvp-h-tab" id="pmvp-tab-last" onclick="pmvpSwitchTab(\'last\')">' + lastWeekLabel + '</button>'
+        + '</div>';
 
-      for (var ri = 0; ri < rows.length; ri++) {
-        var row = rows[ri];
-        html += '<tr><td>' + row.label + '</td>';
-        for (var ci = 0; ci < week.length; ci++) {
-          var cell = week[ci];
-          var cls = '';
-          var val = '—';
-          if (cell.future) {
-            val = '·';
-            cls = 'future';
-          } else if (cell.logged && cell[row.key] !== undefined) {
-            val = cell[row.key] + row.suffix;
-            if (row.proteinRow && cell.protein_hit) cls = 'protein-hit';
-          } else {
-            cls = 'empty';
-          }
-          html += '<td' + (cls ? ' class="' + cls + '"' : '') + '>' + val + '</td>';
-        }
-        html += '</tr>';
-      }
-      html += '</tbody></table>';
+      // Both panels — swap visibility via JS
+      html += '<div id="pmvp-panel-this">' + buildWeekPanel(week, targets) + '</div>';
+      html += '<div id="pmvp-panel-last" style="display:none">' + buildWeekPanel(lastWeek, targets) + '</div>';
 
-      // Averages
-      var loggedDays = week.filter(function(r){ return r.logged; });
-      if (loggedDays.length > 0) {
-        var avgKcal = Math.round(loggedDays.reduce(function(s,r){ return s + (r.kcal||0); }, 0) / loggedDays.length);
-        var avgProt = Math.round(loggedDays.reduce(function(s,r){ return s + (r.protein_g||0); }, 0) / loggedDays.length);
-        var protHit = loggedDays.filter(function(r){ return r.protein_hit; }).length;
-        html += '<div class="pmvp-h-week-avg">';
-        html += loggedDays.length + '-day avg: <span>' + avgKcal.toLocaleString() + ' kcal</span> · <span>' + avgProt + 'g protein</span><br>';
-        html += 'protein target hit: <span>' + protHit + ' of ' + loggedDays.length + ' days</span>';
-        html += '</div>';
-      }
       html += '</div>'; // end week section
     }
 
@@ -652,6 +647,63 @@
       return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     } catch(e) { return dateStr; }
   }
+
+  function buildWeekPanel(week, targets) {
+    if (!week || week.length === 0) return '<div style="color:var(--muted);font-size:13px;padding:8px 0;">No data.</div>';
+    var out = '';
+    out += '<table class="pmvp-h-week-table"><thead><tr><th></th>';
+    for (var j = 0; j < week.length; j++) out += '<th>' + week[j].day + '</th>';
+    out += '</tr></thead><tbody>';
+
+    var tableRows = [
+      { key: 'kcal',      label: 'kcal',  suffix: ''  },
+      { key: 'protein_g', label: 'prot',  suffix: 'g', proteinRow: true },
+      { key: 'carbs_g',   label: 'carbs', suffix: 'g' },
+      { key: 'fat_g',     label: 'fat',   suffix: 'g' },
+    ];
+
+    for (var ri = 0; ri < tableRows.length; ri++) {
+      var row = tableRows[ri];
+      out += '<tr><td>' + row.label + '</td>';
+      for (var ci = 0; ci < week.length; ci++) {
+        var cell = week[ci];
+        var cls = '', val = '—';
+        if (cell.future) {
+          val = '·'; cls = 'future';
+        } else if (cell.logged && cell[row.key] !== undefined) {
+          val = cell[row.key] + row.suffix;
+          if (row.proteinRow && cell.protein_hit) cls = 'protein-hit';
+        } else {
+          cls = 'empty';
+        }
+        out += '<td' + (cls ? ' class="' + cls + '"' : '') + '>' + val + '</td>';
+      }
+      out += '</tr>';
+    }
+    out += '</tbody></table>';
+
+    var loggedDays = week.filter(function(r){ return r.logged; });
+    if (loggedDays.length > 0) {
+      var avgKcal = Math.round(loggedDays.reduce(function(s,r){ return s+(r.kcal||0);},0) / loggedDays.length);
+      var avgProt = Math.round(loggedDays.reduce(function(s,r){ return s+(r.protein_g||0);},0) / loggedDays.length);
+      var protHit = loggedDays.filter(function(r){ return r.protein_hit; }).length;
+      out += '<div class="pmvp-h-week-avg">';
+      out += loggedDays.length + '-day avg: <span>' + avgKcal.toLocaleString() + ' kcal</span> · <span>' + avgProt + 'g protein</span><br>';
+      out += 'protein target hit: <span>' + protHit + ' of ' + loggedDays.length + ' days</span>';
+      out += '</div>';
+    } else {
+      out += '<div class="pmvp-h-week-avg">No days logged yet.</div>';
+    }
+    return out;
+  }
+
+  function pmvpSwitchTab(which) {
+    document.getElementById('pmvp-panel-this').style.display = which === 'this' ? '' : 'none';
+    document.getElementById('pmvp-panel-last').style.display = which === 'last' ? '' : 'none';
+    document.getElementById('pmvp-tab-this').className = 'pmvp-h-tab' + (which === 'this' ? ' active' : '');
+    document.getElementById('pmvp-tab-last').className = 'pmvp-h-tab' + (which === 'last' ? ' active' : '');
+  }
+  window.pmvpSwitchTab = pmvpSwitchTab;
 
   // ── fetch ────────────────────────────────────────────────
   fetch(HEALTH_URL + '?t=' + Date.now())
