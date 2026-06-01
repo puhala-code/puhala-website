@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-01T11:17:37.751106-07:00",
-  "updated_label": "Monday Jun 1, 2026 \u00b7 11:17 AM Phoenix",
+  "updated": "2026-06-01T11:29:18.249961-07:00",
+  "updated_label": "Monday Jun 1, 2026 \u00b7 11:29 AM Phoenix",
   "sleep": {
     "duration_min": 476,
     "duration_label": "7h 55m",
@@ -22,7 +22,7 @@
     {
       "date": "2026-06-01",
       "date_label": "Jun 1",
-      "sport": "Sport 63",
+      "sport": "Walk / Treadmill",
       "strain": 5.4,
       "duration_min": 38,
       "duration_label": "38m"
@@ -30,7 +30,7 @@
     {
       "date": "2026-05-29",
       "date_label": "May 29",
-      "sport": "Sport 63",
+      "sport": "Walk / Treadmill",
       "strain": 7.4,
       "duration_min": 37,
       "duration_label": "37m"
@@ -46,7 +46,7 @@
     {
       "date": "2026-05-27",
       "date_label": "May 27",
-      "sport": "Sport 63",
+      "sport": "Walk / Treadmill",
       "strain": 4.9,
       "duration_min": 36,
       "duration_label": "36m"
@@ -103,6 +103,51 @@
         "future": true
       }
     ],
+    "last_week": [
+      {
+        "date": "2026-05-25",
+        "day": "Mon",
+        "logged": false,
+        "future": false
+      },
+      {
+        "date": "2026-05-26",
+        "day": "Tue",
+        "logged": false,
+        "future": false
+      },
+      {
+        "date": "2026-05-27",
+        "day": "Wed",
+        "logged": false,
+        "future": false
+      },
+      {
+        "date": "2026-05-28",
+        "day": "Thu",
+        "logged": false,
+        "future": false
+      },
+      {
+        "date": "2026-05-29",
+        "day": "Fri",
+        "logged": false,
+        "future": false
+      },
+      {
+        "date": "2026-05-30",
+        "day": "Sat",
+        "logged": false,
+        "future": false
+      },
+      {
+        "date": "2026-05-31",
+        "day": "Sun",
+        "logged": false,
+        "future": false
+      }
+    ],
+    "last_week_label": "May 25 \u2013 May 31",
     "targets": {
       "kcal_min": 1550,
       "kcal_max": 1800,
