@@ -1,0 +1,16 @@
+/* puhala.com/health — hide Squarespace nav/footer
+   Paste into: Page Settings → Advanced → Page Header Code Injection */
+<style>
+body .header, body #header, body .Header,
+body .header-announcement-bar-wrapper,
+body .footer, body #footer, body .Footer,
+body .sqs-announcement-bar-dropzone {
+  display: none !important;
+}
+body .Main, body #page, body .page-section, body main, body article {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+}
+body { background: #eeeae2 !important; }
+</style>

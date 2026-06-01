@@ -294,9 +294,11 @@ def git_push(ledger: dict, photos: dict, btp: dict, dropin: dict):
          'squarespace-musings.html',
          'squarespace-btp.html',
          'squarespace-dropin.html',
+         'squarespace-health.html',
          'squarespace-header-inject.css',
          'squarespace-btp-header-inject.css',
          'squarespace-dropin-header-inject.css',
+         'squarespace-health-header-inject.css',
          'publish.py'],
         check=True, cwd=ROOT,
     )

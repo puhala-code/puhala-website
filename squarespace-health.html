@@ -1,0 +1,665 @@
+<!--
+  puhala.com/health — Health Dashboard
+  Paste this entire block into a full-width Squarespace Code Block on the /health page.
+  Paste squarespace-health-header-inject.css into Page Settings → Advanced → Page Header Code Injection.
+
+  Data source: health.json fetched from raw GitHub URL below.
+  Updates daily when morning-brief runs health-publish.py.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   puhala.com/health — B1 Bone Archive
+   Scoped under .pmvp-h to avoid bleeding into Squarespace.
+   ============================================================ */
+
+.pmvp-h {
+  --bg:     #eeeae2;
+  --card:   #f5f1e9;
+  --ink:    #1c1e21;
+  --muted:  #6c6a64;
+  --rule:   #cbc6bb;
+  --accent: #3a5b7a;
+  --green:  #2d6a4f;
+  --amber:  #a05c00;
+  --red:    #a02020;
+  --green-bg: #e8f5ee;
+  --amber-bg: #fdf3e3;
+  --red-bg:   #faeaea;
+
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.pmvp-h[data-mode="dark"] {
+  --bg:     #15171a;
+  --card:   #1c1f23;
+  --ink:    #e6e8eb;
+  --muted:  #7a8089;
+  --rule:   #2c3137;
+  --accent: #7fa3c4;
+  --green:  #52b788;
+  --amber:  #f4a261;
+  --red:    #e07070;
+  --green-bg: #1a2e22;
+  --amber-bg: #2e2010;
+  --red-bg:   #2e1a1a;
+}
+
+.pmvp-h * { box-sizing: border-box; }
+.pmvp-h a { color: var(--accent); text-decoration: none; }
+
+/* Layout */
+.pmvp-h-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+/* Header */
+.pmvp-h-header {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pmvp-h-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.pmvp-h-title strong {
+  display: block;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.pmvp-h-updated {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* Dark mode toggle */
+.pmvp-h-toggle {
+  background: none;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  padding: 5px 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: border-color 0.15s, color 0.15s;
+}
+.pmvp-h-toggle:hover { border-color: var(--muted); color: var(--ink); }
+
+/* Section */
+.pmvp-h-section {
+  margin-bottom: 44px;
+}
+
+.pmvp-h-section-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+/* Data rows */
+.pmvp-h-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: center;
+}
+
+.pmvp-h-row:last-child { border-bottom: none; }
+
+.pmvp-h-key {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: lowercase;
+}
+
+.pmvp-h-val {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.pmvp-h-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  min-width: 55px;
+}
+
+.pmvp-h-pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  min-width: 38px;
+}
+
+.pmvp-h-target {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* Pass/fail flags */
+.pmvp-h-pass  { color: var(--green); font-weight: 500; }
+.pmvp-h-fail  { color: var(--red);   font-weight: 500; }
+.pmvp-h-info  { color: var(--muted); }
+
+/* Recovery bar */
+.pmvp-h-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pmvp-h-bar {
+  width: 120px;
+  height: 6px;
+  background: var(--rule);
+  border-radius: 3px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pmvp-h-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.pmvp-h-bar-fill.green { background: var(--green); }
+.pmvp-h-bar-fill.amber { background: var(--amber); }
+.pmvp-h-bar-fill.red   { background: var(--red);   }
+
+.pmvp-h-rec-pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 500;
+}
+.pmvp-h-rec-pct.green { color: var(--green); }
+.pmvp-h-rec-pct.amber { color: var(--amber); }
+.pmvp-h-rec-pct.red   { color: var(--red);   }
+
+/* Workout table */
+.pmvp-h-workout-list {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pmvp-h-workout-list td {
+  padding: 7px 0;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: middle;
+}
+
+.pmvp-h-workout-list tr:last-child td { border-bottom: none; }
+
+.pmvp-h-workout-list .w-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  width: 56px;
+  letter-spacing: 0.06em;
+}
+
+.pmvp-h-workout-list .w-sport {
+  font-size: 14px;
+  color: var(--ink);
+  padding-left: 8px;
+}
+
+.pmvp-h-workout-list .w-strain {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.pmvp-h-workout-list .w-dur {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  text-align: right;
+  width: 48px;
+}
+
+.pmvp-h-workout-count {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+/* Week table */
+.pmvp-h-week-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+}
+
+.pmvp-h-week-table th {
+  text-align: right;
+  padding: 4px 6px 8px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  border-bottom: 1px solid var(--rule);
+}
+
+.pmvp-h-week-table th:first-child { text-align: left; width: 50px; }
+
+.pmvp-h-week-table td {
+  text-align: right;
+  padding: 6px 6px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink);
+}
+
+.pmvp-h-week-table tr:last-child td { border-bottom: none; }
+.pmvp-h-week-table td:first-child { text-align: left; color: var(--muted); }
+
+.pmvp-h-week-table td.protein-hit {
+  color: var(--green);
+  font-weight: 500;
+}
+
+.pmvp-h-week-table td.future { color: var(--rule); }
+.pmvp-h-week-table td.empty  { color: var(--muted); }
+
+.pmvp-h-week-avg {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.pmvp-h-week-avg span { color: var(--ink); }
+
+/* Weight footer */
+.pmvp-h-weight-footer {
+  border-top: 1px solid var(--rule);
+  padding-top: 20px;
+  margin-top: 8px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.pmvp-h-weight-key {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.pmvp-h-weight-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.pmvp-h-weight-when {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* Error state */
+.pmvp-h-error {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 40px 0;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .pmvp-h-wrap { padding: 32px 16px 60px; }
+  .pmvp-h-row  { grid-template-columns: 110px 1fr; }
+  .pmvp-h-week-table { font-size: 10px; }
+  .pmvp-h-week-table th, .pmvp-h-week-table td { padding: 5px 3px; }
+}
+</style>
+
+<div class="pmvp-h" id="pmvp-health-root">
+  <div class="pmvp-h-wrap">
+
+    <div class="pmvp-h-header">
+      <div class="pmvp-h-title">
+        <strong>michael puhala / health</strong>
+        health dashboard
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+        <button class="pmvp-h-toggle" id="pmvp-h-toggle-btn" onclick="pmvpHToggle()">darkroom</button>
+        <div class="pmvp-h-updated" id="pmvp-h-updated">loading…</div>
+      </div>
+    </div>
+
+    <div id="pmvp-h-body">
+      <div class="pmvp-h-error">loading health data…</div>
+    </div>
+
+    <div class="pmvp-h-weight-footer" id="pmvp-h-weight" style="display:none">
+      <div class="pmvp-h-weight-key">weight</div>
+      <div class="pmvp-h-weight-val" id="pmvp-h-weight-val">—</div>
+      <div class="pmvp-h-weight-when" id="pmvp-h-weight-when"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  var HEALTH_URL = 'https://raw.githubusercontent.com/puhala-code/puhala-website/main/health.json';
+  var root = document.getElementById('pmvp-health-root');
+
+  // ── dark mode ──────────────────────────────────────────────
+  function pmvpHToggle() {
+    var dark = root.getAttribute('data-mode') === 'dark';
+    root.setAttribute('data-mode', dark ? '' : 'dark');
+    var btn = document.getElementById('pmvp-h-toggle-btn');
+    btn.textContent = dark ? 'darkroom' : 'daylight';
+    try { localStorage.setItem('pmvp-h-mode', dark ? '' : 'dark'); } catch(e) {}
+  }
+  window.pmvpHToggle = pmvpHToggle;
+  try {
+    var saved = localStorage.getItem('pmvp-h-mode');
+    if (saved === 'dark') { root.setAttribute('data-mode', 'dark'); }
+  } catch(e) {}
+
+  // ── helpers ───────────────────────────────────────────────
+  function dash(v) { return (v === null || v === undefined) ? '—' : v; }
+  function pct(actual, target) {
+    if (!target || !actual) return null;
+    return Math.round((actual / target) * 100);
+  }
+  function fmtNum(n, suffix) {
+    if (n === null || n === undefined) return '—';
+    var s = typeof n === 'number' && n >= 1000 ? n.toLocaleString() : String(n);
+    return suffix ? s + suffix : s;
+  }
+  function flag(actual, target, higherBetter) {
+    if (!target || actual === null || actual === undefined) return '';
+    var ok = higherBetter ? actual >= target : actual <= target;
+    return ok
+      ? '<span class="pmvp-h-pass">✓</span>'
+      : '<span class="pmvp-h-fail">✗</span>';
+  }
+
+  function macroRow(label, actual, target, unit, higherBetter, targetLabel) {
+    var p = pct(actual, target);
+    var pStr = p !== null ? p + '%' : '';
+    var tStr = targetLabel || (target ? (higherBetter ? target + unit + '+' : '≤' + target + unit) : '');
+    return '<div class="pmvp-h-row">'
+      + '<div class="pmvp-h-key">' + label + '</div>'
+      + '<div class="pmvp-h-val">'
+      + '<span class="pmvp-h-num">' + fmtNum(actual, unit) + '</span>'
+      + (p !== null ? '<span class="pmvp-h-pct">' + pStr + '</span>' : '')
+      + (target !== null ? flag(actual, target, higherBetter) : '')
+      + (tStr ? '<span class="pmvp-h-target">' + tStr + '</span>' : '')
+      + '</div></div>';
+  }
+
+  // ── render ────────────────────────────────────────────────
+  function render(d) {
+    document.getElementById('pmvp-h-updated').textContent = d.updated_label || '';
+
+    var html = '';
+
+    // ── Recovery & Sleep ─────────────────────────────────────
+    html += '<div class="pmvp-h-section">';
+    html += '<div class="pmvp-h-section-label">Recovery &amp; Sleep</div>';
+
+    var rec = d.recovery || {};
+    var slp = d.sleep    || {};
+    var str = d.strain   || {};
+
+    // Recovery bar
+    var recPct   = rec.pct || 0;
+    var recColor = rec.color || 'red';
+    var barWidth = Math.min(recPct, 100);
+    html += '<div class="pmvp-h-row">'
+      + '<div class="pmvp-h-key">recovery</div>'
+      + '<div class="pmvp-h-val">'
+      + '<div class="pmvp-h-bar-wrap">'
+      + '<div class="pmvp-h-bar"><div class="pmvp-h-bar-fill ' + recColor + '" style="width:' + barWidth + '%"></div></div>'
+      + '<span class="pmvp-h-rec-pct ' + recColor + '">' + (rec.pct !== null && rec.pct !== undefined ? rec.pct + '%' : '—') + '</span>'
+      + '</div></div></div>';
+
+    // Sleep
+    var sleepLine = '';
+    if (slp.duration_label) {
+      sleepLine = slp.duration_label;
+      if (slp.performance_pct !== null && slp.performance_pct !== undefined)
+        sleepLine += ' · ' + slp.performance_pct + '% performance';
+      if (slp.need_label)
+        sleepLine += ' · need ' + slp.need_label;
+    }
+    html += '<div class="pmvp-h-row">'
+      + '<div class="pmvp-h-key">sleep</div>'
+      + '<div class="pmvp-h-val"><span class="pmvp-h-num" style="min-width:auto">' + (sleepLine || '—') + '</span></div></div>';
+
+    // RHR / HRV
+    html += '<div class="pmvp-h-row">'
+      + '<div class="pmvp-h-key">rhr</div>'
+      + '<div class="pmvp-h-val"><span class="pmvp-h-num">' + (rec.rhr_bpm ? rec.rhr_bpm + ' bpm' : '—') + '</span></div></div>';
+    html += '<div class="pmvp-h-row">'
+      + '<div class="pmvp-h-key">hrv</div>'
+      + '<div class="pmvp-h-val"><span class="pmvp-h-num">' + (rec.hrv_ms ? rec.hrv_ms + ' ms' : '—') + '</span></div></div>';
+
+    // Strain
+    var strainLine = '—';
+    if (str.score !== null && str.score !== undefined) {
+      strainLine = str.score;
+      if (str.kcal) strainLine += ' · ' + str.kcal.toLocaleString() + ' kcal burned';
+    }
+    html += '<div class="pmvp-h-row">'
+      + '<div class="pmvp-h-key">strain</div>'
+      + '<div class="pmvp-h-val"><span class="pmvp-h-num" style="min-width:auto">' + strainLine + '</span></div></div>';
+
+    html += '</div>'; // end recovery section
+
+    // ── Workouts ─────────────────────────────────────────────
+    var workouts = d.workouts || [];
+    html += '<div class="pmvp-h-section">';
+    html += '<div class="pmvp-h-section-label">Workouts — last 7 days</div>';
+
+    if (workouts.length === 0) {
+      html += '<div style="color:var(--muted);font-size:13px;padding:8px 0;">No workouts logged this week.</div>';
+    } else {
+      html += '<table class="pmvp-h-workout-list">';
+      for (var i = 0; i < workouts.length; i++) {
+        var w = workouts[i];
+        html += '<tr>'
+          + '<td class="w-date">' + (w.date_label || w.date || '') + '</td>'
+          + '<td class="w-sport">' + (w.sport || '—') + '</td>'
+          + '<td class="w-strain">' + (w.strain !== null && w.strain !== undefined ? 'strain ' + w.strain : '') + '</td>'
+          + '<td class="w-dur">' + (w.duration_label || '') + '</td>'
+          + '</tr>';
+      }
+      html += '</table>';
+      html += '<div class="pmvp-h-workout-count">' + workouts.length + ' session' + (workouts.length !== 1 ? 's' : '') + ' this week</div>';
+    }
+    html += '</div>'; // end workouts section
+
+    // ── Nutrition — Yesterday ─────────────────────────────────
+    var nutr = (d.nutrition || {});
+    var yest = nutr.yesterday || null;
+    var targets = nutr.targets || {};
+
+    html += '<div class="pmvp-h-section">';
+    var yestLabel = yest ? 'Nutrition — yesterday (' + yest.date_label + ')' : 'Nutrition — yesterday';
+    html += '<div class="pmvp-h-section-label">' + yestLabel + '</div>';
+
+    if (!yest) {
+      html += '<div style="color:var(--muted);font-size:13px;padding:8px 0;">No nutrition data logged.</div>';
+    } else {
+      // Calories — special case: range target
+      var kcalPct = pct(yest.kcal, targets.kcal_min);
+      var kcalOk  = yest.kcal >= targets.kcal_min && yest.kcal <= targets.kcal_max;
+      var kcalFlag = (targets.kcal_min && yest.kcal)
+        ? (kcalOk ? '<span class="pmvp-h-pass">✓</span>' : '<span class="pmvp-h-fail">✗</span>')
+        : '';
+      html += '<div class="pmvp-h-row">'
+        + '<div class="pmvp-h-key">calories</div>'
+        + '<div class="pmvp-h-val">'
+        + '<span class="pmvp-h-num">' + fmtNum(yest.kcal, '') + '</span>'
+        + (kcalPct ? '<span class="pmvp-h-pct">' + kcalPct + '%</span>' : '')
+        + kcalFlag
+        + '<span class="pmvp-h-target">' + targets.kcal_min + '–' + targets.kcal_max + '</span>'
+        + '</div></div>';
+
+      html += macroRow('protein',   yest.protein_g,   targets.protein_g,   'g', true);
+      html += macroRow('carbs',     yest.carbs_g,     targets.carbs_g,     'g', false);
+      html += macroRow('fat',       yest.fat_g,       targets.fat_g,       'g', false);
+      html += macroRow('fiber',     yest.fiber_g,     targets.fiber_g,     'g', true);
+      html += macroRow('sodium',    yest.sodium_mg,   null,                'mg', false, 'no target');
+      html += macroRow('calcium',   yest.calcium_mg,  targets.calcium_mg,  'mg', true);
+      html += macroRow('iron',      yest.iron_mg,     targets.iron_mg,     'mg', true);
+      html += macroRow('vitamin d', yest.vitamin_d_iu,targets.vitamin_d_iu,'IU', true);
+      html += macroRow('vitamin c', yest.vitamin_c_mg,targets.vitamin_c_mg,'mg', true);
+      html += macroRow('potassium', yest.potassium_mg,targets.potassium_mg,'mg', true);
+      html += macroRow('magnesium', yest.magnesium_mg,targets.magnesium_mg,'mg', true);
+      html += macroRow('zinc',      yest.zinc_mg,     targets.zinc_mg,     'mg', true);
+    }
+    html += '</div>'; // end yesterday section
+
+    // ── Nutrition — This Week ─────────────────────────────────
+    var week = nutr.week || [];
+    if (week.length > 0) {
+      // Find current week bounds
+      var startLabel = '', endLabel = '';
+      var mon = week.find(function(r){ return r.day === 'Mon'; });
+      var sun = week.find(function(r){ return r.day === 'Sun'; });
+      if (mon) startLabel = formatDateLabel(mon.date);
+      if (sun) endLabel   = formatDateLabel(sun.date);
+      var weekRangeLabel  = startLabel && endLabel ? startLabel + '–' + endLabel : 'this week';
+
+      html += '<div class="pmvp-h-section">';
+      html += '<div class="pmvp-h-section-label">Nutrition — ' + weekRangeLabel + '</div>';
+      html += '<table class="pmvp-h-week-table"><thead><tr>';
+      html += '<th></th>';
+      for (var j = 0; j < week.length; j++) {
+        html += '<th>' + week[j].day + '</th>';
+      }
+      html += '</tr></thead><tbody>';
+
+      var rows = [
+        { key: 'kcal',      label: 'kcal',  suffix: '',  target: targets.kcal_min },
+        { key: 'protein_g', label: 'prot',  suffix: 'g', target: targets.protein_g, proteinRow: true },
+        { key: 'carbs_g',   label: 'carbs', suffix: 'g', target: null },
+        { key: 'fat_g',     label: 'fat',   suffix: 'g', target: null },
+      ];
+
+      for (var ri = 0; ri < rows.length; ri++) {
+        var row = rows[ri];
+        html += '<tr><td>' + row.label + '</td>';
+        for (var ci = 0; ci < week.length; ci++) {
+          var cell = week[ci];
+          var cls = '';
+          var val = '—';
+          if (cell.future) {
+            val = '·';
+            cls = 'future';
+          } else if (cell.logged && cell[row.key] !== undefined) {
+            val = cell[row.key] + row.suffix;
+            if (row.proteinRow && cell.protein_hit) cls = 'protein-hit';
+          } else {
+            cls = 'empty';
+          }
+          html += '<td' + (cls ? ' class="' + cls + '"' : '') + '>' + val + '</td>';
+        }
+        html += '</tr>';
+      }
+      html += '</tbody></table>';
+
+      // Averages
+      var loggedDays = week.filter(function(r){ return r.logged; });
+      if (loggedDays.length > 0) {
+        var avgKcal = Math.round(loggedDays.reduce(function(s,r){ return s + (r.kcal||0); }, 0) / loggedDays.length);
+        var avgProt = Math.round(loggedDays.reduce(function(s,r){ return s + (r.protein_g||0); }, 0) / loggedDays.length);
+        var protHit = loggedDays.filter(function(r){ return r.protein_hit; }).length;
+        html += '<div class="pmvp-h-week-avg">';
+        html += loggedDays.length + '-day avg: <span>' + avgKcal.toLocaleString() + ' kcal</span> · <span>' + avgProt + 'g protein</span><br>';
+        html += 'protein target hit: <span>' + protHit + ' of ' + loggedDays.length + ' days</span>';
+        html += '</div>';
+      }
+      html += '</div>'; // end week section
+    }
+
+    document.getElementById('pmvp-h-body').innerHTML = html;
+
+    // Weight footer
+    if (d.weight) {
+      document.getElementById('pmvp-h-weight-val').textContent  = d.weight.lbs + ' lbs';
+      document.getElementById('pmvp-h-weight-when').textContent = 'last logged ' + (d.weight.label || d.weight.logged);
+      document.getElementById('pmvp-h-weight').style.display = 'flex';
+    }
+  }
+
+  function formatDateLabel(dateStr) {
+    if (!dateStr) return '';
+    try {
+      var d = new Date(dateStr + 'T12:00:00');
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    } catch(e) { return dateStr; }
+  }
+
+  // ── fetch ────────────────────────────────────────────────
+  fetch(HEALTH_URL + '?t=' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(d) { render(d); })
+    .catch(function(e) {
+      document.getElementById('pmvp-h-body').innerHTML =
+        '<div class="pmvp-h-error">health data unavailable — check back shortly</div>';
+    });
+})();
+</script>
