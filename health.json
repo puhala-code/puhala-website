@@ -1,0 +1,123 @@
+{
+  "updated": "2026-06-01T11:17:37.751106-07:00",
+  "updated_label": "Monday Jun 1, 2026 \u00b7 11:17 AM Phoenix",
+  "sleep": {
+    "duration_min": 476,
+    "duration_label": "7h 55m",
+    "performance_pct": 87,
+    "need_min": 446,
+    "need_label": "7h 25m"
+  },
+  "recovery": {
+    "pct": 39,
+    "color": "red",
+    "rhr_bpm": 79,
+    "hrv_ms": 18.5
+  },
+  "strain": {
+    "score": 4.5,
+    "kcal": 1905
+  },
+  "workouts": [
+    {
+      "date": "2026-06-01",
+      "date_label": "Jun 1",
+      "sport": "Sport 63",
+      "strain": 5.4,
+      "duration_min": 38,
+      "duration_label": "38m"
+    },
+    {
+      "date": "2026-05-29",
+      "date_label": "May 29",
+      "sport": "Sport 63",
+      "strain": 7.4,
+      "duration_min": 37,
+      "duration_label": "37m"
+    },
+    {
+      "date": "2026-05-29",
+      "date_label": "May 29",
+      "sport": "Weightlifting",
+      "strain": 8.1,
+      "duration_min": 32,
+      "duration_label": "32m"
+    },
+    {
+      "date": "2026-05-27",
+      "date_label": "May 27",
+      "sport": "Sport 63",
+      "strain": 4.9,
+      "duration_min": 36,
+      "duration_label": "36m"
+    }
+  ],
+  "weight": {
+    "lbs": 198.9,
+    "date": "2026-05-16",
+    "label": "May 16"
+  },
+  "nutrition": {
+    "yesterday": null,
+    "week": [
+      {
+        "date": "2026-06-01",
+        "day": "Mon",
+        "logged": false,
+        "future": false
+      },
+      {
+        "date": "2026-06-02",
+        "day": "Tue",
+        "logged": false,
+        "future": true
+      },
+      {
+        "date": "2026-06-03",
+        "day": "Wed",
+        "logged": false,
+        "future": true
+      },
+      {
+        "date": "2026-06-04",
+        "day": "Thu",
+        "logged": false,
+        "future": true
+      },
+      {
+        "date": "2026-06-05",
+        "day": "Fri",
+        "logged": false,
+        "future": true
+      },
+      {
+        "date": "2026-06-06",
+        "day": "Sat",
+        "logged": false,
+        "future": true
+      },
+      {
+        "date": "2026-06-07",
+        "day": "Sun",
+        "logged": false,
+        "future": true
+      }
+    ],
+    "targets": {
+      "kcal_min": 1550,
+      "kcal_max": 1800,
+      "protein_g": 135,
+      "carbs_g": 180,
+      "fat_g": 60,
+      "fiber_g": 25,
+      "calcium_mg": 1000,
+      "iron_mg": 8,
+      "vitamin_d_iu": 600,
+      "vitamin_c_mg": 90,
+      "potassium_mg": 3500,
+      "magnesium_mg": 400,
+      "zinc_mg": 11,
+      "sodium_mg": null
+    }
+  }
+}
