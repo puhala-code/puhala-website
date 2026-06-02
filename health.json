@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-01T11:29:18.249961-07:00",
-  "updated_label": "Monday Jun 1, 2026 \u00b7 11:29 AM Phoenix",
+  "updated": "2026-06-01T19:06:53.680451-07:00",
+  "updated_label": "Monday Jun 1, 2026 \u00b7 7:06 PM Phoenix",
   "sleep": {
     "duration_min": 476,
     "duration_label": "7h 55m",
@@ -19,6 +19,14 @@
     "kcal": 1905
   },
   "workouts": [
+    {
+      "date": "2026-06-01",
+      "date_label": "Jun 1",
+      "sport": "Weightlifting",
+      "strain": 9.7,
+      "duration_min": 33,
+      "duration_label": "33m"
+    },
     {
       "date": "2026-06-01",
       "date_label": "Jun 1",
