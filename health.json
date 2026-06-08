@@ -1,24 +1,80 @@
 {
-  "updated": "2026-06-04T07:31:55.412526-07:00",
-  "updated_label": "Thursday Jun 4, 2026 \u00b7 7:31 AM Phoenix",
+  "updated": "2026-06-08T07:59:59.015323-07:00",
+  "updated_label": "Monday Jun 8, 2026 \u00b7 7:59 AM Phoenix",
   "sleep": {
-    "duration_min": 423,
-    "duration_label": "7h 02m",
-    "performance_pct": 78,
+    "duration_min": 371,
+    "duration_label": "6h 11m",
+    "performance_pct": 79,
     "need_min": 446,
     "need_label": "7h 25m"
   },
   "recovery": {
-    "pct": 43,
+    "pct": 58,
     "color": "red",
-    "rhr_bpm": 75,
-    "hrv_ms": 19.3
+    "rhr_bpm": 74,
+    "hrv_ms": 21.4
   },
   "strain": {
-    "score": 9.5,
-    "kcal": 2086
+    "score": 6.0,
+    "kcal": 1878
   },
   "workouts": [
+    {
+      "date": "2026-06-07",
+      "date_label": "Jun 7",
+      "sport": "Activity",
+      "strain": 10.5,
+      "duration_min": 115,
+      "duration_label": "115m"
+    },
+    {
+      "date": "2026-06-07",
+      "date_label": "Jun 7",
+      "sport": "Walk / Treadmill",
+      "strain": 4.3,
+      "duration_min": 15,
+      "duration_label": "15m"
+    },
+    {
+      "date": "2026-06-06",
+      "date_label": "Jun 6",
+      "sport": "Walk / Treadmill",
+      "strain": 9.0,
+      "duration_min": 45,
+      "duration_label": "45m"
+    },
+    {
+      "date": "2026-06-06",
+      "date_label": "Jun 6",
+      "sport": "Activity",
+      "strain": 6.4,
+      "duration_min": 46,
+      "duration_label": "46m"
+    },
+    {
+      "date": "2026-06-05",
+      "date_label": "Jun 5",
+      "sport": "Kayaking",
+      "strain": 12.5,
+      "duration_min": 93,
+      "duration_label": "93m"
+    },
+    {
+      "date": "2026-06-05",
+      "date_label": "Jun 5",
+      "sport": "Kayaking",
+      "strain": 11.5,
+      "duration_min": 73,
+      "duration_label": "73m"
+    },
+    {
+      "date": "2026-06-05",
+      "date_label": "Jun 5",
+      "sport": "Walk / Treadmill",
+      "strain": 4.1,
+      "duration_min": 17,
+      "duration_label": "17m"
+    },
     {
       "date": "2026-06-04",
       "date_label": "Jun 4",
@@ -58,22 +114,6 @@
       "strain": 5.4,
       "duration_min": 38,
       "duration_label": "38m"
-    },
-    {
-      "date": "2026-05-29",
-      "date_label": "May 29",
-      "sport": "Walk / Treadmill",
-      "strain": 7.4,
-      "duration_min": 37,
-      "duration_label": "37m"
-    },
-    {
-      "date": "2026-05-29",
-      "date_label": "May 29",
-      "sport": "Weightlifting",
-      "strain": 8.1,
-      "duration_min": 32,
-      "duration_label": "32m"
     }
   ],
   "weight": {
@@ -83,23 +123,67 @@
   },
   "nutrition": {
     "yesterday": {
-      "date": "2026-06-03",
-      "date_label": "Jun 3",
-      "kcal": 1702,
-      "protein_g": 177,
-      "carbs_g": 143,
-      "fat_g": 45,
-      "fiber_g": 10,
-      "sodium_mg": 4510,
-      "calcium_mg": 967,
-      "iron_mg": 10.4,
-      "vitamin_d_iu": 1728,
-      "vitamin_c_mg": 1056,
-      "potassium_mg": 3230,
-      "magnesium_mg": 348,
-      "zinc_mg": 22.3
+      "date": "2026-06-07",
+      "date_label": "Jun 7",
+      "kcal": 437,
+      "protein_g": 37,
+      "carbs_g": 50,
+      "fat_g": 9,
+      "fiber_g": 3,
+      "sodium_mg": 51,
+      "calcium_mg": 63,
+      "iron_mg": 4.3,
+      "vitamin_d_iu": 262,
+      "vitamin_c_mg": 4,
+      "potassium_mg": 588,
+      "magnesium_mg": 111,
+      "zinc_mg": 2.2
     },
     "week": [
+      {
+        "date": "2026-06-08",
+        "day": "Mon",
+        "logged": false,
+        "future": false
+      },
+      {
+        "date": "2026-06-09",
+        "day": "Tue",
+        "logged": false,
+        "future": true
+      },
+      {
+        "date": "2026-06-10",
+        "day": "Wed",
+        "logged": false,
+        "future": true
+      },
+      {
+        "date": "2026-06-11",
+        "day": "Thu",
+        "logged": false,
+        "future": true
+      },
+      {
+        "date": "2026-06-12",
+        "day": "Fri",
+        "logged": false,
+        "future": true
+      },
+      {
+        "date": "2026-06-13",
+        "day": "Sat",
+        "logged": false,
+        "future": true
+      },
+      {
+        "date": "2026-06-14",
+        "day": "Sun",
+        "logged": false,
+        "future": true
+      }
+    ],
+    "last_week": [
       {
         "date": "2026-06-01",
         "day": "Mon",
@@ -160,73 +244,68 @@
       {
         "date": "2026-06-04",
         "day": "Thu",
-        "logged": false,
-        "future": false
+        "logged": true,
+        "protein_hit": false,
+        "kcal": 1685,
+        "protein_g": 84,
+        "carbs_g": 208,
+        "fat_g": 57,
+        "fiber_g": 11,
+        "sodium_mg": 3381,
+        "calcium_mg": 464,
+        "iron_mg": 18.4,
+        "vitamin_d_iu": 68,
+        "vitamin_c_mg": 12,
+        "potassium_mg": 1371,
+        "magnesium_mg": 114,
+        "zinc_mg": 8.8
       },
       {
         "date": "2026-06-05",
         "day": "Fri",
-        "logged": false,
-        "future": true
+        "logged": true,
+        "protein_hit": false,
+        "kcal": 468,
+        "protein_g": 29,
+        "carbs_g": 18,
+        "fat_g": 31,
+        "fiber_g": 1,
+        "sodium_mg": 913,
+        "calcium_mg": 74,
+        "iron_mg": 3.2,
+        "vitamin_d_iu": 120,
+        "vitamin_c_mg": 0,
+        "potassium_mg": 404,
+        "magnesium_mg": 31,
+        "zinc_mg": 3.1
       },
       {
         "date": "2026-06-06",
         "day": "Sat",
         "logged": false,
-        "future": true
+        "future": false
       },
       {
         "date": "2026-06-07",
         "day": "Sun",
-        "logged": false,
-        "future": true
+        "logged": true,
+        "protein_hit": false,
+        "kcal": 437,
+        "protein_g": 37,
+        "carbs_g": 50,
+        "fat_g": 9,
+        "fiber_g": 3,
+        "sodium_mg": 51,
+        "calcium_mg": 63,
+        "iron_mg": 4.3,
+        "vitamin_d_iu": 262,
+        "vitamin_c_mg": 4,
+        "potassium_mg": 588,
+        "magnesium_mg": 111,
+        "zinc_mg": 2.2
       }
     ],
-    "last_week": [
-      {
-        "date": "2026-05-25",
-        "day": "Mon",
-        "logged": false,
-        "future": false
-      },
-      {
-        "date": "2026-05-26",
-        "day": "Tue",
-        "logged": false,
-        "future": false
-      },
-      {
-        "date": "2026-05-27",
-        "day": "Wed",
-        "logged": false,
-        "future": false
-      },
-      {
-        "date": "2026-05-28",
-        "day": "Thu",
-        "logged": false,
-        "future": false
-      },
-      {
-        "date": "2026-05-29",
-        "day": "Fri",
-        "logged": false,
-        "future": false
-      },
-      {
-        "date": "2026-05-30",
-        "day": "Sat",
-        "logged": false,
-        "future": false
-      },
-      {
-        "date": "2026-05-31",
-        "day": "Sun",
-        "logged": false,
-        "future": false
-      }
-    ],
-    "last_week_label": "May 25 \u2013 May 31",
+    "last_week_label": "Jun 1 \u2013 Jun 7",
     "targets": {
       "kcal_min": 1550,
       "kcal_max": 1800,
