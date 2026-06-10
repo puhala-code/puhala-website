@@ -1,24 +1,32 @@
 {
-  "updated": "2026-06-09T07:40:30.779710-07:00",
-  "updated_label": "Tuesday Jun 9, 2026 \u00b7 7:40 AM Phoenix",
+  "updated": "2026-06-10T07:24:27.796083-07:00",
+  "updated_label": "Wednesday Jun 10, 2026 \u00b7 7:24 AM Phoenix",
   "sleep": {
-    "duration_min": 460,
-    "duration_label": "7h 40m",
-    "performance_pct": 75,
+    "duration_min": 513,
+    "duration_label": "8h 32m",
+    "performance_pct": 84,
     "need_min": 446,
     "need_label": "7h 25m"
   },
   "recovery": {
-    "pct": 74,
+    "pct": 67,
     "color": "amber",
-    "rhr_bpm": 73,
-    "hrv_ms": 24.9
+    "rhr_bpm": 74,
+    "hrv_ms": 22.8
   },
   "strain": {
-    "score": 3.9,
-    "kcal": 1617
+    "score": 9.0,
+    "kcal": 1911
   },
   "workouts": [
+    {
+      "date": "2026-06-10",
+      "date_label": "Jun 10",
+      "sport": "Weightlifting",
+      "strain": 8.2,
+      "duration_min": 31,
+      "duration_label": "31m"
+    },
     {
       "date": "2026-06-07",
       "date_label": "Jun 7",
@@ -107,21 +115,21 @@
   },
   "nutrition": {
     "yesterday": {
-      "date": "2026-06-08",
-      "date_label": "Jun 8",
-      "kcal": 683,
-      "protein_g": 62,
-      "carbs_g": 69,
-      "fat_g": 19,
-      "fiber_g": 6,
-      "sodium_mg": 1081,
-      "calcium_mg": 886,
-      "iron_mg": 5.6,
-      "vitamin_d_iu": 1505,
-      "vitamin_c_mg": 1030,
-      "potassium_mg": 1080,
-      "magnesium_mg": 138,
-      "zinc_mg": 14.1
+      "date": "2026-06-09",
+      "date_label": "Jun 9",
+      "kcal": 1576,
+      "protein_g": 138,
+      "carbs_g": 138,
+      "fat_g": 57,
+      "fiber_g": 23,
+      "sodium_mg": 3206,
+      "calcium_mg": 876,
+      "iron_mg": 10.8,
+      "vitamin_d_iu": 1543,
+      "vitamin_c_mg": 1058,
+      "potassium_mg": 2239,
+      "magnesium_mg": 233,
+      "zinc_mg": 17.6
     },
     "week": [
       {
@@ -129,31 +137,44 @@
         "day": "Mon",
         "logged": true,
         "protein_hit": false,
-        "kcal": 683,
-        "protein_g": 62,
-        "carbs_g": 69,
-        "fat_g": 19,
-        "fiber_g": 6,
-        "sodium_mg": 1081,
-        "calcium_mg": 886,
-        "iron_mg": 5.6,
-        "vitamin_d_iu": 1505,
-        "vitamin_c_mg": 1030,
-        "potassium_mg": 1080,
-        "magnesium_mg": 138,
-        "zinc_mg": 14.1
+        "kcal": 1280,
+        "protein_g": 90,
+        "carbs_g": 130,
+        "fat_g": 46,
+        "fiber_g": 14,
+        "sodium_mg": 2281,
+        "calcium_mg": 1067,
+        "iron_mg": 9.7,
+        "vitamin_d_iu": 1568,
+        "vitamin_c_mg": 1046,
+        "potassium_mg": 2168,
+        "magnesium_mg": 231,
+        "zinc_mg": 17.4
       },
       {
         "date": "2026-06-09",
         "day": "Tue",
-        "logged": false,
-        "future": false
+        "logged": true,
+        "protein_hit": true,
+        "kcal": 1576,
+        "protein_g": 138,
+        "carbs_g": 138,
+        "fat_g": 57,
+        "fiber_g": 23,
+        "sodium_mg": 3206,
+        "calcium_mg": 876,
+        "iron_mg": 10.8,
+        "vitamin_d_iu": 1543,
+        "vitamin_c_mg": 1058,
+        "potassium_mg": 2239,
+        "magnesium_mg": 233,
+        "zinc_mg": 17.6
       },
       {
         "date": "2026-06-10",
         "day": "Wed",
         "logged": false,
-        "future": true
+        "future": false
       },
       {
         "date": "2026-06-11",
