@@ -1,22 +1,22 @@
 {
-  "updated": "2026-06-16T09:34:25.377626-07:00",
-  "updated_label": "Tuesday Jun 16, 2026 \u00b7 9:34 AM Phoenix",
+  "updated": "2026-06-17T08:06:36.828430-07:00",
+  "updated_label": "Wednesday Jun 17, 2026 \u00b7 8:06 AM Phoenix",
   "sleep": {
-    "duration_min": 412,
-    "duration_label": "6h 52m",
-    "performance_pct": 85,
+    "duration_min": 508,
+    "duration_label": "8h 27m",
+    "performance_pct": 77,
     "need_min": 446,
     "need_label": "7h 25m"
   },
   "recovery": {
-    "pct": 96,
+    "pct": 91,
     "color": "green",
-    "rhr_bpm": 69,
-    "hrv_ms": 27.6
+    "rhr_bpm": 71,
+    "hrv_ms": 26.5
   },
   "strain": {
-    "score": 3.9,
-    "kcal": 1845
+    "score": 2.5,
+    "kcal": 1721
   },
   "workouts": [
     {
