@@ -356,8 +356,14 @@
   function cardSleep(d) {
     var s = d.sleep || {};
     var frac = has(s.performance_pct) ? s.performance_pct / 100 : 0;
+    var u = ' <span style="font-size:14px;color:var(--muted);font-weight:600;">';
+    var durHTML = '—';
+    if (has(s.duration_min)) {
+      var dh = Math.floor(s.duration_min / 60), dm = s.duration_min % 60;
+      durHTML = dh + u + 'h</span> ' + dm + u + 'm</span>';
+    }
     var center = '<div style="font-size:24px;font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1;">'
-      + (s.duration_label ? s.duration_label.replace('h', '<span style=\"font-size:14px;color:var(--muted)\">h</span>').replace('m', '<span style=\"font-size:14px;color:var(--muted)\">m</span>') : '—')
+      + durHTML
       + '</div><div class="mono" style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:3px;">Asleep</div>';
     var st = s.stages;
     var stageBar = '', legend = '';
