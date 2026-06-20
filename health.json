@@ -1,22 +1,22 @@
 {
-  "updated": "2026-06-19T08:29:11.412384-07:00",
-  "updated_label": "Friday Jun 19, 2026 \u00b7 8:29 AM Phoenix",
+  "updated": "2026-06-20T08:03:26.252445-07:00",
+  "updated_label": "Saturday Jun 20, 2026 \u00b7 8:03 AM Phoenix",
   "sleep": {
-    "duration_min": 348,
-    "duration_label": "5h 47m",
-    "performance_pct": 73,
+    "duration_min": 457,
+    "duration_label": "7h 37m",
+    "performance_pct": 82,
     "need_min": 446,
     "need_label": "7h 25m"
   },
   "recovery": {
-    "pct": 57,
-    "color": "red",
+    "pct": 71,
+    "color": "amber",
     "rhr_bpm": 77,
-    "hrv_ms": 21.4
+    "hrv_ms": 23.0
   },
   "strain": {
-    "score": 4.7,
-    "kcal": 1915
+    "score": 4.0,
+    "kcal": 1690
   },
   "workouts": [
     {
@@ -75,21 +75,21 @@
   },
   "nutrition": {
     "yesterday": {
-      "date": "2026-06-18",
-      "date_label": "Jun 18",
-      "kcal": 1101,
-      "protein_g": 62,
-      "carbs_g": 93,
-      "fat_g": 54,
-      "fiber_g": 4,
-      "sodium_mg": 2045,
-      "calcium_mg": 337,
-      "iron_mg": 6.3,
-      "vitamin_d_iu": 106,
-      "vitamin_c_mg": 2,
-      "potassium_mg": 790,
-      "magnesium_mg": 30,
-      "zinc_mg": 2.2
+      "date": "2026-06-19",
+      "date_label": "Jun 19",
+      "kcal": 1597,
+      "protein_g": 79,
+      "carbs_g": 130,
+      "fat_g": 84,
+      "fiber_g": 9,
+      "sodium_mg": 4232,
+      "calcium_mg": 1081,
+      "iron_mg": 9.3,
+      "vitamin_d_iu": 58,
+      "vitamin_c_mg": 38,
+      "potassium_mg": 1426,
+      "magnesium_mg": 99,
+      "zinc_mg": 6.8
     },
     "week": [
       {
@@ -171,14 +171,27 @@
       {
         "date": "2026-06-19",
         "day": "Fri",
-        "logged": false,
-        "future": false
+        "logged": true,
+        "protein_hit": false,
+        "kcal": 1597,
+        "protein_g": 79,
+        "carbs_g": 130,
+        "fat_g": 84,
+        "fiber_g": 9,
+        "sodium_mg": 4232,
+        "calcium_mg": 1081,
+        "iron_mg": 9.3,
+        "vitamin_d_iu": 58,
+        "vitamin_c_mg": 38,
+        "potassium_mg": 1426,
+        "magnesium_mg": 99,
+        "zinc_mg": 6.8
       },
       {
         "date": "2026-06-20",
         "day": "Sat",
         "logged": false,
-        "future": true
+        "future": false
       },
       {
         "date": "2026-06-21",
