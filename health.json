@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-21T08:51:37.833316-07:00",
-  "updated_label": "Sunday Jun 21, 2026 \u00b7 8:51 AM Phoenix",
+  "updated": "2026-06-21T09:00:31.485498-07:00",
+  "updated_label": "Sunday Jun 21, 2026 \u00b7 9:00 AM Phoenix",
   "sleep": {
     "duration_min": 374,
     "duration_label": "6h 14m",
@@ -39,7 +39,7 @@
     {
       "date": "2026-06-20",
       "date_label": "Jun 20",
-      "sport": "Snowboarding",
+      "sport": "Jumping Rope",
       "strain": 6.4,
       "duration_min": 14,
       "duration_label": "14m"
@@ -55,7 +55,7 @@
     {
       "date": "2026-06-19",
       "date_label": "Jun 19",
-      "sport": "Walk / Treadmill",
+      "sport": "Walking",
       "strain": 4.2,
       "duration_min": 30,
       "duration_label": "30m"
@@ -71,7 +71,7 @@
     {
       "date": "2026-06-17",
       "date_label": "Jun 17",
-      "sport": "Walk / Treadmill",
+      "sport": "Walking",
       "strain": 1.9,
       "duration_min": 14,
       "duration_label": "14m"
@@ -79,7 +79,7 @@
     {
       "date": "2026-06-14",
       "date_label": "Jun 14",
-      "sport": "Walk / Treadmill",
+      "sport": "Walking",
       "strain": 5.9,
       "duration_min": 89,
       "duration_label": "89m"
