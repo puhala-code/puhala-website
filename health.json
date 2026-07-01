@@ -1,33 +1,57 @@
 {
-  "updated": "2026-06-30T08:14:37.581202-07:00",
-  "updated_label": "Tuesday Jun 30, 2026 \u00b7 8:14 AM Phoenix",
+  "updated": "2026-07-01T12:33:47.650759-07:00",
+  "updated_label": "Wednesday Jul 1, 2026 \u00b7 12:33 PM Phoenix",
   "sleep": {
-    "duration_min": 516,
-    "duration_label": "8h 35m",
-    "performance_pct": 90,
+    "duration_min": 532,
+    "duration_label": "8h 51m",
+    "performance_pct": 85,
     "need_min": 446,
     "need_label": "7h 25m",
     "stages": {
-      "deep_min": 78,
-      "rem_min": 69,
-      "light_min": 369,
-      "awake_min": 41,
-      "deep_label": "1h 18m",
-      "rem_label": "1h 09m",
-      "light_label": "6h 09m"
+      "deep_min": 49,
+      "rem_min": 100,
+      "light_min": 383,
+      "awake_min": 71,
+      "deep_label": "0h 49m",
+      "rem_label": "1h 40m",
+      "light_label": "6h 23m"
     }
   },
   "recovery": {
-    "pct": 55,
+    "pct": 56,
     "color": "red",
-    "rhr_bpm": 73,
-    "hrv_ms": 22.8
+    "rhr_bpm": 75,
+    "hrv_ms": 23.3
   },
   "strain": {
-    "score": 4.7,
-    "kcal": 1992
+    "score": 6.5,
+    "kcal": 1984
   },
   "workouts": [
+    {
+      "date": "2026-07-01",
+      "date_label": "Jul 1",
+      "sport": "Walking",
+      "strain": 5.1,
+      "duration_min": 32,
+      "duration_label": "32m"
+    },
+    {
+      "date": "2026-06-30",
+      "date_label": "Jun 30",
+      "sport": "Walking",
+      "strain": 4.5,
+      "duration_min": 11,
+      "duration_label": "11m"
+    },
+    {
+      "date": "2026-06-30",
+      "date_label": "Jun 30",
+      "sport": "Jumping Rope",
+      "strain": 4.5,
+      "duration_min": 11,
+      "duration_label": "11m"
+    },
     {
       "date": "2026-06-30",
       "date_label": "Jun 30",
@@ -71,12 +95,6 @@
   ],
   "history": {
     "recovery": [
-      {
-        "date": "2026-06-17",
-        "pct": 91,
-        "hrv": 26.5,
-        "rhr": 71
-      },
       {
         "date": "2026-06-18",
         "pct": 52,
@@ -154,13 +172,15 @@
         "pct": 55,
         "hrv": 22.8,
         "rhr": 73
+      },
+      {
+        "date": "2026-07-01",
+        "pct": 56,
+        "hrv": 23.3,
+        "rhr": 75
       }
     ],
     "strain": [
-      {
-        "date": "2026-06-17",
-        "strain": 9.8
-      },
       {
         "date": "2026-06-18",
         "strain": 4.7
@@ -211,19 +231,19 @@
       },
       {
         "date": "2026-06-30",
-        "strain": 0.2
+        "strain": 6.5
+      },
+      {
+        "date": "2026-07-01",
+        "strain": 0.9
       }
     ]
   },
   "weight": {
-    "lbs": 200.3,
-    "date": "2026-06-30",
-    "label": "Jun 30",
+    "lbs": 200.8,
+    "date": "2026-07-01",
+    "label": "Jul 1",
     "history": [
-      {
-        "date": "2026-04-29",
-        "lbs": 201.2
-      },
       {
         "date": "2026-05-14",
         "lbs": 199.8
@@ -267,31 +287,35 @@
       {
         "date": "2026-06-30",
         "lbs": 200.3
+      },
+      {
+        "date": "2026-07-01",
+        "lbs": 200.8
       }
     ],
-    "avg7": 198.8,
-    "trend_label": "\u22120.9 lbs over 9 wk",
-    "body_fat_pct": 25.8,
-    "lean_lbs": 148.6,
+    "avg7": 199.2,
+    "trend_label": "+1.0 lbs over 7 wk",
+    "body_fat_pct": 25.6,
+    "lean_lbs": 149.3,
     "bmi": 29.7
   },
   "nutrition": {
     "yesterday": {
-      "date": "2026-06-29",
-      "date_label": "Jun 29",
-      "kcal": 1433,
-      "protein_g": 130,
-      "carbs_g": 132,
-      "fat_g": 40,
-      "fiber_g": 9,
-      "sodium_mg": 2476,
-      "calcium_mg": 820,
-      "iron_mg": 12.8,
-      "vitamin_d_iu": 81,
+      "date": "2026-06-30",
+      "date_label": "Jun 30",
+      "kcal": 1191,
+      "protein_g": 114,
+      "carbs_g": 111,
+      "fat_g": 29,
+      "fiber_g": 8,
+      "sodium_mg": 2111,
+      "calcium_mg": 741,
+      "iron_mg": 9.6,
+      "vitamin_d_iu": 1,
       "vitamin_c_mg": 71,
-      "potassium_mg": 1007,
-      "magnesium_mg": 76,
-      "zinc_mg": 2.4
+      "potassium_mg": 823,
+      "magnesium_mg": 54,
+      "zinc_mg": 0.6
     },
     "week": [
       {
@@ -316,14 +340,27 @@
       {
         "date": "2026-06-30",
         "day": "Tue",
-        "logged": false,
-        "future": false
+        "logged": true,
+        "protein_hit": false,
+        "kcal": 1191,
+        "protein_g": 114,
+        "carbs_g": 111,
+        "fat_g": 29,
+        "fiber_g": 8,
+        "sodium_mg": 2111,
+        "calcium_mg": 741,
+        "iron_mg": 9.6,
+        "vitamin_d_iu": 1,
+        "vitamin_c_mg": 71,
+        "potassium_mg": 823,
+        "magnesium_mg": 54,
+        "zinc_mg": 0.6
       },
       {
         "date": "2026-07-01",
         "day": "Wed",
         "logged": false,
-        "future": true
+        "future": false
       },
       {
         "date": "2026-07-02",
